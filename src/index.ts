@@ -22,3 +22,5 @@ export const getPiecePoints = (piece: PieceType) => {
       return 0;
   }
 };
+
+export { PieceType };
