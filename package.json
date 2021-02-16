@@ -4,7 +4,7 @@
   "files": [
     "lib/**/*"
   ],
-  "description": "Chess Engine",
+  "description": "Chess Engine made EZ",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
@@ -20,7 +20,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sebranly/chess.git"
+    "url": "git+https://github.com/sebranly/chez.git"
   },
   "keywords": [
     "chess"
@@ -28,9 +28,9 @@
   "author": "sebranly",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/sebranly/chess/issues"
+    "url": "https://github.com/sebranly/chez/issues"
   },
-  "homepage": "https://github.com/sebranly/chess#readme",
+  "homepage": "https://github.com/sebranly/chez#readme",
   "devDependencies": {
     "@types/jest": "^26.0.20",
     "eslint": "^7.20.0",

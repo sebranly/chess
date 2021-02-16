@@ -1,2 +1,3 @@
-# chess
-Chess Engine
+# chez
+
+Chess Engine made EZ
