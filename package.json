@@ -1,6 +1,6 @@
 {
   "name": "chez",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "files": [
     "lib/**/*"
   ],
@@ -12,11 +12,11 @@
     "format": "prettier --write \"src/**/*.ts\"",
     "lint": "eslint",
     "test": "jest --config jestconfig.json",
-    "prepare" : "npm run build",
-    "prepublishOnly" : "npm test && npm run lint",
-    "preversion" : "npm run lint",
-    "version" : "npm run format && git add -A src",
-    "postversion" : "git push && git push --tags"
+    "prepare": "npm run build",
+    "prepublishOnly": "npm test && npm run lint",
+    "preversion": "npm run lint",
+    "version": "npm run format && git add -A src",
+    "postversion": "git push && git push --tags"
   },
   "repository": {
     "type": "git",
