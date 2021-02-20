@@ -7,7 +7,9 @@ import {
   emptyBoard,
   initializeBoard,
   initializePiece,
+  setSquare,
 } from '../index';
+import { cloneDeep, differenceWith, isEqual } from 'lodash';
 import { Square, Color, Piece, PieceSubType, PieceType } from '../types';
 
 const { Bishop, King, Knight, Pawn, Queen, Rook } = PieceType;
@@ -78,6 +80,7 @@ test('getFileBasedPieceSubType', () => {
 
 test('initializeBoard', () => {
   expect(initializeBoard()).toMatchSnapshot();
+  expect(initializeBoard(true)).toMatchSnapshot('empty');
 });
 
 test('emptyBoard', () => {
@@ -104,4 +107,26 @@ test('getSquare', () => {
 
   expect(getSquare(board, 'a', 1)).toStrictEqual(expectedSquare);
   expect(getSquare(board, 'z', 1)).toBeUndefined();
+});
+
+test('setSquare', () => {
+  const board = initializeBoard();
+  const piece = initializePiece(Color.Black);
+  const originalBoard = cloneDeep(board);
+  const originalPiece = cloneDeep(piece);
+
+  setSquare(board, 'a', 2, piece);
+
+  expect(board.fileCount).toBe(originalBoard.fileCount);
+  expect(board.rankCount).toBe(originalBoard.rankCount);
+
+  const differences = differenceWith(board.squares, originalBoard.squares, isEqual);
+
+  expect(differences).toStrictEqual([
+    {
+      file: 'a',
+      rank: 2,
+      piece: originalPiece,
+    },
+  ]);
 });

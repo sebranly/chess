@@ -66,7 +66,7 @@ export const getFileBasedPieceSubType = (file: number, fileCount = DEFAULT_FILE_
   return undefined;
 };
 
-export const initializeBoard = (fileCount = DEFAULT_FILE_COUNT, rankCount = DEFAULT_RANK_COUNT) => {
+export const initializeBoard = (empty = false, fileCount = DEFAULT_FILE_COUNT, rankCount = DEFAULT_RANK_COUNT) => {
   const board: Board = { squares: [], fileCount, rankCount };
 
   for (let file = 1; file <= fileCount; file++) {
@@ -74,16 +74,18 @@ export const initializeBoard = (fileCount = DEFAULT_FILE_COUNT, rankCount = DEFA
       const fileLetter = getFileLetter(file);
       const square: Square = { file: fileLetter, rank };
 
-      if ([1, rankCount].includes(rank)) {
-        const color = rank === 1 ? Color.White : Color.Black;
-        const pieceType = getFileBasedPieceType(file);
-        const pieceSubType = getFileBasedPieceSubType(file);
-        square.piece = initializePiece(color, pieceType, pieceSubType);
-      }
+      if (!empty) {
+        if ([1, rankCount].includes(rank)) {
+          const color = rank === 1 ? Color.White : Color.Black;
+          const pieceType = getFileBasedPieceType(file);
+          const pieceSubType = getFileBasedPieceSubType(file);
+          square.piece = initializePiece(color, pieceType, pieceSubType);
+        }
 
-      if ([2, rankCount - 1].includes(rank)) {
-        const color = rank === 2 ? Color.White : Color.Black;
-        square.piece = initializePiece(color);
+        if ([2, rankCount - 1].includes(rank)) {
+          const color = rank === 2 ? Color.White : Color.Black;
+          square.piece = initializePiece(color);
+        }
       }
 
       board.squares.push(square);
@@ -106,6 +108,12 @@ export const getSquare = (board: Board, file: string, rank: number) => {
   const square = squares.find((s: Square) => s.file === file && s.rank === rank);
 
   return square;
+};
+
+export const setSquare = (board: Board, file: string, rank: number, piece: Piece) => {
+  const square = getSquare(board, file, rank);
+
+  if (square) square.piece = piece;
 };
 
 export { PieceType };

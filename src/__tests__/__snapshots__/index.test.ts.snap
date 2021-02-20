@@ -817,3 +817,268 @@ Object {
   ],
 }
 `;
+
+exports[`initializeBoard: empty 1`] = `
+Object {
+  "fileCount": 8,
+  "rankCount": 8,
+  "squares": Array [
+    Object {
+      "file": "a",
+      "rank": 1,
+    },
+    Object {
+      "file": "a",
+      "rank": 2,
+    },
+    Object {
+      "file": "a",
+      "rank": 3,
+    },
+    Object {
+      "file": "a",
+      "rank": 4,
+    },
+    Object {
+      "file": "a",
+      "rank": 5,
+    },
+    Object {
+      "file": "a",
+      "rank": 6,
+    },
+    Object {
+      "file": "a",
+      "rank": 7,
+    },
+    Object {
+      "file": "a",
+      "rank": 8,
+    },
+    Object {
+      "file": "b",
+      "rank": 1,
+    },
+    Object {
+      "file": "b",
+      "rank": 2,
+    },
+    Object {
+      "file": "b",
+      "rank": 3,
+    },
+    Object {
+      "file": "b",
+      "rank": 4,
+    },
+    Object {
+      "file": "b",
+      "rank": 5,
+    },
+    Object {
+      "file": "b",
+      "rank": 6,
+    },
+    Object {
+      "file": "b",
+      "rank": 7,
+    },
+    Object {
+      "file": "b",
+      "rank": 8,
+    },
+    Object {
+      "file": "c",
+      "rank": 1,
+    },
+    Object {
+      "file": "c",
+      "rank": 2,
+    },
+    Object {
+      "file": "c",
+      "rank": 3,
+    },
+    Object {
+      "file": "c",
+      "rank": 4,
+    },
+    Object {
+      "file": "c",
+      "rank": 5,
+    },
+    Object {
+      "file": "c",
+      "rank": 6,
+    },
+    Object {
+      "file": "c",
+      "rank": 7,
+    },
+    Object {
+      "file": "c",
+      "rank": 8,
+    },
+    Object {
+      "file": "d",
+      "rank": 1,
+    },
+    Object {
+      "file": "d",
+      "rank": 2,
+    },
+    Object {
+      "file": "d",
+      "rank": 3,
+    },
+    Object {
+      "file": "d",
+      "rank": 4,
+    },
+    Object {
+      "file": "d",
+      "rank": 5,
+    },
+    Object {
+      "file": "d",
+      "rank": 6,
+    },
+    Object {
+      "file": "d",
+      "rank": 7,
+    },
+    Object {
+      "file": "d",
+      "rank": 8,
+    },
+    Object {
+      "file": "e",
+      "rank": 1,
+    },
+    Object {
+      "file": "e",
+      "rank": 2,
+    },
+    Object {
+      "file": "e",
+      "rank": 3,
+    },
+    Object {
+      "file": "e",
+      "rank": 4,
+    },
+    Object {
+      "file": "e",
+      "rank": 5,
+    },
+    Object {
+      "file": "e",
+      "rank": 6,
+    },
+    Object {
+      "file": "e",
+      "rank": 7,
+    },
+    Object {
+      "file": "e",
+      "rank": 8,
+    },
+    Object {
+      "file": "f",
+      "rank": 1,
+    },
+    Object {
+      "file": "f",
+      "rank": 2,
+    },
+    Object {
+      "file": "f",
+      "rank": 3,
+    },
+    Object {
+      "file": "f",
+      "rank": 4,
+    },
+    Object {
+      "file": "f",
+      "rank": 5,
+    },
+    Object {
+      "file": "f",
+      "rank": 6,
+    },
+    Object {
+      "file": "f",
+      "rank": 7,
+    },
+    Object {
+      "file": "f",
+      "rank": 8,
+    },
+    Object {
+      "file": "g",
+      "rank": 1,
+    },
+    Object {
+      "file": "g",
+      "rank": 2,
+    },
+    Object {
+      "file": "g",
+      "rank": 3,
+    },
+    Object {
+      "file": "g",
+      "rank": 4,
+    },
+    Object {
+      "file": "g",
+      "rank": 5,
+    },
+    Object {
+      "file": "g",
+      "rank": 6,
+    },
+    Object {
+      "file": "g",
+      "rank": 7,
+    },
+    Object {
+      "file": "g",
+      "rank": 8,
+    },
+    Object {
+      "file": "h",
+      "rank": 1,
+    },
+    Object {
+      "file": "h",
+      "rank": 2,
+    },
+    Object {
+      "file": "h",
+      "rank": 3,
+    },
+    Object {
+      "file": "h",
+      "rank": 4,
+    },
+    Object {
+      "file": "h",
+      "rank": 5,
+    },
+    Object {
+      "file": "h",
+      "rank": 6,
+    },
+    Object {
+      "file": "h",
+      "rank": 7,
+    },
+    Object {
+      "file": "h",
+      "rank": 8,
+    },
+  ],
+}
+`;
