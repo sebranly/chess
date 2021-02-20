@@ -4,6 +4,7 @@ import {
   getFileBasedPieceSubType,
   getFileLetter,
   getPiecePoints,
+  emptyBoard,
   initializeBoard,
   initializePiece,
 } from '../index';
@@ -77,6 +78,11 @@ test('getFileBasedPieceSubType', () => {
 
 test('initializeBoard', () => {
   expect(initializeBoard()).toMatchSnapshot();
+});
+
+test('emptyBoard', () => {
+  const board = initializeBoard();
+  expect(emptyBoard(board)).toMatchSnapshot();
 });
 
 test('getCell', () => {

@@ -93,6 +93,14 @@ export const initializeBoard = (fileCount = DEFAULT_FILE_COUNT, rankCount = DEFA
   return board;
 };
 
+export const emptyBoard = (board: Board) => {
+  const { cells } = board;
+
+  cells.map((c) => (c.piece = undefined));
+
+  return board;
+};
+
 export const getCell = (board: Board, file: string, rank: number) => {
   const { cells } = board;
   const cell = cells.find((c) => c.file === file && c.rank === rank);

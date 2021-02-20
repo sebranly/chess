@@ -1,5 +1,334 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`emptyBoard 1`] = `
+Object {
+  "cells": Array [
+    Object {
+      "file": "a",
+      "piece": undefined,
+      "rank": 1,
+    },
+    Object {
+      "file": "a",
+      "piece": undefined,
+      "rank": 2,
+    },
+    Object {
+      "file": "a",
+      "piece": undefined,
+      "rank": 3,
+    },
+    Object {
+      "file": "a",
+      "piece": undefined,
+      "rank": 4,
+    },
+    Object {
+      "file": "a",
+      "piece": undefined,
+      "rank": 5,
+    },
+    Object {
+      "file": "a",
+      "piece": undefined,
+      "rank": 6,
+    },
+    Object {
+      "file": "a",
+      "piece": undefined,
+      "rank": 7,
+    },
+    Object {
+      "file": "a",
+      "piece": undefined,
+      "rank": 8,
+    },
+    Object {
+      "file": "b",
+      "piece": undefined,
+      "rank": 1,
+    },
+    Object {
+      "file": "b",
+      "piece": undefined,
+      "rank": 2,
+    },
+    Object {
+      "file": "b",
+      "piece": undefined,
+      "rank": 3,
+    },
+    Object {
+      "file": "b",
+      "piece": undefined,
+      "rank": 4,
+    },
+    Object {
+      "file": "b",
+      "piece": undefined,
+      "rank": 5,
+    },
+    Object {
+      "file": "b",
+      "piece": undefined,
+      "rank": 6,
+    },
+    Object {
+      "file": "b",
+      "piece": undefined,
+      "rank": 7,
+    },
+    Object {
+      "file": "b",
+      "piece": undefined,
+      "rank": 8,
+    },
+    Object {
+      "file": "c",
+      "piece": undefined,
+      "rank": 1,
+    },
+    Object {
+      "file": "c",
+      "piece": undefined,
+      "rank": 2,
+    },
+    Object {
+      "file": "c",
+      "piece": undefined,
+      "rank": 3,
+    },
+    Object {
+      "file": "c",
+      "piece": undefined,
+      "rank": 4,
+    },
+    Object {
+      "file": "c",
+      "piece": undefined,
+      "rank": 5,
+    },
+    Object {
+      "file": "c",
+      "piece": undefined,
+      "rank": 6,
+    },
+    Object {
+      "file": "c",
+      "piece": undefined,
+      "rank": 7,
+    },
+    Object {
+      "file": "c",
+      "piece": undefined,
+      "rank": 8,
+    },
+    Object {
+      "file": "d",
+      "piece": undefined,
+      "rank": 1,
+    },
+    Object {
+      "file": "d",
+      "piece": undefined,
+      "rank": 2,
+    },
+    Object {
+      "file": "d",
+      "piece": undefined,
+      "rank": 3,
+    },
+    Object {
+      "file": "d",
+      "piece": undefined,
+      "rank": 4,
+    },
+    Object {
+      "file": "d",
+      "piece": undefined,
+      "rank": 5,
+    },
+    Object {
+      "file": "d",
+      "piece": undefined,
+      "rank": 6,
+    },
+    Object {
+      "file": "d",
+      "piece": undefined,
+      "rank": 7,
+    },
+    Object {
+      "file": "d",
+      "piece": undefined,
+      "rank": 8,
+    },
+    Object {
+      "file": "e",
+      "piece": undefined,
+      "rank": 1,
+    },
+    Object {
+      "file": "e",
+      "piece": undefined,
+      "rank": 2,
+    },
+    Object {
+      "file": "e",
+      "piece": undefined,
+      "rank": 3,
+    },
+    Object {
+      "file": "e",
+      "piece": undefined,
+      "rank": 4,
+    },
+    Object {
+      "file": "e",
+      "piece": undefined,
+      "rank": 5,
+    },
+    Object {
+      "file": "e",
+      "piece": undefined,
+      "rank": 6,
+    },
+    Object {
+      "file": "e",
+      "piece": undefined,
+      "rank": 7,
+    },
+    Object {
+      "file": "e",
+      "piece": undefined,
+      "rank": 8,
+    },
+    Object {
+      "file": "f",
+      "piece": undefined,
+      "rank": 1,
+    },
+    Object {
+      "file": "f",
+      "piece": undefined,
+      "rank": 2,
+    },
+    Object {
+      "file": "f",
+      "piece": undefined,
+      "rank": 3,
+    },
+    Object {
+      "file": "f",
+      "piece": undefined,
+      "rank": 4,
+    },
+    Object {
+      "file": "f",
+      "piece": undefined,
+      "rank": 5,
+    },
+    Object {
+      "file": "f",
+      "piece": undefined,
+      "rank": 6,
+    },
+    Object {
+      "file": "f",
+      "piece": undefined,
+      "rank": 7,
+    },
+    Object {
+      "file": "f",
+      "piece": undefined,
+      "rank": 8,
+    },
+    Object {
+      "file": "g",
+      "piece": undefined,
+      "rank": 1,
+    },
+    Object {
+      "file": "g",
+      "piece": undefined,
+      "rank": 2,
+    },
+    Object {
+      "file": "g",
+      "piece": undefined,
+      "rank": 3,
+    },
+    Object {
+      "file": "g",
+      "piece": undefined,
+      "rank": 4,
+    },
+    Object {
+      "file": "g",
+      "piece": undefined,
+      "rank": 5,
+    },
+    Object {
+      "file": "g",
+      "piece": undefined,
+      "rank": 6,
+    },
+    Object {
+      "file": "g",
+      "piece": undefined,
+      "rank": 7,
+    },
+    Object {
+      "file": "g",
+      "piece": undefined,
+      "rank": 8,
+    },
+    Object {
+      "file": "h",
+      "piece": undefined,
+      "rank": 1,
+    },
+    Object {
+      "file": "h",
+      "piece": undefined,
+      "rank": 2,
+    },
+    Object {
+      "file": "h",
+      "piece": undefined,
+      "rank": 3,
+    },
+    Object {
+      "file": "h",
+      "piece": undefined,
+      "rank": 4,
+    },
+    Object {
+      "file": "h",
+      "piece": undefined,
+      "rank": 5,
+    },
+    Object {
+      "file": "h",
+      "piece": undefined,
+      "rank": 6,
+    },
+    Object {
+      "file": "h",
+      "piece": undefined,
+      "rank": 7,
+    },
+    Object {
+      "file": "h",
+      "piece": undefined,
+      "rank": 8,
+    },
+  ],
+  "fileCount": 8,
+  "rankCount": 8,
+}
+`;
+
 exports[`initializeBoard 1`] = `
 Object {
   "cells": Array [
