@@ -1,10 +1,15 @@
 import { Board, Cell, Color, Piece, PieceSubType, PieceType } from './types';
-import { DEFAULT_ASCII_LOWERCASE_A, DEFAULT_FILE_COUNT, DEFAULT_RANK_COUNT } from './constants';
+import {
+  DEFAULT_ASCII_LOWERCASE_A,
+  DEFAULT_FILE_COUNT,
+  DEFAULT_NOTATION_EMPTY_CELL,
+  DEFAULT_RANK_COUNT,
+} from './constants';
 
-export const getPiecePoints = (piece: PieceType) => {
+export const getPiecePoints = (pieceType: PieceType) => {
   const { Bishop, King, Knight, Pawn, Queen, Rook } = PieceType;
 
-  switch (piece) {
+  switch (pieceType) {
     case Pawn:
       return 1;
 
@@ -67,11 +72,12 @@ export const getFileBasedPieceSubType = (file: number, fileCount = DEFAULT_FILE_
 };
 
 export const initializeBoard = (fileCount = DEFAULT_FILE_COUNT, rankCount = DEFAULT_RANK_COUNT) => {
-  const board: Board = { cells: [] };
+  const board: Board = { cells: [], fileCount, rankCount };
 
   for (let file = 1; file <= fileCount; file++) {
     for (let rank = 1; rank <= rankCount; rank++) {
-      const cell: Cell = { file: getFileLetter(file), rank };
+      const fileLetter = getFileLetter(file);
+      const cell: Cell = { file: fileLetter, rank };
 
       if ([1, rankCount].includes(rank)) {
         const color = rank === 1 ? Color.White : Color.Black;
@@ -90,6 +96,79 @@ export const initializeBoard = (fileCount = DEFAULT_FILE_COUNT, rankCount = DEFA
   }
 
   return board;
+};
+
+export const getCell = (board: Board, file: string, rank: number) => {
+  const { cells } = board;
+  const cell = cells.find((c) => c.file === file && c.rank === rank);
+
+  return cell;
+};
+
+export const getTerminalNotation = (piece: Piece) => {
+  const { color, type } = piece;
+
+  const notation = getTerminalNotationLetter(type);
+
+  return color === Color.White ? notation.toUpperCase() : notation;
+};
+
+export const getTerminalNotationLetter = (pieceType: PieceType) => {
+  const { Bishop, King, Knight, Pawn, Queen, Rook } = PieceType;
+
+  switch (pieceType) {
+    case Pawn:
+      return 'p';
+
+    case Bishop:
+      return 'b';
+
+    case Knight:
+      return 'n';
+
+    case Rook:
+      return 'r';
+
+    case Queen:
+      return 'q';
+
+    case King:
+      return 'k';
+
+    default:
+      return DEFAULT_NOTATION_EMPTY_CELL;
+  }
+};
+
+const print = (text: string, nodeDisplay: boolean) => {
+  nodeDisplay ? process.stdout.write(text) : console.log(text);
+};
+
+export const displayBoard = (board: Board, nodeDisplay = false) => {
+  const { fileCount, rankCount } = board;
+
+  print('\n', nodeDisplay);
+
+  for (let rank = rankCount; rank >= 1; rank--) {
+    for (let file = 1; file <= fileCount; file++) {
+      const fileLetter = getFileLetter(file);
+      const cell = getCell(board, fileLetter, rank);
+
+      if (cell) {
+        const { piece } = cell;
+
+        if (piece) {
+          const notation = getTerminalNotation(piece);
+
+          print(notation, nodeDisplay);
+        } else {
+          print(DEFAULT_NOTATION_EMPTY_CELL, nodeDisplay);
+        }
+      }
+    }
+
+    print('\n', nodeDisplay);
+  }
 };
 
 export { PieceType };

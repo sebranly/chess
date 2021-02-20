@@ -38,4 +38,6 @@ export interface Cell {
 
 export interface Board {
   cells: Cell[];
+  fileCount: number;
+  rankCount: number;
 }

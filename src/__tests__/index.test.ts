@@ -1,12 +1,15 @@
 import {
+  getCell,
   getFileBasedPieceType,
   getFileBasedPieceSubType,
   getFileLetter,
   getPiecePoints,
+  getTerminalNotation,
+  getTerminalNotationLetter,
   initializeBoard,
   initializePiece,
 } from '../index';
-import { Color, Piece, PieceSubType, PieceType } from '../types';
+import { Cell, Color, Piece, PieceSubType, PieceType } from '../types';
 
 const { Bishop, King, Knight, Pawn, Queen, Rook } = PieceType;
 
@@ -76,4 +79,49 @@ test('getFileBasedPieceSubType', () => {
 
 test('initializeBoard', () => {
   expect(initializeBoard()).toMatchSnapshot();
+});
+
+test('getCell', () => {
+  const board = initializeBoard();
+
+  const expectedPiece: Piece = {
+    color: Color.White,
+    hasNeverMoved: true,
+    isFromPromotion: false,
+    subType: PieceSubType.West,
+    type: PieceType.Rook,
+  };
+
+  const expectedCell: Cell = {
+    file: 'a',
+    rank: 1,
+    piece: expectedPiece,
+  };
+
+  expect(getCell(board, 'a', 1)).toStrictEqual(expectedCell);
+  expect(getCell(board, 'z', 1)).toBeUndefined();
+});
+
+test('getTerminalNotationLetter', () => {
+  expect(getTerminalNotationLetter(King)).toBe('k');
+  expect(getTerminalNotationLetter(Pawn)).toBe('p');
+  expect(getTerminalNotationLetter(Bishop)).toBe('b');
+  expect(getTerminalNotationLetter(Knight)).toBe('n');
+  expect(getTerminalNotationLetter(Rook)).toBe('r');
+  expect(getTerminalNotationLetter(Queen)).toBe('q');
+});
+
+test('getTerminalNotation', () => {
+  const piece: Piece = {
+    color: Color.White,
+    hasNeverMoved: true,
+    isFromPromotion: false,
+    subType: undefined,
+    type: PieceType.King,
+  };
+
+  expect(getTerminalNotation(piece)).toBe('K');
+
+  piece.color = Color.Black;
+  expect(getTerminalNotation(piece)).toBe('k');
 });

@@ -484,5 +484,7 @@ Object {
       "rank": 8,
     },
   ],
+  "fileCount": 8,
+  "rankCount": 8,
 }
 `;
