@@ -1,6 +1,6 @@
-import { getCell, getFileLetter } from './index';
+import { getSquare, getFileLetter } from './index';
 import { Board, Color, Piece, PieceType } from './types';
-import { DEFAULT_ASCII_LOWERCASE_A, DEFAULT_NOTATION_EMPTY_CELL } from './constants';
+import { DEFAULT_ASCII_LOWERCASE_A, DEFAULT_NOTATION_EMPTY_SQUARE } from './constants';
 
 export const getTerminalNotation = (piece: Piece) => {
   const { color, type } = piece;
@@ -33,7 +33,7 @@ export const getTerminalNotationLetter = (pieceType: PieceType) => {
       return 'k';
 
     default:
-      return DEFAULT_NOTATION_EMPTY_CELL;
+      return DEFAULT_NOTATION_EMPTY_SQUARE;
   }
 };
 
@@ -85,17 +85,17 @@ export const displayBoard = (board: Board, nodeDisplay = false) => {
 
     for (let file = 1; file <= fileCount; file++) {
       const fileLetter = getFileLetter(file);
-      const cell = getCell(board, fileLetter, rank);
+      const square = getSquare(board, fileLetter, rank);
 
-      if (cell) {
-        const { piece } = cell;
+      if (square) {
+        const { piece } = square;
 
         if (piece) {
           const notation = getTerminalNotation(piece);
 
           print(notation, nodeDisplay);
         } else {
-          print(DEFAULT_NOTATION_EMPTY_CELL, nodeDisplay);
+          print(DEFAULT_NOTATION_EMPTY_SQUARE, nodeDisplay);
         }
       }
     }

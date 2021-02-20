@@ -30,14 +30,14 @@ export interface Piece {
   subType?: PieceSubType;
 }
 
-export interface Cell {
+export interface Square {
   file: string;
   piece?: Piece;
   rank: number;
 }
 
 export interface Board {
-  cells: Cell[];
+  squares: Square[];
   fileCount: number;
   rankCount: number;
 }

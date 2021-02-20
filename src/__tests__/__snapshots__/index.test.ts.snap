@@ -2,7 +2,9 @@
 
 exports[`emptyBoard 1`] = `
 Object {
-  "cells": Array [
+  "fileCount": 8,
+  "rankCount": 8,
+  "squares": Array [
     Object {
       "file": "a",
       "piece": undefined,
@@ -324,14 +326,14 @@ Object {
       "rank": 8,
     },
   ],
-  "fileCount": 8,
-  "rankCount": 8,
 }
 `;
 
 exports[`initializeBoard 1`] = `
 Object {
-  "cells": Array [
+  "fileCount": 8,
+  "rankCount": 8,
+  "squares": Array [
     Object {
       "file": "a",
       "piece": Object {
@@ -813,7 +815,5 @@ Object {
       "rank": 8,
     },
   ],
-  "fileCount": 8,
-  "rankCount": 8,
 }
 `;

@@ -1,4 +1,4 @@
-import { Board, Cell, Color, Piece, PieceSubType, PieceType } from './types';
+import { Board, Color, Piece, PieceSubType, PieceType, Square } from './types';
 import { DEFAULT_ASCII_LOWERCASE_A, DEFAULT_FILE_COUNT, DEFAULT_RANK_COUNT } from './constants';
 
 export const getPiecePoints = (pieceType: PieceType) => {
@@ -67,26 +67,26 @@ export const getFileBasedPieceSubType = (file: number, fileCount = DEFAULT_FILE_
 };
 
 export const initializeBoard = (fileCount = DEFAULT_FILE_COUNT, rankCount = DEFAULT_RANK_COUNT) => {
-  const board: Board = { cells: [], fileCount, rankCount };
+  const board: Board = { squares: [], fileCount, rankCount };
 
   for (let file = 1; file <= fileCount; file++) {
     for (let rank = 1; rank <= rankCount; rank++) {
       const fileLetter = getFileLetter(file);
-      const cell: Cell = { file: fileLetter, rank };
+      const square: Square = { file: fileLetter, rank };
 
       if ([1, rankCount].includes(rank)) {
         const color = rank === 1 ? Color.White : Color.Black;
         const pieceType = getFileBasedPieceType(file);
         const pieceSubType = getFileBasedPieceSubType(file);
-        cell.piece = initializePiece(color, pieceType, pieceSubType);
+        square.piece = initializePiece(color, pieceType, pieceSubType);
       }
 
       if ([2, rankCount - 1].includes(rank)) {
         const color = rank === 2 ? Color.White : Color.Black;
-        cell.piece = initializePiece(color);
+        square.piece = initializePiece(color);
       }
 
-      board.cells.push(cell);
+      board.squares.push(square);
     }
   }
 
@@ -94,18 +94,18 @@ export const initializeBoard = (fileCount = DEFAULT_FILE_COUNT, rankCount = DEFA
 };
 
 export const emptyBoard = (board: Board) => {
-  const { cells } = board;
+  const { squares } = board;
 
-  cells.map((c) => (c.piece = undefined));
+  squares.map((s: Square) => (s.piece = undefined));
 
   return board;
 };
 
-export const getCell = (board: Board, file: string, rank: number) => {
-  const { cells } = board;
-  const cell = cells.find((c) => c.file === file && c.rank === rank);
+export const getSquare = (board: Board, file: string, rank: number) => {
+  const { squares } = board;
+  const square = squares.find((s: Square) => s.file === file && s.rank === rank);
 
-  return cell;
+  return square;
 };
 
 export { PieceType };

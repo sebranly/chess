@@ -1,5 +1,5 @@
 import {
-  getCell,
+  getSquare,
   getFileBasedPieceType,
   getFileBasedPieceSubType,
   getFileLetter,
@@ -8,7 +8,7 @@ import {
   initializeBoard,
   initializePiece,
 } from '../index';
-import { Cell, Color, Piece, PieceSubType, PieceType } from '../types';
+import { Square, Color, Piece, PieceSubType, PieceType } from '../types';
 
 const { Bishop, King, Knight, Pawn, Queen, Rook } = PieceType;
 
@@ -85,7 +85,7 @@ test('emptyBoard', () => {
   expect(emptyBoard(board)).toMatchSnapshot();
 });
 
-test('getCell', () => {
+test('getSquare', () => {
   const board = initializeBoard();
 
   const expectedPiece: Piece = {
@@ -96,12 +96,12 @@ test('getCell', () => {
     type: PieceType.Rook,
   };
 
-  const expectedCell: Cell = {
+  const expectedSquare: Square = {
     file: 'a',
     rank: 1,
     piece: expectedPiece,
   };
 
-  expect(getCell(board, 'a', 1)).toStrictEqual(expectedCell);
-  expect(getCell(board, 'z', 1)).toBeUndefined();
+  expect(getSquare(board, 'a', 1)).toStrictEqual(expectedSquare);
+  expect(getSquare(board, 'z', 1)).toBeUndefined();
 });
