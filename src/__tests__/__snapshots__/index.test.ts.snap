@@ -1,0 +1,488 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`initializeBoard 1`] = `
+Object {
+  "cells": Array [
+    Object {
+      "file": "a",
+      "piece": Object {
+        "color": "white",
+        "hasNeverMoved": true,
+        "isFromPromotion": false,
+        "subType": "west",
+        "type": "rook",
+      },
+      "rank": 1,
+    },
+    Object {
+      "file": "a",
+      "piece": Object {
+        "color": "white",
+        "hasNeverMoved": true,
+        "isFromPromotion": false,
+        "subType": undefined,
+        "type": "pawn",
+      },
+      "rank": 2,
+    },
+    Object {
+      "file": "a",
+      "rank": 3,
+    },
+    Object {
+      "file": "a",
+      "rank": 4,
+    },
+    Object {
+      "file": "a",
+      "rank": 5,
+    },
+    Object {
+      "file": "a",
+      "rank": 6,
+    },
+    Object {
+      "file": "a",
+      "piece": Object {
+        "color": "black",
+        "hasNeverMoved": true,
+        "isFromPromotion": false,
+        "subType": undefined,
+        "type": "pawn",
+      },
+      "rank": 7,
+    },
+    Object {
+      "file": "a",
+      "piece": Object {
+        "color": "black",
+        "hasNeverMoved": true,
+        "isFromPromotion": false,
+        "subType": "west",
+        "type": "rook",
+      },
+      "rank": 8,
+    },
+    Object {
+      "file": "b",
+      "piece": Object {
+        "color": "white",
+        "hasNeverMoved": true,
+        "isFromPromotion": false,
+        "subType": "west",
+        "type": "knight",
+      },
+      "rank": 1,
+    },
+    Object {
+      "file": "b",
+      "piece": Object {
+        "color": "white",
+        "hasNeverMoved": true,
+        "isFromPromotion": false,
+        "subType": undefined,
+        "type": "pawn",
+      },
+      "rank": 2,
+    },
+    Object {
+      "file": "b",
+      "rank": 3,
+    },
+    Object {
+      "file": "b",
+      "rank": 4,
+    },
+    Object {
+      "file": "b",
+      "rank": 5,
+    },
+    Object {
+      "file": "b",
+      "rank": 6,
+    },
+    Object {
+      "file": "b",
+      "piece": Object {
+        "color": "black",
+        "hasNeverMoved": true,
+        "isFromPromotion": false,
+        "subType": undefined,
+        "type": "pawn",
+      },
+      "rank": 7,
+    },
+    Object {
+      "file": "b",
+      "piece": Object {
+        "color": "black",
+        "hasNeverMoved": true,
+        "isFromPromotion": false,
+        "subType": "west",
+        "type": "knight",
+      },
+      "rank": 8,
+    },
+    Object {
+      "file": "c",
+      "piece": Object {
+        "color": "white",
+        "hasNeverMoved": true,
+        "isFromPromotion": false,
+        "subType": "west",
+        "type": "bishop",
+      },
+      "rank": 1,
+    },
+    Object {
+      "file": "c",
+      "piece": Object {
+        "color": "white",
+        "hasNeverMoved": true,
+        "isFromPromotion": false,
+        "subType": undefined,
+        "type": "pawn",
+      },
+      "rank": 2,
+    },
+    Object {
+      "file": "c",
+      "rank": 3,
+    },
+    Object {
+      "file": "c",
+      "rank": 4,
+    },
+    Object {
+      "file": "c",
+      "rank": 5,
+    },
+    Object {
+      "file": "c",
+      "rank": 6,
+    },
+    Object {
+      "file": "c",
+      "piece": Object {
+        "color": "black",
+        "hasNeverMoved": true,
+        "isFromPromotion": false,
+        "subType": undefined,
+        "type": "pawn",
+      },
+      "rank": 7,
+    },
+    Object {
+      "file": "c",
+      "piece": Object {
+        "color": "black",
+        "hasNeverMoved": true,
+        "isFromPromotion": false,
+        "subType": "west",
+        "type": "bishop",
+      },
+      "rank": 8,
+    },
+    Object {
+      "file": "d",
+      "piece": Object {
+        "color": "white",
+        "hasNeverMoved": true,
+        "isFromPromotion": false,
+        "subType": undefined,
+        "type": "queen",
+      },
+      "rank": 1,
+    },
+    Object {
+      "file": "d",
+      "piece": Object {
+        "color": "white",
+        "hasNeverMoved": true,
+        "isFromPromotion": false,
+        "subType": undefined,
+        "type": "pawn",
+      },
+      "rank": 2,
+    },
+    Object {
+      "file": "d",
+      "rank": 3,
+    },
+    Object {
+      "file": "d",
+      "rank": 4,
+    },
+    Object {
+      "file": "d",
+      "rank": 5,
+    },
+    Object {
+      "file": "d",
+      "rank": 6,
+    },
+    Object {
+      "file": "d",
+      "piece": Object {
+        "color": "black",
+        "hasNeverMoved": true,
+        "isFromPromotion": false,
+        "subType": undefined,
+        "type": "pawn",
+      },
+      "rank": 7,
+    },
+    Object {
+      "file": "d",
+      "piece": Object {
+        "color": "black",
+        "hasNeverMoved": true,
+        "isFromPromotion": false,
+        "subType": undefined,
+        "type": "queen",
+      },
+      "rank": 8,
+    },
+    Object {
+      "file": "e",
+      "piece": Object {
+        "color": "white",
+        "hasNeverMoved": true,
+        "isFromPromotion": false,
+        "subType": undefined,
+        "type": "king",
+      },
+      "rank": 1,
+    },
+    Object {
+      "file": "e",
+      "piece": Object {
+        "color": "white",
+        "hasNeverMoved": true,
+        "isFromPromotion": false,
+        "subType": undefined,
+        "type": "pawn",
+      },
+      "rank": 2,
+    },
+    Object {
+      "file": "e",
+      "rank": 3,
+    },
+    Object {
+      "file": "e",
+      "rank": 4,
+    },
+    Object {
+      "file": "e",
+      "rank": 5,
+    },
+    Object {
+      "file": "e",
+      "rank": 6,
+    },
+    Object {
+      "file": "e",
+      "piece": Object {
+        "color": "black",
+        "hasNeverMoved": true,
+        "isFromPromotion": false,
+        "subType": undefined,
+        "type": "pawn",
+      },
+      "rank": 7,
+    },
+    Object {
+      "file": "e",
+      "piece": Object {
+        "color": "black",
+        "hasNeverMoved": true,
+        "isFromPromotion": false,
+        "subType": undefined,
+        "type": "king",
+      },
+      "rank": 8,
+    },
+    Object {
+      "file": "f",
+      "piece": Object {
+        "color": "white",
+        "hasNeverMoved": true,
+        "isFromPromotion": false,
+        "subType": "east",
+        "type": "bishop",
+      },
+      "rank": 1,
+    },
+    Object {
+      "file": "f",
+      "piece": Object {
+        "color": "white",
+        "hasNeverMoved": true,
+        "isFromPromotion": false,
+        "subType": undefined,
+        "type": "pawn",
+      },
+      "rank": 2,
+    },
+    Object {
+      "file": "f",
+      "rank": 3,
+    },
+    Object {
+      "file": "f",
+      "rank": 4,
+    },
+    Object {
+      "file": "f",
+      "rank": 5,
+    },
+    Object {
+      "file": "f",
+      "rank": 6,
+    },
+    Object {
+      "file": "f",
+      "piece": Object {
+        "color": "black",
+        "hasNeverMoved": true,
+        "isFromPromotion": false,
+        "subType": undefined,
+        "type": "pawn",
+      },
+      "rank": 7,
+    },
+    Object {
+      "file": "f",
+      "piece": Object {
+        "color": "black",
+        "hasNeverMoved": true,
+        "isFromPromotion": false,
+        "subType": "east",
+        "type": "bishop",
+      },
+      "rank": 8,
+    },
+    Object {
+      "file": "g",
+      "piece": Object {
+        "color": "white",
+        "hasNeverMoved": true,
+        "isFromPromotion": false,
+        "subType": "east",
+        "type": "knight",
+      },
+      "rank": 1,
+    },
+    Object {
+      "file": "g",
+      "piece": Object {
+        "color": "white",
+        "hasNeverMoved": true,
+        "isFromPromotion": false,
+        "subType": undefined,
+        "type": "pawn",
+      },
+      "rank": 2,
+    },
+    Object {
+      "file": "g",
+      "rank": 3,
+    },
+    Object {
+      "file": "g",
+      "rank": 4,
+    },
+    Object {
+      "file": "g",
+      "rank": 5,
+    },
+    Object {
+      "file": "g",
+      "rank": 6,
+    },
+    Object {
+      "file": "g",
+      "piece": Object {
+        "color": "black",
+        "hasNeverMoved": true,
+        "isFromPromotion": false,
+        "subType": undefined,
+        "type": "pawn",
+      },
+      "rank": 7,
+    },
+    Object {
+      "file": "g",
+      "piece": Object {
+        "color": "black",
+        "hasNeverMoved": true,
+        "isFromPromotion": false,
+        "subType": "east",
+        "type": "knight",
+      },
+      "rank": 8,
+    },
+    Object {
+      "file": "h",
+      "piece": Object {
+        "color": "white",
+        "hasNeverMoved": true,
+        "isFromPromotion": false,
+        "subType": "east",
+        "type": "rook",
+      },
+      "rank": 1,
+    },
+    Object {
+      "file": "h",
+      "piece": Object {
+        "color": "white",
+        "hasNeverMoved": true,
+        "isFromPromotion": false,
+        "subType": undefined,
+        "type": "pawn",
+      },
+      "rank": 2,
+    },
+    Object {
+      "file": "h",
+      "rank": 3,
+    },
+    Object {
+      "file": "h",
+      "rank": 4,
+    },
+    Object {
+      "file": "h",
+      "rank": 5,
+    },
+    Object {
+      "file": "h",
+      "rank": 6,
+    },
+    Object {
+      "file": "h",
+      "piece": Object {
+        "color": "black",
+        "hasNeverMoved": true,
+        "isFromPromotion": false,
+        "subType": undefined,
+        "type": "pawn",
+      },
+      "rank": 7,
+    },
+    Object {
+      "file": "h",
+      "piece": Object {
+        "color": "black",
+        "hasNeverMoved": true,
+        "isFromPromotion": false,
+        "subType": "east",
+        "type": "rook",
+      },
+      "rank": 8,
+    },
+  ],
+}
+`;
