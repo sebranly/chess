@@ -37,7 +37,7 @@ export const getTerminalNotationLetter = (pieceType: PieceType) => {
   }
 };
 
-const print = (text: string, nodeDisplay: boolean) => {
+export const print = (text: string, nodeDisplay: boolean) => {
   nodeDisplay ? process.stdout.write(text) : console.log(text);
 };
 
