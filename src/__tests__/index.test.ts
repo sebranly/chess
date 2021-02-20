@@ -4,8 +4,6 @@ import {
   getFileBasedPieceSubType,
   getFileLetter,
   getPiecePoints,
-  getTerminalNotation,
-  getTerminalNotationLetter,
   initializeBoard,
   initializePiece,
 } from '../index';
@@ -100,28 +98,4 @@ test('getCell', () => {
 
   expect(getCell(board, 'a', 1)).toStrictEqual(expectedCell);
   expect(getCell(board, 'z', 1)).toBeUndefined();
-});
-
-test('getTerminalNotationLetter', () => {
-  expect(getTerminalNotationLetter(King)).toBe('k');
-  expect(getTerminalNotationLetter(Pawn)).toBe('p');
-  expect(getTerminalNotationLetter(Bishop)).toBe('b');
-  expect(getTerminalNotationLetter(Knight)).toBe('n');
-  expect(getTerminalNotationLetter(Rook)).toBe('r');
-  expect(getTerminalNotationLetter(Queen)).toBe('q');
-});
-
-test('getTerminalNotation', () => {
-  const piece: Piece = {
-    color: Color.White,
-    hasNeverMoved: true,
-    isFromPromotion: false,
-    subType: undefined,
-    type: PieceType.King,
-  };
-
-  expect(getTerminalNotation(piece)).toBe('K');
-
-  piece.color = Color.Black;
-  expect(getTerminalNotation(piece)).toBe('k');
 });
