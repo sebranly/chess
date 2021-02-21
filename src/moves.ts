@@ -14,7 +14,7 @@ import {
 
 export const getPossibleMoves = (board: Board, rawPosition: string): Position[] => {
   const square = getSquare(board, rawPosition);
-  const { Bishop, King } = PieceType;
+  const { Bishop, King, Queen, Rook } = PieceType;
 
   if (!square) return [];
 
@@ -31,6 +31,9 @@ export const getPossibleMoves = (board: Board, rawPosition: string): Position[] 
     case King:
       return getPossibleMovesKing(board, rawPosition, color);
 
+    case Rook:
+      return getPossibleMovesRook(board, rawPosition, color);
+
     default:
       return [];
   }
@@ -42,6 +45,17 @@ export const getPossibleMovesBishop = (board: Board, rawPosition: string, color:
     ...getPossibleMovesDeltas(board, color, rawPosition, 1, 1),
     ...getPossibleMovesDeltas(board, color, rawPosition, 1, -1),
     ...getPossibleMovesDeltas(board, color, rawPosition, -1, -1),
+  ];
+
+  return moves;
+};
+
+export const getPossibleMovesRook = (board: Board, rawPosition: string, color: Color): Position[] => {
+  const moves = [
+    ...getPossibleMovesDeltas(board, color, rawPosition, 0, 1),
+    ...getPossibleMovesDeltas(board, color, rawPosition, 1, 0),
+    ...getPossibleMovesDeltas(board, color, rawPosition, 0, -1),
+    ...getPossibleMovesDeltas(board, color, rawPosition, -1, 0),
   ];
 
   return moves;
