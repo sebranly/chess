@@ -103,7 +103,11 @@ export const initializeBoard = (empty = false, fileCount = DEFAULT_FILE_COUNT, r
 export const emptyBoard = (board: Board) => {
   const { squares } = board;
 
-  squares.map((s: Square) => (s.piece = undefined));
+  squares.map((square: Square) => {
+    const { file, rank } = square;
+    const rawPosition = `${file}${rank}`;
+    emptySquare(board, rawPosition);
+  });
 
   return board;
 };
@@ -139,6 +143,16 @@ export const setSquare = (board: Board, rawPosition: string, piece: Piece) => {
   const square = getSquare(board, rawPosition);
 
   if (square) square.piece = piece;
+};
+
+export const emptySquare = (board: Board, rawPosition: string) => {
+  const square = getSquare(board, rawPosition);
+
+  if (square) {
+    const { piece } = square;
+    square.piece = undefined;
+    return piece;
+  }
 };
 
 export const getPosition = (rawPosition: string) => {

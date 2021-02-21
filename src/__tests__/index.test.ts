@@ -10,6 +10,7 @@ import {
   initializeBoard,
   initializePiece,
   setSquare,
+  emptySquare,
   getSquareColor,
   getPreviousFile,
   getNextFile,
@@ -141,6 +142,35 @@ test('setSquare', () => {
       piece: originalPiece,
     },
   ]);
+});
+
+test('emptySquare', () => {
+  const board = initializeBoard();
+  const originalBoard = cloneDeep(board);
+
+  const piece = emptySquare(board, 'a2');
+
+  expect(board.fileCount).toBe(originalBoard.fileCount);
+  expect(board.rankCount).toBe(originalBoard.rankCount);
+
+  const differences = differenceWith(board.squares, originalBoard.squares, isEqual);
+
+  expect(differences).toStrictEqual([
+    {
+      file: 'a',
+      rank: 2,
+      piece: undefined,
+    },
+  ]);
+
+  expect(piece).toStrictEqual({
+    color: Color.White,
+    hasNeverMoved: true,
+    isFromPromotion: false,
+    possibleMoves: [],
+    subType: undefined,
+    type: PieceType.Pawn,
+  });
 });
 
 test('getPosition', () => {
