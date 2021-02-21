@@ -1,5 +1,6 @@
 import {
   getPosition,
+  getFileNumber,
   getSquare,
   getFileBasedPieceType,
   getFileBasedPieceSubType,
@@ -9,6 +10,7 @@ import {
   initializeBoard,
   initializePiece,
   setSquare,
+  getSquareColor,
 } from '../index';
 import { cloneDeep, differenceWith, isEqual } from 'lodash';
 import { Square, Color, Piece, PieceSubType, PieceType } from '../types';
@@ -147,4 +149,18 @@ test('getPosition', () => {
     file: 'b',
     rank: 1,
   });
+});
+
+test('getFileNumber', () => {
+  expect(getFileNumber('a')).toBe(1);
+  expect(getFileNumber('h')).toBe(8);
+});
+
+test('getSquareColor', () => {
+  expect(getSquareColor('a1')).toBe(Color.Black);
+  expect(getSquareColor('a2')).toBe(Color.White);
+  expect(getSquareColor('a8')).toBe(Color.White);
+  expect(getSquareColor('e4')).toBe(Color.White);
+  expect(getSquareColor('h1')).toBe(Color.White);
+  expect(getSquareColor('h8')).toBe(Color.Black);
 });

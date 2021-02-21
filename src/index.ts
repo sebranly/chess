@@ -33,6 +33,10 @@ export const getFileLetter = (fileNumber: number) => {
   return '';
 };
 
+export const getFileNumber = (file: string) => {
+  return file.charCodeAt(0) - DEFAULT_ASCII_LOWERCASE_A + 1;
+};
+
 export const initializePiece = (color: Color, type = PieceType.Pawn, subType?: PieceSubType) => {
   const piece: Piece = {
     color,
@@ -113,6 +117,21 @@ export const getSquare = (board: Board, rawPosition: string) => {
   const square = squares.find((s: Square) => s.file === file && s.rank === rank);
 
   return square;
+};
+
+export const getSquareColor = (rawPosition: string) => {
+  const position = getPosition(rawPosition);
+
+  if (!position) return Color.White;
+
+  const { file, rank } = position;
+  const fileNumber = getFileNumber(file);
+
+  const sum = fileNumber + rank;
+  const isEven = sum % 2 === 0;
+  const color = isEven ? Color.Black : Color.White;
+
+  return color;
 };
 
 export const setSquare = (board: Board, rawPosition: string, piece: Piece) => {
