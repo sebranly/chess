@@ -11,6 +11,12 @@ import {
   initializePiece,
   setSquare,
   getSquareColor,
+  getPreviousFile,
+  getNextFile,
+  getPreviousOrNextFile,
+  getPreviousRank,
+  getNextRank,
+  getPreviousOrNextRank,
 } from '../index';
 import { cloneDeep, differenceWith, isEqual } from 'lodash';
 import { Square, Color, Piece, PieceSubType, PieceType } from '../types';
@@ -39,6 +45,7 @@ test('initializePiece', () => {
     color: Color.White,
     hasNeverMoved: true,
     isFromPromotion: false,
+    possibleMoves: [],
     subType: undefined,
     type: PieceType.Pawn,
   };
@@ -50,6 +57,7 @@ test('initializePiece', () => {
     color: Color.Black,
     hasNeverMoved: true,
     isFromPromotion: false,
+    possibleMoves: [],
     subType: PieceSubType.East,
     type: PieceType.Rook,
   };
@@ -98,6 +106,7 @@ test('getSquare', () => {
     color: Color.White,
     hasNeverMoved: true,
     isFromPromotion: false,
+    possibleMoves: [],
     subType: PieceSubType.West,
     type: PieceType.Rook,
   };
@@ -163,4 +172,44 @@ test('getSquareColor', () => {
   expect(getSquareColor('e4')).toBe(Color.White);
   expect(getSquareColor('h1')).toBe(Color.White);
   expect(getSquareColor('h8')).toBe(Color.Black);
+});
+
+test('getPreviousFile', () => {
+  const board = initializeBoard();
+  expect(getPreviousFile(board, 'a')).toBeUndefined();
+  expect(getPreviousFile(board, 'b')).toBe('a');
+});
+
+test('getNextFile', () => {
+  const board = initializeBoard();
+  expect(getNextFile(board, 'h')).toBeUndefined();
+  expect(getNextFile(board, 'g')).toBe('h');
+});
+
+test('getPreviousOrNextFile', () => {
+  const board = initializeBoard();
+  expect(getPreviousOrNextFile(board, 'a', -1)).toBeUndefined();
+  expect(getPreviousOrNextFile(board, 'b', -1)).toBe('a');
+  expect(getPreviousOrNextFile(board, 'h', 1)).toBeUndefined();
+  expect(getPreviousOrNextFile(board, 'g', 1)).toBe('h');
+});
+
+test('getPreviousRank', () => {
+  const board = initializeBoard();
+  expect(getPreviousRank(board, 1)).toBeUndefined();
+  expect(getPreviousRank(board, 2)).toBe(1);
+});
+
+test('getNextRank', () => {
+  const board = initializeBoard();
+  expect(getNextRank(board, 8)).toBeUndefined();
+  expect(getNextRank(board, 7)).toBe(8);
+});
+
+test('getPreviousOrNextRank', () => {
+  const board = initializeBoard();
+  expect(getPreviousOrNextRank(board, 1, -1)).toBeUndefined();
+  expect(getPreviousOrNextRank(board, 2, -1)).toBe(1);
+  expect(getPreviousOrNextRank(board, 8, 1)).toBeUndefined();
+  expect(getPreviousOrNextRank(board, 7, 1)).toBe(8);
 });

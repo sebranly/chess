@@ -42,6 +42,7 @@ export const initializePiece = (color: Color, type = PieceType.Pawn, subType?: P
     color,
     hasNeverMoved: true,
     isFromPromotion: false,
+    possibleMoves: [],
     subType,
     type,
   };
@@ -152,6 +153,39 @@ export const getPosition = (rawPosition: string) => {
   };
 
   return position;
+};
+
+export const getPreviousFile = (board: Board, file: string) => {
+  return getPreviousOrNextFile(board, file, -1);
+};
+
+export const getNextFile = (board: Board, file: string) => {
+  return getPreviousOrNextFile(board, file, 1);
+};
+
+export const getPreviousOrNextFile = (board: Board, file: string, delta: number) => {
+  const { fileCount } = board;
+  const fileNumber = getFileNumber(file);
+  const newFileNumber = fileNumber + delta;
+  const isInvalid = newFileNumber < 1 || newFileNumber > fileCount;
+
+  return isInvalid ? undefined : getFileLetter(newFileNumber);
+};
+
+export const getPreviousRank = (board: Board, rank: number) => {
+  return getPreviousOrNextRank(board, rank, -1);
+};
+
+export const getNextRank = (board: Board, rank: number) => {
+  return getPreviousOrNextRank(board, rank, 1);
+};
+
+export const getPreviousOrNextRank = (board: Board, rank: number, delta: number) => {
+  const { rankCount } = board;
+  const newRank = rank + delta;
+  const isInvalid = newRank < 1 || newRank > rankCount;
+
+  return isInvalid ? undefined : newRank;
 };
 
 export { PieceType };
