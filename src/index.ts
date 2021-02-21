@@ -1,4 +1,4 @@
-import { Board, Color, Piece, PieceSubType, PieceType, Square } from './types';
+import { Board, Color, Piece, PieceSubType, PieceType, Position, Square } from './types';
 import { DEFAULT_ASCII_LOWERCASE_A, DEFAULT_FILE_COUNT, DEFAULT_RANK_COUNT } from './constants';
 
 export const getPiecePoints = (pieceType: PieceType) => {
@@ -114,6 +114,20 @@ export const setSquare = (board: Board, file: string, rank: number, piece: Piece
   const square = getSquare(board, file, rank);
 
   if (square) square.piece = piece;
+};
+
+export const getPosition = (rawPosition: string) => {
+  const regex = new RegExp(/^([A-Za-z]+)(\d+)$/);
+  const matches = rawPosition.match(regex);
+
+  if (!matches) return undefined;
+
+  const position: Position = {
+    file: matches[1].toLowerCase(),
+    rank: Number(matches[2]),
+  };
+
+  return position;
 };
 
 export { PieceType };

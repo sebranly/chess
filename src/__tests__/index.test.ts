@@ -1,4 +1,5 @@
 import {
+  getPosition,
   getSquare,
   getFileBasedPieceType,
   getFileBasedPieceSubType,
@@ -129,4 +130,21 @@ test('setSquare', () => {
       piece: originalPiece,
     },
   ]);
+});
+
+test('getPosition', () => {
+  const noPosition = getPosition('b1a');
+  expect(noPosition).toBeUndefined();
+
+  const position1 = getPosition('b1');
+  expect(position1).toStrictEqual({
+    file: 'b',
+    rank: 1,
+  });
+
+  const position2 = getPosition('B1');
+  expect(position2).toStrictEqual({
+    file: 'b',
+    rank: 1,
+  });
 });

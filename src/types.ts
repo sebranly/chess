@@ -30,10 +30,13 @@ export interface Piece {
   subType?: PieceSubType;
 }
 
-export interface Square {
+export interface Position {
   file: string;
-  piece?: Piece;
   rank: number;
+}
+
+export interface Square extends Position {
+  piece?: Piece;
 }
 
 export interface Board {
