@@ -18,6 +18,8 @@ import {
   getPreviousRank,
   getNextRank,
   getPreviousOrNextRank,
+  isValidFile,
+  isValidRank,
 } from '../index';
 import { cloneDeep, differenceWith, isEqual } from 'lodash';
 import { Square, Color, Piece, PieceSubType, PieceType } from '../types';
@@ -242,4 +244,22 @@ test('getPreviousOrNextRank', () => {
   expect(getPreviousOrNextRank(board, 2, -1)).toBe(1);
   expect(getPreviousOrNextRank(board, 8, 1)).toBeUndefined();
   expect(getPreviousOrNextRank(board, 7, 1)).toBe(8);
+});
+
+test('isValidFile', () => {
+  const board = initializeBoard();
+  expect(isValidFile(board, -1)).toBe(false);
+  expect(isValidFile(board, 0)).toBe(false);
+  expect(isValidFile(board, 1)).toBe(true);
+  expect(isValidFile(board, 8)).toBe(true);
+  expect(isValidFile(board, 9)).toBe(false);
+});
+
+test('isValidRank', () => {
+  const board = initializeBoard();
+  expect(isValidRank(board, -1)).toBe(false);
+  expect(isValidRank(board, 0)).toBe(false);
+  expect(isValidRank(board, 1)).toBe(true);
+  expect(isValidRank(board, 8)).toBe(true);
+  expect(isValidRank(board, 9)).toBe(false);
 });

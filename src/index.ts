@@ -177,13 +177,22 @@ export const getNextFile = (board: Board, file: string) => {
   return getPreviousOrNextFile(board, file, 1);
 };
 
-export const getPreviousOrNextFile = (board: Board, file: string, delta: number) => {
+export const isValidFile = (board: Board, fileNumber: number) => {
   const { fileCount } = board;
+  return fileNumber >= 1 && fileNumber <= fileCount;
+};
+
+export const isValidRank = (board: Board, rank: number) => {
+  const { rankCount } = board;
+  return rank >= 1 && rank <= rankCount;
+};
+
+export const getPreviousOrNextFile = (board: Board, file: string, delta: number) => {
   const fileNumber = getFileNumber(file);
   const newFileNumber = fileNumber + delta;
-  const isInvalid = newFileNumber < 1 || newFileNumber > fileCount;
+  const isValid = isValidFile(board, newFileNumber);
 
-  return isInvalid ? undefined : getFileLetter(newFileNumber);
+  return isValid ? getFileLetter(newFileNumber) : undefined;
 };
 
 export const getPreviousRank = (board: Board, rank: number) => {
@@ -195,11 +204,10 @@ export const getNextRank = (board: Board, rank: number) => {
 };
 
 export const getPreviousOrNextRank = (board: Board, rank: number, delta: number) => {
-  const { rankCount } = board;
   const newRank = rank + delta;
-  const isInvalid = newRank < 1 || newRank > rankCount;
+  const isValid = isValidRank(board, newRank);
 
-  return isInvalid ? undefined : newRank;
+  return isValid ? newRank : undefined;
 };
 
 export { PieceType };
