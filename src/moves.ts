@@ -66,7 +66,8 @@ export const getPossibleMovesKing = (board: Board, rawPosition: string, color: C
         const square = getSquare(board, rawPosition);
 
         const pieceColor = square?.piece?.color;
-        const canMove = !pieceColor || pieceColor !== color;
+        const pieceType = square?.piece?.type;
+        const canMove = !pieceColor || !pieceType || (pieceColor !== color && pieceType !== PieceType.King);
 
         if (canMove) {
           moves.push({ file: fileLetter, rank: rankIndex });
