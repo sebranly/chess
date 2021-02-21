@@ -4,8 +4,8 @@ import { Color, PieceType } from '../types';
 
 test('getPossibleMoves etc.', () => {
   const board = initializeBoard(true);
-  const pieceKing = initializePiece(Color.White, PieceType.King);
-  setSquare(board, 'e4', pieceKing);
+  const pieceWhiteKing = initializePiece(Color.White, PieceType.King);
+  setSquare(board, 'e4', pieceWhiteKing);
 
   const expectedMovesKing1 = [
     { file: 'd', rank: 3 },
@@ -19,10 +19,10 @@ test('getPossibleMoves etc.', () => {
   ];
 
   expect(getPossibleMoves(board, 'e4')).toStrictEqual(expectedMovesKing1);
-  expect(getPossibleMovesKing(board, 'e4')).toStrictEqual(expectedMovesKing1);
+  expect(getPossibleMovesKing(board, 'e4', Color.White)).toStrictEqual(expectedMovesKing1);
 
   emptySquare(board, 'e4');
-  setSquare(board, 'h8', pieceKing);
+  setSquare(board, 'h8', pieceWhiteKing);
 
   const expectedMovesKing2 = [
     { file: 'g', rank: 7 },
@@ -31,5 +31,19 @@ test('getPossibleMoves etc.', () => {
   ];
 
   expect(getPossibleMoves(board, 'h8')).toStrictEqual(expectedMovesKing2);
-  expect(getPossibleMovesKing(board, 'h8')).toStrictEqual(expectedMovesKing2);
+  expect(getPossibleMovesKing(board, 'h8', Color.White)).toStrictEqual(expectedMovesKing2);
+
+  const pieceBlackQueen = initializePiece(Color.Black, PieceType.Queen);
+  const pieceWhitePawn = initializePiece(Color.White);
+
+  setSquare(board, 'g7', pieceBlackQueen);
+  setSquare(board, 'h7', pieceWhitePawn);
+
+  const expectedMovesKing3 = [
+    { file: 'g', rank: 7 },
+    { file: 'g', rank: 8 },
+  ];
+
+  expect(getPossibleMoves(board, 'h8')).toStrictEqual(expectedMovesKing3);
+  expect(getPossibleMovesKing(board, 'h8', Color.White)).toStrictEqual(expectedMovesKing3);
 });

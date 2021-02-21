@@ -1,4 +1,4 @@
-import { Board, PieceType, Position } from './types';
+import { Board, Color, PieceType, Position } from './types';
 import {
   getPosition,
   getPreviousFile,
@@ -19,16 +19,18 @@ export const getPossibleMoves = (board: Board, rawPosition: string): Position[] 
 
   if (!piece) return [];
 
-  switch (piece.type) {
+  const { color, type } = piece;
+
+  switch (type) {
     case PieceType.King:
-      return getPossibleMovesKing(board, rawPosition);
+      return getPossibleMovesKing(board, rawPosition, color);
 
     default:
       return [];
   }
 };
 
-export const getPossibleMovesKing = (board: Board, rawPosition: string): Position[] => {
+export const getPossibleMovesKing = (board: Board, rawPosition: string, color: Color): Position[] => {
   const position = getPosition(rawPosition);
 
   if (!position) return [];
@@ -58,7 +60,17 @@ export const getPossibleMovesKing = (board: Board, rawPosition: string): Positio
     for (let fileIndex = minFileNumber; fileIndex <= maxFileNumber; fileIndex++) {
       const isOnKingPosition = fileIndex === fileNumber && rankIndex === rank;
       if (!isOnKingPosition) {
-        moves.push({ file: getFileLetter(fileIndex), rank: rankIndex });
+        const fileLetter = getFileLetter(fileIndex);
+        const rawPosition = `${fileLetter}${rankIndex}`;
+
+        const square = getSquare(board, rawPosition);
+
+        const pieceColor = square?.piece?.color;
+        const canMove = !pieceColor || pieceColor !== color;
+
+        if (canMove) {
+          moves.push({ file: fileLetter, rank: rankIndex });
+        }
       }
     }
   }
