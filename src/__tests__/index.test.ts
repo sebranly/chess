@@ -106,8 +106,8 @@ test('getSquare', () => {
     piece: expectedPiece,
   };
 
-  expect(getSquare(board, 'a', 1)).toStrictEqual(expectedSquare);
-  expect(getSquare(board, 'z', 1)).toBeUndefined();
+  expect(getSquare(board, 'a1')).toStrictEqual(expectedSquare);
+  expect(getSquare(board, 'z1')).toBeUndefined();
 });
 
 test('setSquare', () => {
@@ -116,7 +116,7 @@ test('setSquare', () => {
   const originalBoard = cloneDeep(board);
   const originalPiece = cloneDeep(piece);
 
-  setSquare(board, 'a', 2, piece);
+  setSquare(board, 'a2', piece);
 
   expect(board.fileCount).toBe(originalBoard.fileCount);
   expect(board.rankCount).toBe(originalBoard.rankCount);

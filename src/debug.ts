@@ -13,5 +13,5 @@ displayBoard(board, USE_NODE);
 print('\nKing\n', USE_NODE);
 const boardKing = initializeBoard(true);
 const pieceKing = initializePiece(Color.White, PieceType.King);
-setSquare(boardKing, 'e', 4, pieceKing);
+setSquare(boardKing, 'e4', pieceKing);
 displayBoard(boardKing, USE_NODE);

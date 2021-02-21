@@ -103,15 +103,20 @@ export const emptyBoard = (board: Board) => {
   return board;
 };
 
-export const getSquare = (board: Board, file: string, rank: number) => {
+export const getSquare = (board: Board, rawPosition: string) => {
   const { squares } = board;
+  const position = getPosition(rawPosition);
+
+  if (!position) return undefined;
+
+  const { file, rank } = position;
   const square = squares.find((s: Square) => s.file === file && s.rank === rank);
 
   return square;
 };
 
-export const setSquare = (board: Board, file: string, rank: number, piece: Piece) => {
-  const square = getSquare(board, file, rank);
+export const setSquare = (board: Board, rawPosition: string, piece: Piece) => {
+  const square = getSquare(board, rawPosition);
 
   if (square) square.piece = piece;
 };
