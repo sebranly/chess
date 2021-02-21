@@ -1,4 +1,10 @@
-import { getPossibleMoves, getPossibleMovesBishop, getPossibleMovesKing, getPossibleMovesRook } from '../moves';
+import {
+  getPossibleMoves,
+  getPossibleMovesQueen,
+  getPossibleMovesBishop,
+  getPossibleMovesKing,
+  getPossibleMovesRook,
+} from '../moves';
 import { emptyBoard, emptySquare, initializeBoard, initializePiece, setSquare } from '../index';
 import { Color, PieceSubType, PieceType } from '../types';
 
@@ -110,4 +116,14 @@ test('getPossibleMoves etc.', () => {
 
   expect(getPossibleMoves(board, 'd4')).toStrictEqual(expectedMovesRook);
   expect(getPossibleMovesRook(board, 'd4', Color.White)).toStrictEqual(expectedMovesRook);
+
+  // Queen
+  emptyBoard(board);
+  const pieceWhiteQueen = initializePiece(Color.White, PieceType.Queen);
+  setSquare(board, 'd4', pieceWhiteQueen);
+
+  const expectedMovesQueen = [...expectedMovesBishop1, ...expectedMovesRook];
+
+  expect(getPossibleMoves(board, 'd4')).toStrictEqual(expectedMovesQueen);
+  expect(getPossibleMovesQueen(board, 'd4', Color.White)).toStrictEqual(expectedMovesQueen);
 });

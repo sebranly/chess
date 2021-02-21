@@ -28,6 +28,9 @@ export const getPossibleMoves = (board: Board, rawPosition: string): Position[] 
     case Bishop:
       return getPossibleMovesBishop(board, rawPosition, color);
 
+    case Queen:
+      return getPossibleMovesQueen(board, rawPosition, color);
+
     case King:
       return getPossibleMovesKing(board, rawPosition, color);
 
@@ -56,6 +59,15 @@ export const getPossibleMovesRook = (board: Board, rawPosition: string, color: C
     ...getPossibleMovesDeltas(board, color, rawPosition, 1, 0),
     ...getPossibleMovesDeltas(board, color, rawPosition, 0, -1),
     ...getPossibleMovesDeltas(board, color, rawPosition, -1, 0),
+  ];
+
+  return moves;
+};
+
+export const getPossibleMovesQueen = (board: Board, rawPosition: string, color: Color): Position[] => {
+  const moves = [
+    ...getPossibleMovesBishop(board, rawPosition, color),
+    ...getPossibleMovesRook(board, rawPosition, color),
   ];
 
   return moves;
