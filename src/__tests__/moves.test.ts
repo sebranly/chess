@@ -70,4 +70,19 @@ test('getPossibleMoves etc.', () => {
 
   expect(getPossibleMoves(board, 'd4')).toStrictEqual(expectedMovesBishop1);
   expect(getPossibleMovesBishop(board, 'd4', Color.White)).toStrictEqual(expectedMovesBishop1);
+
+  setSquare(board, 'e5', pieceWhitePawn);
+  setSquare(board, 'e3', pieceBlackQueen);
+  setSquare(board, 'b2', pieceBlackKing);
+
+  const expectedMovesBishop2 = [
+    { file: 'c', rank: 5 },
+    { file: 'b', rank: 6 },
+    { file: 'a', rank: 7 },
+    { file: 'e', rank: 3 },
+    { file: 'c', rank: 3 },
+  ];
+
+  expect(getPossibleMoves(board, 'd4')).toStrictEqual(expectedMovesBishop2);
+  expect(getPossibleMovesBishop(board, 'd4', Color.White)).toStrictEqual(expectedMovesBishop2);
 });

@@ -76,13 +76,18 @@ export const getPossibleMovesDeltas = (
 
   const square = getSquare(board, newPosition);
 
-  // TODO: factorize
+  // TODO: factorize?
   const pieceColor = square?.piece?.color;
   const pieceType = square?.piece?.type;
-  const canMove = !pieceColor || !pieceType || (pieceColor !== color && pieceType !== PieceType.King);
+  const canMoveCauseEmpty = !pieceColor || !pieceType;
+  const canTake = pieceColor && pieceColor !== color && pieceType !== PieceType.King;
+  const canMove = canMoveCauseEmpty || canTake;
 
   if (canMove) {
     const newMove = { file: newFile, rank: newRank };
+    const newPossibleMoves = [...possibleMoves, newMove];
+
+    if (canTake) return newPossibleMoves;
 
     return getPossibleMovesDeltas(
       board,
@@ -92,7 +97,7 @@ export const getPossibleMovesDeltas = (
       deltaRankStep,
       deltaFile + deltaFileStep,
       deltaRank + deltaRankStep,
-      [...possibleMoves, newMove],
+      newPossibleMoves,
     );
   }
 
