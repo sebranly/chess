@@ -142,7 +142,7 @@ export const getPossibleMovesKnight = (board: Board, rawPosition: string, color:
 
   const { file, rank } = position;
 
-  const potentialMoves: Position[] = [];
+  const moves: Position[] = [];
 
   const previousFile = getPreviousFile(board, file);
   const nextFile = getNextFile(board, file);
@@ -156,64 +156,65 @@ export const getPossibleMovesKnight = (board: Board, rawPosition: string, color:
   const previousRank2 = getPreviousOrNextRank(board, rank, -2);
   const nextRank2 = getPreviousOrNextRank(board, rank, 2);
 
+  // TODO: factorize
   if (previousFile2 && nextRank) {
-    potentialMoves.push({
+    moves.push({
       file: previousFile2,
       rank: nextRank,
     });
   }
 
   if (previousFile && nextRank2) {
-    potentialMoves.push({
+    moves.push({
       file: previousFile,
       rank: nextRank2,
     });
   }
 
   if (nextFile && nextRank2) {
-    potentialMoves.push({
+    moves.push({
       file: nextFile,
       rank: nextRank2,
     });
   }
 
   if (nextFile2 && nextRank) {
-    potentialMoves.push({
+    moves.push({
       file: nextFile2,
       rank: nextRank,
     });
   }
 
   if (previousFile2 && previousRank) {
-    potentialMoves.push({
+    moves.push({
       file: previousFile2,
       rank: previousRank,
     });
   }
 
   if (previousFile && previousRank2) {
-    potentialMoves.push({
+    moves.push({
       file: previousFile,
       rank: previousRank2,
     });
   }
 
   if (nextFile && previousRank2) {
-    potentialMoves.push({
+    moves.push({
       file: nextFile,
       rank: previousRank2,
     });
   }
 
   if (nextFile2 && previousRank) {
-    potentialMoves.push({
+    moves.push({
       file: nextFile2,
       rank: previousRank,
     });
   }
 
   // TODO: take into account other pieces
-  return potentialMoves;
+  return moves;
 };
 
 export const getPossibleMovesKing = (board: Board, rawPosition: string, color: Color): Position[] => {
@@ -253,6 +254,8 @@ export const getPossibleMovesKing = (board: Board, rawPosition: string, color: C
 
         const pieceColor = square?.piece?.color;
         const pieceType = square?.piece?.type;
+
+        // TODO: make it a function
         const canMove = !pieceColor || !pieceType || (pieceColor !== color && pieceType !== PieceType.King);
 
         if (canMove) {
