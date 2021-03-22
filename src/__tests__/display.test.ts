@@ -17,6 +17,7 @@ test('getTerminalNotation', () => {
     color: Color.White,
     hasNeverMoved: true,
     isFromPromotion: false,
+    possibleMoves: [],
     subType: undefined,
     type: PieceType.King,
   };

@@ -5,6 +5,8 @@ import {
   getSquare,
   getNextFile,
   getPreviousRank,
+  getPreviousOrNextFile,
+  getPreviousOrNextRank,
   getNextRank,
   getFileNumber,
   getFileLetter,
@@ -14,7 +16,7 @@ import {
 
 export const getPossibleMoves = (board: Board, rawPosition: string): Position[] => {
   const square = getSquare(board, rawPosition);
-  const { Bishop, King, Queen, Rook } = PieceType;
+  const { Bishop, King, Knight, Queen, Rook } = PieceType;
 
   if (!square) return [];
 
@@ -33,6 +35,9 @@ export const getPossibleMoves = (board: Board, rawPosition: string): Position[] 
 
     case King:
       return getPossibleMovesKing(board, rawPosition, color);
+
+    case Knight:
+      return getPossibleMovesKnight(board, rawPosition, color);
 
     case Rook:
       return getPossibleMovesRook(board, rawPosition, color);
@@ -128,6 +133,87 @@ export const getPossibleMovesDeltas = (
   }
 
   return possibleMoves;
+};
+
+export const getPossibleMovesKnight = (board: Board, rawPosition: string, color: Color): Position[] => {
+  const position = getPosition(rawPosition);
+
+  if (!position) return [];
+
+  const { file, rank } = position;
+
+  const potentialMoves: Position[] = [];
+
+  const previousFile = getPreviousFile(board, file);
+  const nextFile = getNextFile(board, file);
+
+  const previousFile2 = getPreviousOrNextFile(board, file, -2);
+  const nextFile2 = getPreviousOrNextFile(board, file, 2);
+
+  const previousRank = getPreviousRank(board, rank);
+  const nextRank = getNextRank(board, rank);
+
+  const previousRank2 = getPreviousOrNextRank(board, rank, -2);
+  const nextRank2 = getPreviousOrNextRank(board, rank, 2);
+
+  if (previousFile2 && nextRank) {
+    potentialMoves.push({
+      file: previousFile2,
+      rank: nextRank,
+    });
+  }
+
+  if (previousFile && nextRank2) {
+    potentialMoves.push({
+      file: previousFile,
+      rank: nextRank2,
+    });
+  }
+
+  if (nextFile && nextRank2) {
+    potentialMoves.push({
+      file: nextFile,
+      rank: nextRank2,
+    });
+  }
+
+  if (nextFile2 && nextRank) {
+    potentialMoves.push({
+      file: nextFile2,
+      rank: nextRank,
+    });
+  }
+
+  if (previousFile2 && previousRank) {
+    potentialMoves.push({
+      file: previousFile2,
+      rank: previousRank,
+    });
+  }
+
+  if (previousFile && previousRank2) {
+    potentialMoves.push({
+      file: previousFile,
+      rank: previousRank2,
+    });
+  }
+
+  if (nextFile && previousRank2) {
+    potentialMoves.push({
+      file: nextFile,
+      rank: previousRank2,
+    });
+  }
+
+  if (nextFile2 && previousRank) {
+    potentialMoves.push({
+      file: nextFile2,
+      rank: previousRank,
+    });
+  }
+
+  // TODO: take into account other pieces
+  return potentialMoves;
 };
 
 export const getPossibleMovesKing = (board: Board, rawPosition: string, color: Color): Position[] => {

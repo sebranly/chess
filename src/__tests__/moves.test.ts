@@ -3,6 +3,7 @@ import {
   getPossibleMovesQueen,
   getPossibleMovesBishop,
   getPossibleMovesKing,
+  getPossibleMovesKnight,
   getPossibleMovesRook,
 } from '../moves';
 import { emptyBoard, emptySquare, initializeBoard, initializePiece, setSquare } from '../index';
@@ -126,4 +127,23 @@ test('getPossibleMoves etc.', () => {
 
   expect(getPossibleMoves(board, 'd4')).toStrictEqual(expectedMovesQueen);
   expect(getPossibleMovesQueen(board, 'd4', Color.White)).toStrictEqual(expectedMovesQueen);
+
+  // Knight
+  emptyBoard(board);
+  const pieceWhiteKnight = initializePiece(Color.White, PieceType.Knight, PieceSubType.West);
+  setSquare(board, 'd4', pieceWhiteKnight);
+
+  const expectedMovesKnight = [
+    { file: 'b', rank: 5 },
+    { file: 'c', rank: 6 },
+    { file: 'e', rank: 6 },
+    { file: 'f', rank: 5 },
+    { file: 'b', rank: 3 },
+    { file: 'c', rank: 2 },
+    { file: 'e', rank: 2 },
+    { file: 'f', rank: 3 },
+  ];
+
+  expect(getPossibleMoves(board, 'd4')).toStrictEqual(expectedMovesKnight);
+  expect(getPossibleMovesKnight(board, 'd4', Color.White)).toStrictEqual(expectedMovesKnight);
 });
