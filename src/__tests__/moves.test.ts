@@ -147,6 +147,22 @@ test('getPossibleMoves etc.', () => {
   expect(getPossibleMoves(board, 'd4')).toStrictEqual(expectedMovesKnight);
   expect(getPossibleMovesKnight(board, 'd4', Color.White)).toStrictEqual(expectedMovesKnight);
 
+  setSquare(board, 'b5', pieceBlackQueen);
+  setSquare(board, 'c6', pieceBlackKing);
+  setSquare(board, 'e6', pieceWhiteBishop);
+
+  const expectedMovesKnight1 = [
+    { file: 'b', rank: 5 },
+    { file: 'f', rank: 5 },
+    { file: 'b', rank: 3 },
+    { file: 'c', rank: 2 },
+    { file: 'e', rank: 2 },
+    { file: 'f', rank: 3 },
+  ];
+
+  expect(getPossibleMoves(board, 'd4')).toStrictEqual(expectedMovesKnight1);
+  expect(getPossibleMovesKnight(board, 'd4', Color.White)).toStrictEqual(expectedMovesKnight1);
+
   // TODO: add moves when close to an edge
   // TODO: add moves when other pieces (enemy, its king and other king)
 });
