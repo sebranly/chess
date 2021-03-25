@@ -151,62 +151,14 @@ export const getPossibleMovesKnight = (board: Board, rawPosition: string, color:
   const previousRank2 = getPreviousOrNextRank(board, rank, -2);
   const nextRank2 = getPreviousOrNextRank(board, rank, 2);
 
-  // TODO: factorize
-  if (previousFile2 && nextRank) {
-    moves.push({
-      file: previousFile2,
-      rank: nextRank,
-    });
-  }
-
-  if (previousFile && nextRank2) {
-    moves.push({
-      file: previousFile,
-      rank: nextRank2,
-    });
-  }
-
-  if (nextFile && nextRank2) {
-    moves.push({
-      file: nextFile,
-      rank: nextRank2,
-    });
-  }
-
-  if (nextFile2 && nextRank) {
-    moves.push({
-      file: nextFile2,
-      rank: nextRank,
-    });
-  }
-
-  if (previousFile2 && previousRank) {
-    moves.push({
-      file: previousFile2,
-      rank: previousRank,
-    });
-  }
-
-  if (previousFile && previousRank2) {
-    moves.push({
-      file: previousFile,
-      rank: previousRank2,
-    });
-  }
-
-  if (nextFile && previousRank2) {
-    moves.push({
-      file: nextFile,
-      rank: previousRank2,
-    });
-  }
-
-  if (nextFile2 && previousRank) {
-    moves.push({
-      file: nextFile2,
-      rank: previousRank,
-    });
-  }
+  addMovesIfValid(moves, color, previousFile2, nextRank);
+  addMovesIfValid(moves, color, previousFile, nextRank2);
+  addMovesIfValid(moves, color, nextFile, nextRank2);
+  addMovesIfValid(moves, color, nextFile2, nextRank);
+  addMovesIfValid(moves, color, previousFile2, previousRank);
+  addMovesIfValid(moves, color, previousFile, previousRank2);
+  addMovesIfValid(moves, color, nextFile, previousRank2);
+  addMovesIfValid(moves, color, nextFile2, previousRank);
 
   // TODO: take into account other pieces
   return moves;
@@ -276,4 +228,19 @@ export const canTakePiece = (color: Color, square: Square | undefined) => {
   const canTake = pieceColor && pieceColor !== color && pieceType !== PieceType.King;
 
   return canTake;
+};
+
+// TODO: add unit tests
+// TODO: make it immutable
+export const addMovesIfValid = (
+  moves: Position[],
+  color: Color,
+  file: string | undefined,
+  rank: number | undefined,
+) => {
+  if (!file || !rank) return;
+
+  const newMove: Position = { file, rank };
+
+  moves.push(newMove);
 };
