@@ -1,4 +1,4 @@
-import { Board, Color, PieceType, Position } from './types';
+import { Board, Color, PieceType, Position, Square } from './types';
 import {
   getPosition,
   getPreviousFile,
@@ -107,17 +107,12 @@ export const getPossibleMovesDeltas = (
 
   const square = getSquare(board, newPosition);
 
-  // TODO: factorize?
-  const pieceColor = square?.piece?.color;
-  const pieceType = square?.piece?.type;
-  const canMoveCauseEmpty = !pieceColor || !pieceType;
-  const canTake = pieceColor && pieceColor !== color && pieceType !== PieceType.King;
-  const canMove = canMoveCauseEmpty || canTake;
-
+  const canMove = canMovePiece(color, square);
   if (canMove) {
     const newMove = { file: newFile, rank: newRank };
     const newPossibleMoves = [...possibleMoves, newMove];
 
+    const canTake = canTakePiece(color, square);
     if (canTake) return newPossibleMoves;
 
     return getPossibleMovesDeltas(
@@ -249,14 +244,8 @@ export const getPossibleMovesKing = (board: Board, rawPosition: string, color: C
       if (!isOnKingPosition) {
         const fileLetter = getFileLetter(fileIndex);
         const rawPosition = `${fileLetter}${rankIndex}`;
-
         const square = getSquare(board, rawPosition);
-
-        const pieceColor = square?.piece?.color;
-        const pieceType = square?.piece?.type;
-
-        // TODO: make it a function
-        const canMove = !pieceColor || !pieceType || (pieceColor !== color && pieceType !== PieceType.King);
+        const canMove = canMovePiece(color, square);
 
         if (canMove) {
           moves.push({ file: fileLetter, rank: rankIndex });
@@ -266,4 +255,25 @@ export const getPossibleMovesKing = (board: Board, rawPosition: string, color: C
   }
 
   return moves;
+};
+
+// TODO: add unit tests
+export const canMovePiece = (color: Color, square: Square | undefined) => {
+  const pieceColor = square?.piece?.color;
+  const pieceType = square?.piece?.type;
+
+  const canTake = canTakePiece(color, square);
+  const canMove = !pieceColor || !pieceType || canTake;
+
+  return canMove;
+};
+
+// TODO: add unit tests
+export const canTakePiece = (color: Color, square: Square | undefined) => {
+  const pieceColor = square?.piece?.color;
+  const pieceType = square?.piece?.type;
+
+  const canTake = pieceColor && pieceColor !== color && pieceType !== PieceType.King;
+
+  return canTake;
 };
