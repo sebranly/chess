@@ -151,16 +151,15 @@ export const getPossibleMovesKnight = (board: Board, rawPosition: string, color:
   const previousRank2 = getPreviousOrNextRank(board, rank, -2);
   const nextRank2 = getPreviousOrNextRank(board, rank, 2);
 
-  addMovesIfValid(moves, color, previousFile2, nextRank);
-  addMovesIfValid(moves, color, previousFile, nextRank2);
-  addMovesIfValid(moves, color, nextFile, nextRank2);
-  addMovesIfValid(moves, color, nextFile2, nextRank);
-  addMovesIfValid(moves, color, previousFile2, previousRank);
-  addMovesIfValid(moves, color, previousFile, previousRank2);
-  addMovesIfValid(moves, color, nextFile, previousRank2);
-  addMovesIfValid(moves, color, nextFile2, previousRank);
+  addMovesIfValid(board, moves, color, previousFile2, nextRank);
+  addMovesIfValid(board, moves, color, previousFile, nextRank2);
+  addMovesIfValid(board, moves, color, nextFile, nextRank2);
+  addMovesIfValid(board, moves, color, nextFile2, nextRank);
+  addMovesIfValid(board, moves, color, previousFile2, previousRank);
+  addMovesIfValid(board, moves, color, previousFile, previousRank2);
+  addMovesIfValid(board, moves, color, nextFile, previousRank2);
+  addMovesIfValid(board, moves, color, nextFile2, previousRank);
 
-  // TODO: take into account other pieces
   return moves;
 };
 
@@ -233,14 +232,22 @@ export const canTakePiece = (color: Color, square: Square | undefined) => {
 // TODO: add unit tests
 // TODO: make it immutable
 export const addMovesIfValid = (
+  board: Board,
   moves: Position[],
   color: Color,
-  file: string | undefined,
-  rank: number | undefined,
+  fileLetter: string | undefined,
+  rankIndex: number | undefined,
 ) => {
-  if (!file || !rank) return;
+  if (!fileLetter || !rankIndex) return;
 
-  const newMove: Position = { file, rank };
+  const rawPosition = `${fileLetter}${rankIndex}`;
+  const square = getSquare(board, rawPosition);
+
+  const canMove = canMovePiece(color, square);
+
+  if (!canMove) return;
+
+  const newMove: Position = { file: fileLetter, rank: rankIndex };
 
   moves.push(newMove);
 };
