@@ -8,6 +8,7 @@ import {
 } from '../moves';
 import { emptyBoard, emptySquare, initializeBoard, initializePiece, setSquare } from '../index';
 import { Color, PieceSubType, PieceType } from '../types';
+import { displayBoard } from '../display';
 
 test('getPossibleMoves etc.', () => {
   // King
@@ -150,10 +151,10 @@ test('getPossibleMoves etc.', () => {
   setSquare(board, 'b5', pieceBlackQueen);
   setSquare(board, 'c6', pieceBlackKing);
   setSquare(board, 'e6', pieceWhiteBishop);
+  setSquare(board, 'f5', pieceWhiteKing);
 
   const expectedMovesKnight1 = [
     { file: 'b', rank: 5 },
-    { file: 'f', rank: 5 },
     { file: 'b', rank: 3 },
     { file: 'c', rank: 2 },
     { file: 'e', rank: 2 },
@@ -163,6 +164,15 @@ test('getPossibleMoves etc.', () => {
   expect(getPossibleMoves(board, 'd4')).toStrictEqual(expectedMovesKnight1);
   expect(getPossibleMovesKnight(board, 'd4', Color.White)).toStrictEqual(expectedMovesKnight1);
 
-  // TODO: add moves when close to an edge
-  // TODO: add moves when other pieces (enemy, its king and other king)
+  emptyBoard(board);
+  setSquare(board, 'b1', pieceWhiteKnight);
+  setSquare(board, 'd2', pieceWhiteRook);
+
+  const expectedMovesKnight2 = [
+    { file: 'a', rank: 3 },
+    { file: 'c', rank: 3 },
+  ];
+
+  expect(getPossibleMoves(board, 'b1')).toStrictEqual(expectedMovesKnight2);
+  expect(getPossibleMovesKnight(board, 'b1', Color.White)).toStrictEqual(expectedMovesKnight2);
 });
