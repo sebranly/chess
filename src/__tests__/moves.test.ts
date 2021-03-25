@@ -146,4 +146,7 @@ test('getPossibleMoves etc.', () => {
 
   expect(getPossibleMoves(board, 'd4')).toStrictEqual(expectedMovesKnight);
   expect(getPossibleMovesKnight(board, 'd4', Color.White)).toStrictEqual(expectedMovesKnight);
+
+  // TODO: add moves when close to an edge
+  // TODO: add moves when other pieces (enemy, its king and other king)
 });
