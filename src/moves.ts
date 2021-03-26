@@ -14,7 +14,9 @@ import {
   isValidRank,
 } from './index';
 
-export const getMoves = (board: Board, rawPosition: string): Position[] => {
+// TODO: rework allowKingCapture
+
+export const getMoves = (board: Board, rawPosition: string, allowKingCapture = false): Position[] => {
   const square = getSquare(board, rawPosition);
   const { Bishop, King, Knight, Pawn, Queen, Rook } = PieceType;
 
@@ -28,52 +30,65 @@ export const getMoves = (board: Board, rawPosition: string): Position[] => {
 
   switch (type) {
     case Bishop:
-      return getMovesBishop(board, rawPosition, color);
+      return getMovesBishop(board, rawPosition, color, allowKingCapture);
 
     case Pawn:
-      return getMovesPawn(board, rawPosition, color);
+      return getMovesPawn(board, rawPosition, color, allowKingCapture);
 
     case Queen:
-      return getMovesQueen(board, rawPosition, color);
+      return getMovesQueen(board, rawPosition, color, allowKingCapture);
 
     case King:
-      return getMovesKing(board, rawPosition, color);
+      return getMovesKing(board, rawPosition, color, allowKingCapture);
 
     case Knight:
-      return getMovesKnight(board, rawPosition, color);
+      return getMovesKnight(board, rawPosition, color, allowKingCapture);
 
     case Rook:
-      return getMovesRook(board, rawPosition, color);
+      return getMovesRook(board, rawPosition, color, allowKingCapture);
 
     default:
       return [];
   }
 };
 
-export const getMovesBishop = (board: Board, rawPosition: string, color: Color): Position[] => {
+export const getMovesBishop = (
+  board: Board,
+  rawPosition: string,
+  color: Color,
+  allowKingCapture = false,
+): Position[] => {
   const moves = [
-    ...getMovesDeltas(board, color, rawPosition, -1, 1),
-    ...getMovesDeltas(board, color, rawPosition, 1, 1),
-    ...getMovesDeltas(board, color, rawPosition, 1, -1),
-    ...getMovesDeltas(board, color, rawPosition, -1, -1),
+    ...getMovesDeltas(board, color, rawPosition, -1, 1, -1, 1, [], allowKingCapture),
+    ...getMovesDeltas(board, color, rawPosition, 1, 1, 1, 1, [], allowKingCapture),
+    ...getMovesDeltas(board, color, rawPosition, 1, -1, 1, -1, [], allowKingCapture),
+    ...getMovesDeltas(board, color, rawPosition, -1, -1, -1, -1, [], allowKingCapture),
   ];
 
   return moves;
 };
 
-export const getMovesRook = (board: Board, rawPosition: string, color: Color): Position[] => {
+export const getMovesRook = (board: Board, rawPosition: string, color: Color, allowKingCapture = false): Position[] => {
   const moves = [
-    ...getMovesDeltas(board, color, rawPosition, 0, 1),
-    ...getMovesDeltas(board, color, rawPosition, 1, 0),
-    ...getMovesDeltas(board, color, rawPosition, 0, -1),
-    ...getMovesDeltas(board, color, rawPosition, -1, 0),
+    ...getMovesDeltas(board, color, rawPosition, 0, 1, 0, 1, [], allowKingCapture),
+    ...getMovesDeltas(board, color, rawPosition, 1, 0, 1, 0, [], allowKingCapture),
+    ...getMovesDeltas(board, color, rawPosition, 0, -1, 0, -1, [], allowKingCapture),
+    ...getMovesDeltas(board, color, rawPosition, -1, 0, -1, 0, [], allowKingCapture),
   ];
 
   return moves;
 };
 
-export const getMovesQueen = (board: Board, rawPosition: string, color: Color): Position[] => {
-  const moves = [...getMovesBishop(board, rawPosition, color), ...getMovesRook(board, rawPosition, color)];
+export const getMovesQueen = (
+  board: Board,
+  rawPosition: string,
+  color: Color,
+  allowKingCapture = false,
+): Position[] => {
+  const moves = [
+    ...getMovesBishop(board, rawPosition, color, allowKingCapture),
+    ...getMovesRook(board, rawPosition, color, allowKingCapture),
+  ];
 
   return moves;
 };
@@ -88,6 +103,7 @@ export const getMovesDeltas = (
   deltaFile = deltaFileStep,
   deltaRank = deltaRankStep,
   possibleMoves: Position[] = [],
+  allowKingCapture = false,
 ): Position[] => {
   const position = getPosition(rawPosition);
 
@@ -107,7 +123,7 @@ export const getMovesDeltas = (
 
   const square = getSquare(board, newPosition);
 
-  const canMoveOrTake = canMoveOrTakePiece(color, square);
+  const canMoveOrTake = canMoveOrTakePiece(color, square, allowKingCapture);
   if (canMoveOrTake) {
     const newMove = { file: newFile, rank: newRank };
     const newPossibleMoves = [...possibleMoves, newMove];
@@ -124,13 +140,19 @@ export const getMovesDeltas = (
       deltaFile + deltaFileStep,
       deltaRank + deltaRankStep,
       newPossibleMoves,
+      allowKingCapture,
     );
   }
 
   return possibleMoves;
 };
 
-export const getMovesKnight = (board: Board, rawPosition: string, color: Color): Position[] => {
+export const getMovesKnight = (
+  board: Board,
+  rawPosition: string,
+  color: Color,
+  allowKingCapture = false,
+): Position[] => {
   const position = getPosition(rawPosition);
 
   if (!position) return [];
@@ -151,21 +173,21 @@ export const getMovesKnight = (board: Board, rawPosition: string, color: Color):
   const previousRank2 = getPreviousOrNextRank(board, rank, -2);
   const nextRank2 = getPreviousOrNextRank(board, rank, 2);
 
-  addMovesIfValid(board, moves, color, previousFile2, nextRank, canMoveOrTakePiece);
-  addMovesIfValid(board, moves, color, previousFile, nextRank2, canMoveOrTakePiece);
-  addMovesIfValid(board, moves, color, nextFile, nextRank2, canMoveOrTakePiece);
-  addMovesIfValid(board, moves, color, nextFile2, nextRank, canMoveOrTakePiece);
-  addMovesIfValid(board, moves, color, previousFile2, previousRank, canMoveOrTakePiece);
-  addMovesIfValid(board, moves, color, previousFile, previousRank2, canMoveOrTakePiece);
-  addMovesIfValid(board, moves, color, nextFile, previousRank2, canMoveOrTakePiece);
-  addMovesIfValid(board, moves, color, nextFile2, previousRank, canMoveOrTakePiece);
+  addMovesIfValid(board, moves, color, previousFile2, nextRank, canMoveOrTakePiece, allowKingCapture);
+  addMovesIfValid(board, moves, color, previousFile, nextRank2, canMoveOrTakePiece, allowKingCapture);
+  addMovesIfValid(board, moves, color, nextFile, nextRank2, canMoveOrTakePiece, allowKingCapture);
+  addMovesIfValid(board, moves, color, nextFile2, nextRank, canMoveOrTakePiece, allowKingCapture);
+  addMovesIfValid(board, moves, color, previousFile2, previousRank, canMoveOrTakePiece, allowKingCapture);
+  addMovesIfValid(board, moves, color, previousFile, previousRank2, canMoveOrTakePiece, allowKingCapture);
+  addMovesIfValid(board, moves, color, nextFile, previousRank2, canMoveOrTakePiece, allowKingCapture);
+  addMovesIfValid(board, moves, color, nextFile2, previousRank, canMoveOrTakePiece, allowKingCapture);
 
   return moves;
 };
 
 // TODO: code en-passant
 // TODO: code promotion
-export const getMovesPawn = (board: Board, rawPosition: string, color: Color): Position[] => {
+export const getMovesPawn = (board: Board, rawPosition: string, color: Color, allowKingCapture = false): Position[] => {
   const position = getPosition(rawPosition);
 
   if (!position) return [];
@@ -194,14 +216,14 @@ export const getMovesPawn = (board: Board, rawPosition: string, color: Color): P
   // TODO: create a function with unit tests
   const isInitialRank = (isWhite && rank === 2) || (!isWhite && rank === rankCount - 2);
   if (isValid && isInitialRank) {
-    addMovesIfValid(board, moves, color, file, rank2, canMovePiece);
+    addMovesIfValid(board, moves, color, file, rank2, canMovePiece, allowKingCapture);
   }
 
   return moves;
 };
 
 // TODO: code castle
-export const getMovesKing = (board: Board, rawPosition: string, color: Color): Position[] => {
+export const getMovesKing = (board: Board, rawPosition: string, color: Color, allowKingCapture = false): Position[] => {
   const position = getPosition(rawPosition);
 
   if (!position) return [];
@@ -234,7 +256,7 @@ export const getMovesKing = (board: Board, rawPosition: string, color: Color): P
         const fileLetter = getFileLetter(fileIndex);
         const rawPosition = `${fileLetter}${rankIndex}`;
         const square = getSquare(board, rawPosition);
-        const canMoveOrTake = canMoveOrTakePiece(color, square);
+        const canMoveOrTake = canMoveOrTakePiece(color, square, allowKingCapture);
 
         if (canMoveOrTake) {
           moves.push({ file: fileLetter, rank: rankIndex });
@@ -247,9 +269,9 @@ export const getMovesKing = (board: Board, rawPosition: string, color: Color): P
 };
 
 // TODO: add unit tests
-export const canMoveOrTakePiece = (color: Color, square: Square | undefined) => {
+export const canMoveOrTakePiece = (color: Color, square: Square | undefined, allowKingCapture = false) => {
   const canMove = canMovePiece(square);
-  const canTake = canTakePiece(color, square);
+  const canTake = canTakePiece(color, square, allowKingCapture);
 
   const canMoveOrTake = canMove || canTake;
 
@@ -257,11 +279,12 @@ export const canMoveOrTakePiece = (color: Color, square: Square | undefined) => 
 };
 
 // TODO: add unit tests
-export const canTakePiece = (color: Color, square: Square | undefined) => {
+export const canTakePiece = (color: Color, square: Square | undefined, allowKingCapture = false) => {
   const pieceColor = square?.piece?.color;
   const pieceType = square?.piece?.type;
 
-  const canTake = pieceColor && pieceColor !== color && pieceType !== PieceType.King;
+  const kingCondition = allowKingCapture ? true : pieceType !== PieceType.King;
+  const canTake = pieceColor && pieceColor !== color && kingCondition;
 
   return canTake;
 };
@@ -285,13 +308,14 @@ export const addMovesIfValid = (
   fileLetter: string | undefined,
   rankIndex: number | undefined,
   verificationFunction: any,
+  allowKingCapture = false,
 ) => {
   if (!fileLetter || !rankIndex) return false;
 
   const rawPosition = `${fileLetter}${rankIndex}`;
   const square = getSquare(board, rawPosition);
 
-  const args = verificationFunction === canMovePiece ? [square] : [color, square];
+  const args = verificationFunction === canMovePiece ? [square] : [color, square, allowKingCapture];
 
   const isValid = verificationFunction(...args);
 
