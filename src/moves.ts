@@ -128,7 +128,7 @@ export const getMovesDeltas = (
     const newMove = { file: newFile, rank: newRank };
     const newPossibleMoves = [...possibleMoves, newMove];
 
-    const canTake = canTakePiece(color, square);
+    const canTake = canTakePiece(color, square, allowKingCapture);
     if (canTake) return newPossibleMoves;
 
     return getMovesDeltas(
@@ -209,9 +209,9 @@ export const getMovesPawn = (board: Board, rawPosition: string, color: Color, al
 
   const { rankCount } = board;
 
-  const isValid = addMovesIfValid(board, moves, color, file, rank1, canMovePiece);
-  addMovesIfValid(board, moves, color, previousFile, rank1, canTakePiece);
-  addMovesIfValid(board, moves, color, nextFile, rank1, canTakePiece);
+  const isValid = addMovesIfValid(board, moves, color, file, rank1, canMovePiece, allowKingCapture);
+  addMovesIfValid(board, moves, color, previousFile, rank1, canTakePiece, allowKingCapture);
+  addMovesIfValid(board, moves, color, nextFile, rank1, canTakePiece, allowKingCapture);
 
   // TODO: create a function with unit tests
   const isInitialRank = (isWhite && rank === 2) || (!isWhite && rank === rankCount - 2);
