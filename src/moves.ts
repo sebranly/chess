@@ -154,18 +154,19 @@ export const getPossibleMovesKnight = (board: Board, rawPosition: string, color:
   const previousRank2 = getPreviousOrNextRank(board, rank, -2);
   const nextRank2 = getPreviousOrNextRank(board, rank, 2);
 
-  addMovesIfValid(board, moves, color, previousFile2, nextRank);
-  addMovesIfValid(board, moves, color, previousFile, nextRank2);
-  addMovesIfValid(board, moves, color, nextFile, nextRank2);
-  addMovesIfValid(board, moves, color, nextFile2, nextRank);
-  addMovesIfValid(board, moves, color, previousFile2, previousRank);
-  addMovesIfValid(board, moves, color, previousFile, previousRank2);
-  addMovesIfValid(board, moves, color, nextFile, previousRank2);
-  addMovesIfValid(board, moves, color, nextFile2, previousRank);
+  addMovesIfValid(board, moves, color, previousFile2, nextRank, canMoveOrTakePiece);
+  addMovesIfValid(board, moves, color, previousFile, nextRank2, canMoveOrTakePiece);
+  addMovesIfValid(board, moves, color, nextFile, nextRank2, canMoveOrTakePiece);
+  addMovesIfValid(board, moves, color, nextFile2, nextRank, canMoveOrTakePiece);
+  addMovesIfValid(board, moves, color, previousFile2, previousRank, canMoveOrTakePiece);
+  addMovesIfValid(board, moves, color, previousFile, previousRank2, canMoveOrTakePiece);
+  addMovesIfValid(board, moves, color, nextFile, previousRank2, canMoveOrTakePiece);
+  addMovesIfValid(board, moves, color, nextFile2, previousRank, canMoveOrTakePiece);
 
   return moves;
 };
 
+// TODO: code en-passant
 export const getPossibleMovesPawn = (board: Board, rawPosition: string, color: Color): Position[] => {
   const position = getPosition(rawPosition);
 
@@ -173,9 +174,33 @@ export const getPossibleMovesPawn = (board: Board, rawPosition: string, color: C
 
   const { file, rank } = position;
 
+  const moves: Position[] = [];
+
+  const isWhite = color === Color.White;
+  const getDifferentRank = isWhite ? getNextRank : getPreviousRank;
+  const multiplierRank2 = isWhite ? 1 : -1;
+
+  const rank1 = getDifferentRank(board, rank);
+  const previousFile = getPreviousFile(board, file);
+  const nextFile = getNextFile(board, file);
+
+  // TODO: find a name for -2, +2 instead as common (pawn and knight)
+  const rank2 = getPreviousOrNextRank(board, rank, multiplierRank2 * 2);
+
+  const { rankCount } = board;
+
+  addMovesIfValid(board, moves, color, file, rank1, canMovePiece);
+  addMovesIfValid(board, moves, color, previousFile, rank1, canTakePiece);
+  addMovesIfValid(board, moves, color, nextFile, rank1, canTakePiece);
+
+  if (rank === 1 || rank === rankCount - 1) {
+    addMovesIfValid(board, moves, color, file, rank2, canMovePiece);
+  }
+
   return [position];
 };
 
+// TODO: code castle
 export const getPossibleMovesKing = (board: Board, rawPosition: string, color: Color): Position[] => {
   const position = getPosition(rawPosition);
 
@@ -259,15 +284,18 @@ export const addMovesIfValid = (
   color: Color,
   fileLetter: string | undefined,
   rankIndex: number | undefined,
+  verificationFunction: any,
 ) => {
   if (!fileLetter || !rankIndex) return;
 
   const rawPosition = `${fileLetter}${rankIndex}`;
   const square = getSquare(board, rawPosition);
 
-  const canMoveOrTake = canMoveOrTakePiece(color, square);
+  const args = verificationFunction === canMovePiece ? [square] : [color, square];
 
-  if (!canMoveOrTake) return;
+  const isValid = verificationFunction(...args);
+
+  if (!isValid) return;
 
   const newMove: Position = { file: fileLetter, rank: rankIndex };
 
