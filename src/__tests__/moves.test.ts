@@ -231,4 +231,9 @@ test('getPossibleMoves etc.', () => {
 
   expect(getPossibleMoves(board, 'd2')).toStrictEqual(expectedMovesPawn4);
   expect(getPossibleMovesPawn(board, 'd2', Color.White)).toStrictEqual(expectedMovesPawn4);
+
+  emptySquare(board, 'd4');
+
+  expect(getPossibleMoves(board, 'd2')).toStrictEqual(expectedMovesPawn4);
+  expect(getPossibleMovesPawn(board, 'd2', Color.White)).toStrictEqual(expectedMovesPawn4);
 });

@@ -189,11 +189,12 @@ export const getPossibleMovesPawn = (board: Board, rawPosition: string, color: C
 
   const { rankCount } = board;
 
-  addMovesIfValid(board, moves, color, file, rank1, canMovePiece);
+  const isValid = addMovesIfValid(board, moves, color, file, rank1, canMovePiece);
   addMovesIfValid(board, moves, color, previousFile, rank1, canTakePiece);
   addMovesIfValid(board, moves, color, nextFile, rank1, canTakePiece);
 
-  if (rank === 2 || rank === rankCount - 2) {
+  const isInitialRank = rank === 2 || rank === rankCount - 2;
+  if (isValid && isInitialRank) {
     addMovesIfValid(board, moves, color, file, rank2, canMovePiece);
   }
 
@@ -286,7 +287,7 @@ export const addMovesIfValid = (
   rankIndex: number | undefined,
   verificationFunction: any,
 ) => {
-  if (!fileLetter || !rankIndex) return;
+  if (!fileLetter || !rankIndex) return false;
 
   const rawPosition = `${fileLetter}${rankIndex}`;
   const square = getSquare(board, rawPosition);
@@ -295,9 +296,11 @@ export const addMovesIfValid = (
 
   const isValid = verificationFunction(...args);
 
-  if (!isValid) return;
+  if (!isValid) return false;
 
   const newMove: Position = { file: fileLetter, rank: rankIndex };
 
   moves.push(newMove);
+
+  return true;
 };
