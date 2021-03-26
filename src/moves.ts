@@ -193,7 +193,8 @@ export const getPossibleMovesPawn = (board: Board, rawPosition: string, color: C
   addMovesIfValid(board, moves, color, previousFile, rank1, canTakePiece);
   addMovesIfValid(board, moves, color, nextFile, rank1, canTakePiece);
 
-  const isInitialRank = rank === 2 || rank === rankCount - 2;
+  // TODO: create a function
+  const isInitialRank = (isWhite && rank === 2) || (!isWhite && rank === rankCount - 2);
   if (isValid && isInitialRank) {
     addMovesIfValid(board, moves, color, file, rank2, canMovePiece);
   }
