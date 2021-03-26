@@ -14,7 +14,7 @@ import {
   isValidRank,
 } from './index';
 
-export const getPossibleMoves = (board: Board, rawPosition: string): Position[] => {
+export const getMoves = (board: Board, rawPosition: string): Position[] => {
   const square = getSquare(board, rawPosition);
   const { Bishop, King, Knight, Pawn, Queen, Rook } = PieceType;
 
@@ -28,61 +28,58 @@ export const getPossibleMoves = (board: Board, rawPosition: string): Position[] 
 
   switch (type) {
     case Bishop:
-      return getPossibleMovesBishop(board, rawPosition, color);
+      return getMovesBishop(board, rawPosition, color);
 
     case Pawn:
-      return getPossibleMovesPawn(board, rawPosition, color);
+      return getMovesPawn(board, rawPosition, color);
 
     case Queen:
-      return getPossibleMovesQueen(board, rawPosition, color);
+      return getMovesQueen(board, rawPosition, color);
 
     case King:
-      return getPossibleMovesKing(board, rawPosition, color);
+      return getMovesKing(board, rawPosition, color);
 
     case Knight:
-      return getPossibleMovesKnight(board, rawPosition, color);
+      return getMovesKnight(board, rawPosition, color);
 
     case Rook:
-      return getPossibleMovesRook(board, rawPosition, color);
+      return getMovesRook(board, rawPosition, color);
 
     default:
       return [];
   }
 };
 
-export const getPossibleMovesBishop = (board: Board, rawPosition: string, color: Color): Position[] => {
+export const getMovesBishop = (board: Board, rawPosition: string, color: Color): Position[] => {
   const moves = [
-    ...getPossibleMovesDeltas(board, color, rawPosition, -1, 1),
-    ...getPossibleMovesDeltas(board, color, rawPosition, 1, 1),
-    ...getPossibleMovesDeltas(board, color, rawPosition, 1, -1),
-    ...getPossibleMovesDeltas(board, color, rawPosition, -1, -1),
+    ...getMovesDeltas(board, color, rawPosition, -1, 1),
+    ...getMovesDeltas(board, color, rawPosition, 1, 1),
+    ...getMovesDeltas(board, color, rawPosition, 1, -1),
+    ...getMovesDeltas(board, color, rawPosition, -1, -1),
   ];
 
   return moves;
 };
 
-export const getPossibleMovesRook = (board: Board, rawPosition: string, color: Color): Position[] => {
+export const getMovesRook = (board: Board, rawPosition: string, color: Color): Position[] => {
   const moves = [
-    ...getPossibleMovesDeltas(board, color, rawPosition, 0, 1),
-    ...getPossibleMovesDeltas(board, color, rawPosition, 1, 0),
-    ...getPossibleMovesDeltas(board, color, rawPosition, 0, -1),
-    ...getPossibleMovesDeltas(board, color, rawPosition, -1, 0),
+    ...getMovesDeltas(board, color, rawPosition, 0, 1),
+    ...getMovesDeltas(board, color, rawPosition, 1, 0),
+    ...getMovesDeltas(board, color, rawPosition, 0, -1),
+    ...getMovesDeltas(board, color, rawPosition, -1, 0),
   ];
 
   return moves;
 };
 
-export const getPossibleMovesQueen = (board: Board, rawPosition: string, color: Color): Position[] => {
-  const moves = [
-    ...getPossibleMovesBishop(board, rawPosition, color),
-    ...getPossibleMovesRook(board, rawPosition, color),
-  ];
+export const getMovesQueen = (board: Board, rawPosition: string, color: Color): Position[] => {
+  const moves = [...getMovesBishop(board, rawPosition, color), ...getMovesRook(board, rawPosition, color)];
 
   return moves;
 };
 
 // TODO: add unit tests
-export const getPossibleMovesDeltas = (
+export const getMovesDeltas = (
   board: Board,
   color: Color,
   rawPosition: string,
@@ -118,7 +115,7 @@ export const getPossibleMovesDeltas = (
     const canTake = canTakePiece(color, square);
     if (canTake) return newPossibleMoves;
 
-    return getPossibleMovesDeltas(
+    return getMovesDeltas(
       board,
       color,
       rawPosition,
@@ -133,7 +130,7 @@ export const getPossibleMovesDeltas = (
   return possibleMoves;
 };
 
-export const getPossibleMovesKnight = (board: Board, rawPosition: string, color: Color): Position[] => {
+export const getMovesKnight = (board: Board, rawPosition: string, color: Color): Position[] => {
   const position = getPosition(rawPosition);
 
   if (!position) return [];
@@ -167,7 +164,7 @@ export const getPossibleMovesKnight = (board: Board, rawPosition: string, color:
 };
 
 // TODO: code en-passant
-export const getPossibleMovesPawn = (board: Board, rawPosition: string, color: Color): Position[] => {
+export const getMovesPawn = (board: Board, rawPosition: string, color: Color): Position[] => {
   const position = getPosition(rawPosition);
 
   if (!position) return [];
@@ -203,7 +200,7 @@ export const getPossibleMovesPawn = (board: Board, rawPosition: string, color: C
 };
 
 // TODO: code castle
-export const getPossibleMovesKing = (board: Board, rawPosition: string, color: Color): Position[] => {
+export const getMovesKing = (board: Board, rawPosition: string, color: Color): Position[] => {
   const position = getPosition(rawPosition);
 
   if (!position) return [];

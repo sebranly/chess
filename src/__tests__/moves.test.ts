@@ -1,11 +1,11 @@
 import {
-  getPossibleMoves,
-  getPossibleMovesQueen,
-  getPossibleMovesBishop,
-  getPossibleMovesKing,
-  getPossibleMovesKnight,
-  getPossibleMovesPawn,
-  getPossibleMovesRook,
+  getMoves,
+  getMovesQueen,
+  getMovesBishop,
+  getMovesKing,
+  getMovesKnight,
+  getMovesPawn,
+  getMovesRook,
 } from '../moves';
 import { emptyBoard, emptySquare, initializeBoard, initializePiece, setSquare } from '../index';
 import { Color, PieceSubType, PieceType } from '../types';
@@ -58,7 +58,7 @@ const expectedMovesRook = [
   { file: 'a', rank: 4 },
 ];
 
-test('getPossibleMovesKing', () => {
+test('getMovesKing', () => {
   setSquare(board, 'e4', pieceWhiteKing);
 
   const expectedMovesKing1 = [
@@ -72,8 +72,8 @@ test('getPossibleMovesKing', () => {
     { file: 'f', rank: 5 },
   ];
 
-  expect(getPossibleMoves(board, 'e4')).toStrictEqual(expectedMovesKing1);
-  expect(getPossibleMovesKing(board, 'e4', Color.White)).toStrictEqual(expectedMovesKing1);
+  expect(getMoves(board, 'e4')).toStrictEqual(expectedMovesKing1);
+  expect(getMovesKing(board, 'e4', Color.White)).toStrictEqual(expectedMovesKing1);
 
   emptySquare(board, 'e4');
   setSquare(board, 'h8', pieceWhiteKing);
@@ -84,8 +84,8 @@ test('getPossibleMovesKing', () => {
     { file: 'g', rank: 8 },
   ];
 
-  expect(getPossibleMoves(board, 'h8')).toStrictEqual(expectedMovesKing2);
-  expect(getPossibleMovesKing(board, 'h8', Color.White)).toStrictEqual(expectedMovesKing2);
+  expect(getMoves(board, 'h8')).toStrictEqual(expectedMovesKing2);
+  expect(getMovesKing(board, 'h8', Color.White)).toStrictEqual(expectedMovesKing2);
 
   setSquare(board, 'g7', pieceBlackQueen);
   setSquare(board, 'g8', pieceBlackKing);
@@ -93,16 +93,16 @@ test('getPossibleMovesKing', () => {
 
   const expectedMovesKing3 = [{ file: 'g', rank: 7 }];
 
-  expect(getPossibleMoves(board, 'h8')).toStrictEqual(expectedMovesKing3);
-  expect(getPossibleMovesKing(board, 'h8', Color.White)).toStrictEqual(expectedMovesKing3);
+  expect(getMoves(board, 'h8')).toStrictEqual(expectedMovesKing3);
+  expect(getMovesKing(board, 'h8', Color.White)).toStrictEqual(expectedMovesKing3);
 });
 
-test('getPossibleMovesBishop', () => {
+test('getMovesBishop', () => {
   emptyBoard(board);
   setSquare(board, 'd4', pieceWhiteBishop);
 
-  expect(getPossibleMoves(board, 'd4')).toStrictEqual(expectedMovesBishop1);
-  expect(getPossibleMovesBishop(board, 'd4', Color.White)).toStrictEqual(expectedMovesBishop1);
+  expect(getMoves(board, 'd4')).toStrictEqual(expectedMovesBishop1);
+  expect(getMovesBishop(board, 'd4', Color.White)).toStrictEqual(expectedMovesBishop1);
 
   setSquare(board, 'e5', pieceWhitePawn);
   setSquare(board, 'e3', pieceBlackQueen);
@@ -116,29 +116,29 @@ test('getPossibleMovesBishop', () => {
     { file: 'c', rank: 3 },
   ];
 
-  expect(getPossibleMoves(board, 'd4')).toStrictEqual(expectedMovesBishop2);
-  expect(getPossibleMovesBishop(board, 'd4', Color.White)).toStrictEqual(expectedMovesBishop2);
+  expect(getMoves(board, 'd4')).toStrictEqual(expectedMovesBishop2);
+  expect(getMovesBishop(board, 'd4', Color.White)).toStrictEqual(expectedMovesBishop2);
 });
 
-test('getPossibleMovesRook', () => {
+test('getMovesRook', () => {
   emptyBoard(board);
   setSquare(board, 'd4', pieceWhiteRook);
 
-  expect(getPossibleMoves(board, 'd4')).toStrictEqual(expectedMovesRook);
-  expect(getPossibleMovesRook(board, 'd4', Color.White)).toStrictEqual(expectedMovesRook);
+  expect(getMoves(board, 'd4')).toStrictEqual(expectedMovesRook);
+  expect(getMovesRook(board, 'd4', Color.White)).toStrictEqual(expectedMovesRook);
 });
 
-test('getPossibleMovesQueen', () => {
+test('getMovesQueen', () => {
   emptyBoard(board);
   setSquare(board, 'd4', pieceWhiteQueen);
 
   const expectedMovesQueen = [...expectedMovesBishop1, ...expectedMovesRook];
 
-  expect(getPossibleMoves(board, 'd4')).toStrictEqual(expectedMovesQueen);
-  expect(getPossibleMovesQueen(board, 'd4', Color.White)).toStrictEqual(expectedMovesQueen);
+  expect(getMoves(board, 'd4')).toStrictEqual(expectedMovesQueen);
+  expect(getMovesQueen(board, 'd4', Color.White)).toStrictEqual(expectedMovesQueen);
 });
 
-test('getPossibleMovesKnight', () => {
+test('getMovesKnight', () => {
   emptyBoard(board);
   setSquare(board, 'd4', pieceWhiteKnight);
 
@@ -153,8 +153,8 @@ test('getPossibleMovesKnight', () => {
     { file: 'f', rank: 3 },
   ];
 
-  expect(getPossibleMoves(board, 'd4')).toStrictEqual(expectedMovesKnight);
-  expect(getPossibleMovesKnight(board, 'd4', Color.White)).toStrictEqual(expectedMovesKnight);
+  expect(getMoves(board, 'd4')).toStrictEqual(expectedMovesKnight);
+  expect(getMovesKnight(board, 'd4', Color.White)).toStrictEqual(expectedMovesKnight);
 
   setSquare(board, 'b5', pieceBlackQueen);
   setSquare(board, 'c6', pieceBlackKing);
@@ -169,8 +169,8 @@ test('getPossibleMovesKnight', () => {
     { file: 'f', rank: 3 },
   ];
 
-  expect(getPossibleMoves(board, 'd4')).toStrictEqual(expectedMovesKnight1);
-  expect(getPossibleMovesKnight(board, 'd4', Color.White)).toStrictEqual(expectedMovesKnight1);
+  expect(getMoves(board, 'd4')).toStrictEqual(expectedMovesKnight1);
+  expect(getMovesKnight(board, 'd4', Color.White)).toStrictEqual(expectedMovesKnight1);
 
   emptyBoard(board);
   setSquare(board, 'b1', pieceWhiteKnight);
@@ -182,11 +182,11 @@ test('getPossibleMovesKnight', () => {
     { file: 'c', rank: 3 },
   ];
 
-  expect(getPossibleMoves(board, 'b1')).toStrictEqual(expectedMovesKnight2);
-  expect(getPossibleMovesKnight(board, 'b1', Color.White)).toStrictEqual(expectedMovesKnight2);
+  expect(getMoves(board, 'b1')).toStrictEqual(expectedMovesKnight2);
+  expect(getMovesKnight(board, 'b1', Color.White)).toStrictEqual(expectedMovesKnight2);
 });
 
-test('getPossibleMovesPawn', () => {
+test('getMovesPawn', () => {
   // Initial rank
   emptyBoard(board);
   setSquare(board, 'd2', pieceWhitePawn);
@@ -196,8 +196,8 @@ test('getPossibleMovesPawn', () => {
     { file: 'd', rank: 4 },
   ];
 
-  expect(getPossibleMoves(board, 'd2')).toStrictEqual(expectedMovesPawn1);
-  expect(getPossibleMovesPawn(board, 'd2', Color.White)).toStrictEqual(expectedMovesPawn1);
+  expect(getMoves(board, 'd2')).toStrictEqual(expectedMovesPawn1);
+  expect(getMovesPawn(board, 'd2', Color.White)).toStrictEqual(expectedMovesPawn1);
 
   setSquare(board, 'c3', pieceBlackBishop);
   setSquare(board, 'e3', pieceBlackKnight);
@@ -209,8 +209,8 @@ test('getPossibleMovesPawn', () => {
     { file: 'd', rank: 4 },
   ];
 
-  expect(getPossibleMoves(board, 'd2')).toStrictEqual(expectedMovesPawn2);
-  expect(getPossibleMovesPawn(board, 'd2', Color.White)).toStrictEqual(expectedMovesPawn2);
+  expect(getMoves(board, 'd2')).toStrictEqual(expectedMovesPawn2);
+  expect(getMovesPawn(board, 'd2', Color.White)).toStrictEqual(expectedMovesPawn2);
 
   setSquare(board, 'd4', pieceBlackQueen);
 
@@ -220,13 +220,13 @@ test('getPossibleMovesPawn', () => {
     { file: 'e', rank: 3 },
   ];
 
-  expect(getPossibleMoves(board, 'd2')).toStrictEqual(expectedMovesPawn3);
-  expect(getPossibleMovesPawn(board, 'd2', Color.White)).toStrictEqual(expectedMovesPawn3);
+  expect(getMoves(board, 'd2')).toStrictEqual(expectedMovesPawn3);
+  expect(getMovesPawn(board, 'd2', Color.White)).toStrictEqual(expectedMovesPawn3);
 
   setSquare(board, 'd4', pieceWhiteBishop);
 
-  expect(getPossibleMoves(board, 'd2')).toStrictEqual(expectedMovesPawn3);
-  expect(getPossibleMovesPawn(board, 'd2', Color.White)).toStrictEqual(expectedMovesPawn3);
+  expect(getMoves(board, 'd2')).toStrictEqual(expectedMovesPawn3);
+  expect(getMovesPawn(board, 'd2', Color.White)).toStrictEqual(expectedMovesPawn3);
 
   setSquare(board, 'd3', pieceBlackPawn);
 
@@ -235,25 +235,25 @@ test('getPossibleMovesPawn', () => {
     { file: 'e', rank: 3 },
   ];
 
-  expect(getPossibleMoves(board, 'd2')).toStrictEqual(expectedMovesPawn4);
-  expect(getPossibleMovesPawn(board, 'd2', Color.White)).toStrictEqual(expectedMovesPawn4);
+  expect(getMoves(board, 'd2')).toStrictEqual(expectedMovesPawn4);
+  expect(getMovesPawn(board, 'd2', Color.White)).toStrictEqual(expectedMovesPawn4);
 
   emptySquare(board, 'd4');
 
-  expect(getPossibleMoves(board, 'd2')).toStrictEqual(expectedMovesPawn4);
-  expect(getPossibleMovesPawn(board, 'd2', Color.White)).toStrictEqual(expectedMovesPawn4);
+  expect(getMoves(board, 'd2')).toStrictEqual(expectedMovesPawn4);
+  expect(getMovesPawn(board, 'd2', Color.White)).toStrictEqual(expectedMovesPawn4);
 
   setSquare(board, 'c3', pieceWhiteBishop);
 
   const expectedMovesPawn5 = [{ file: 'e', rank: 3 }];
 
-  expect(getPossibleMoves(board, 'd2')).toStrictEqual(expectedMovesPawn5);
-  expect(getPossibleMovesPawn(board, 'd2', Color.White)).toStrictEqual(expectedMovesPawn5);
+  expect(getMoves(board, 'd2')).toStrictEqual(expectedMovesPawn5);
+  expect(getMovesPawn(board, 'd2', Color.White)).toStrictEqual(expectedMovesPawn5);
 
   setSquare(board, 'e3', pieceWhiteKnight);
 
-  expect(getPossibleMoves(board, 'd2')).toStrictEqual([]);
-  expect(getPossibleMovesPawn(board, 'd2', Color.White)).toStrictEqual([]);
+  expect(getMoves(board, 'd2')).toStrictEqual([]);
+  expect(getMovesPawn(board, 'd2', Color.White)).toStrictEqual([]);
 
   // Non-initial rank
   emptyBoard(board);
@@ -261,8 +261,8 @@ test('getPossibleMovesPawn', () => {
 
   const expectedMovesPawn6 = [{ file: 'd', rank: 4 }];
 
-  expect(getPossibleMoves(board, 'd3')).toStrictEqual(expectedMovesPawn6);
-  expect(getPossibleMovesPawn(board, 'd3', Color.White)).toStrictEqual(expectedMovesPawn6);
+  expect(getMoves(board, 'd3')).toStrictEqual(expectedMovesPawn6);
+  expect(getMovesPawn(board, 'd3', Color.White)).toStrictEqual(expectedMovesPawn6);
 
   setSquare(board, 'c4', pieceBlackBishop);
   setSquare(board, 'e4', pieceBlackKnight);
@@ -273,18 +273,18 @@ test('getPossibleMovesPawn', () => {
     { file: 'e', rank: 4 },
   ];
 
-  expect(getPossibleMoves(board, 'd3')).toStrictEqual(expectedMovesPawn7);
-  expect(getPossibleMovesPawn(board, 'd3', Color.White)).toStrictEqual(expectedMovesPawn7);
+  expect(getMoves(board, 'd3')).toStrictEqual(expectedMovesPawn7);
+  expect(getMovesPawn(board, 'd3', Color.White)).toStrictEqual(expectedMovesPawn7);
 
   setSquare(board, 'd5', pieceBlackQueen);
 
-  expect(getPossibleMoves(board, 'd3')).toStrictEqual(expectedMovesPawn7);
-  expect(getPossibleMovesPawn(board, 'd3', Color.White)).toStrictEqual(expectedMovesPawn7);
+  expect(getMoves(board, 'd3')).toStrictEqual(expectedMovesPawn7);
+  expect(getMovesPawn(board, 'd3', Color.White)).toStrictEqual(expectedMovesPawn7);
 
   setSquare(board, 'd5', pieceWhiteBishop);
 
-  expect(getPossibleMoves(board, 'd3')).toStrictEqual(expectedMovesPawn7);
-  expect(getPossibleMovesPawn(board, 'd3', Color.White)).toStrictEqual(expectedMovesPawn7);
+  expect(getMoves(board, 'd3')).toStrictEqual(expectedMovesPawn7);
+  expect(getMovesPawn(board, 'd3', Color.White)).toStrictEqual(expectedMovesPawn7);
 
   setSquare(board, 'd4', pieceBlackPawn);
 
@@ -293,23 +293,23 @@ test('getPossibleMovesPawn', () => {
     { file: 'e', rank: 4 },
   ];
 
-  expect(getPossibleMoves(board, 'd3')).toStrictEqual(expectedMovesPawn8);
-  expect(getPossibleMovesPawn(board, 'd3', Color.White)).toStrictEqual(expectedMovesPawn8);
+  expect(getMoves(board, 'd3')).toStrictEqual(expectedMovesPawn8);
+  expect(getMovesPawn(board, 'd3', Color.White)).toStrictEqual(expectedMovesPawn8);
 
   emptySquare(board, 'd5');
 
-  expect(getPossibleMoves(board, 'd3')).toStrictEqual(expectedMovesPawn8);
-  expect(getPossibleMovesPawn(board, 'd3', Color.White)).toStrictEqual(expectedMovesPawn8);
+  expect(getMoves(board, 'd3')).toStrictEqual(expectedMovesPawn8);
+  expect(getMovesPawn(board, 'd3', Color.White)).toStrictEqual(expectedMovesPawn8);
 
   setSquare(board, 'c4', pieceWhiteBishop);
 
   const expectedMovesPawn9 = [{ file: 'e', rank: 4 }];
 
-  expect(getPossibleMoves(board, 'd3')).toStrictEqual(expectedMovesPawn9);
-  expect(getPossibleMovesPawn(board, 'd3', Color.White)).toStrictEqual(expectedMovesPawn9);
+  expect(getMoves(board, 'd3')).toStrictEqual(expectedMovesPawn9);
+  expect(getMovesPawn(board, 'd3', Color.White)).toStrictEqual(expectedMovesPawn9);
 
   setSquare(board, 'e4', pieceWhiteKnight);
 
-  expect(getPossibleMoves(board, 'd3')).toStrictEqual([]);
-  expect(getPossibleMovesPawn(board, 'd3', Color.White)).toStrictEqual([]);
+  expect(getMoves(board, 'd3')).toStrictEqual([]);
+  expect(getMovesPawn(board, 'd3', Color.White)).toStrictEqual([]);
 });
