@@ -10,10 +10,23 @@ import {
 import { emptyBoard, emptySquare, initializeBoard, initializePiece, setSquare } from '../index';
 import { Color, PieceSubType, PieceType } from '../types';
 
+const board = initializeBoard(true);
+
+const pieceWhiteBishop = initializePiece(Color.White, PieceType.Bishop, PieceSubType.West);
+const pieceWhiteKing = initializePiece(Color.White, PieceType.King);
+const pieceWhiteKnight = initializePiece(Color.White, PieceType.Knight, PieceSubType.West);
+const pieceWhitePawn = initializePiece(Color.White);
+const pieceWhiteQueen = initializePiece(Color.White, PieceType.Queen);
+const pieceWhiteRook = initializePiece(Color.White, PieceType.Rook, PieceSubType.West);
+
+const pieceBlackBishop = initializePiece(Color.Black, PieceType.Bishop, PieceSubType.West);
+const pieceBlackKing = initializePiece(Color.Black, PieceType.King);
+const pieceBlackKnight = initializePiece(Color.Black, PieceType.Knight, PieceSubType.West);
+const pieceBlackPawn = initializePiece(Color.Black);
+const pieceBlackQueen = initializePiece(Color.Black, PieceType.Queen);
+
 test('getPossibleMoves etc.', () => {
   // King
-  const board = initializeBoard(true);
-  const pieceWhiteKing = initializePiece(Color.White, PieceType.King);
   setSquare(board, 'e4', pieceWhiteKing);
 
   const expectedMovesKing1 = [
@@ -42,10 +55,6 @@ test('getPossibleMoves etc.', () => {
   expect(getPossibleMoves(board, 'h8')).toStrictEqual(expectedMovesKing2);
   expect(getPossibleMovesKing(board, 'h8', Color.White)).toStrictEqual(expectedMovesKing2);
 
-  const pieceBlackQueen = initializePiece(Color.Black, PieceType.Queen);
-  const pieceBlackKing = initializePiece(Color.Black, PieceType.King);
-  const pieceWhitePawn = initializePiece(Color.White);
-
   setSquare(board, 'g7', pieceBlackQueen);
   setSquare(board, 'g8', pieceBlackKing);
   setSquare(board, 'h7', pieceWhitePawn);
@@ -57,7 +66,6 @@ test('getPossibleMoves etc.', () => {
 
   // Bishop
   emptyBoard(board);
-  const pieceWhiteBishop = initializePiece(Color.White, PieceType.Bishop, PieceSubType.West);
   setSquare(board, 'd4', pieceWhiteBishop);
 
   const expectedMovesBishop1 = [
@@ -96,7 +104,6 @@ test('getPossibleMoves etc.', () => {
 
   // Rook
   emptyBoard(board);
-  const pieceWhiteRook = initializePiece(Color.White, PieceType.Rook, PieceSubType.West);
   setSquare(board, 'd4', pieceWhiteRook);
 
   const expectedMovesRook = [
@@ -121,7 +128,6 @@ test('getPossibleMoves etc.', () => {
 
   // Queen
   emptyBoard(board);
-  const pieceWhiteQueen = initializePiece(Color.White, PieceType.Queen);
   setSquare(board, 'd4', pieceWhiteQueen);
 
   const expectedMovesQueen = [...expectedMovesBishop1, ...expectedMovesRook];
@@ -131,7 +137,6 @@ test('getPossibleMoves etc.', () => {
 
   // Knight
   emptyBoard(board);
-  const pieceWhiteKnight = initializePiece(Color.White, PieceType.Knight, PieceSubType.West);
   setSquare(board, 'd4', pieceWhiteKnight);
 
   const expectedMovesKnight = [
@@ -188,10 +193,6 @@ test('getPossibleMoves etc.', () => {
 
   expect(getPossibleMoves(board, 'd2')).toStrictEqual(expectedMovesPawn1);
   expect(getPossibleMovesPawn(board, 'd2', Color.White)).toStrictEqual(expectedMovesPawn1);
-
-  const pieceBlackBishop = initializePiece(Color.Black, PieceType.Bishop, PieceSubType.West);
-  const pieceBlackKnight = initializePiece(Color.Black, PieceType.Knight, PieceSubType.West);
-  const pieceBlackPawn = initializePiece(Color.Black);
 
   setSquare(board, 'c3', pieceBlackBishop);
   setSquare(board, 'e3', pieceBlackKnight);
