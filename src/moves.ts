@@ -193,11 +193,11 @@ export const getPossibleMovesPawn = (board: Board, rawPosition: string, color: C
   addMovesIfValid(board, moves, color, previousFile, rank1, canTakePiece);
   addMovesIfValid(board, moves, color, nextFile, rank1, canTakePiece);
 
-  if (rank === 1 || rank === rankCount - 1) {
+  if (rank === 2 || rank === rankCount - 2) {
     addMovesIfValid(board, moves, color, file, rank2, canMovePiece);
   }
 
-  return [position];
+  return moves;
 };
 
 // TODO: code castle
