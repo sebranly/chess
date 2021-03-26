@@ -164,6 +164,7 @@ export const getMovesKnight = (board: Board, rawPosition: string, color: Color):
 };
 
 // TODO: code en-passant
+// TODO: code promotion
 export const getMovesPawn = (board: Board, rawPosition: string, color: Color): Position[] => {
   const position = getPosition(rawPosition);
 
@@ -190,7 +191,7 @@ export const getMovesPawn = (board: Board, rawPosition: string, color: Color): P
   addMovesIfValid(board, moves, color, previousFile, rank1, canTakePiece);
   addMovesIfValid(board, moves, color, nextFile, rank1, canTakePiece);
 
-  // TODO: create a function
+  // TODO: create a function with unit tests
   const isInitialRank = (isWhite && rank === 2) || (!isWhite && rank === rankCount - 2);
   if (isValid && isInitialRank) {
     addMovesIfValid(board, moves, color, file, rank2, canMovePiece);
