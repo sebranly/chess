@@ -167,6 +167,7 @@ test('getPossibleMoves etc.', () => {
   emptyBoard(board);
   setSquare(board, 'b1', pieceWhiteKnight);
   setSquare(board, 'd2', pieceWhiteRook);
+  setSquare(board, 'b2', pieceWhiteBishop);
 
   const expectedMovesKnight2 = [
     { file: 'a', rank: 3 },

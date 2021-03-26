@@ -16,7 +16,7 @@ import {
 
 export const getPossibleMoves = (board: Board, rawPosition: string): Position[] => {
   const square = getSquare(board, rawPosition);
-  const { Bishop, King, Knight, Queen, Rook } = PieceType;
+  const { Bishop, King, Knight, Pawn, Queen, Rook } = PieceType;
 
   if (!square) return [];
 
@@ -29,6 +29,9 @@ export const getPossibleMoves = (board: Board, rawPosition: string): Position[] 
   switch (type) {
     case Bishop:
       return getPossibleMovesBishop(board, rawPosition, color);
+
+    case Pawn:
+      return getPossibleMovesPawn(board, rawPosition, color);
 
     case Queen:
       return getPossibleMovesQueen(board, rawPosition, color);
@@ -107,8 +110,8 @@ export const getPossibleMovesDeltas = (
 
   const square = getSquare(board, newPosition);
 
-  const canMove = canMovePiece(color, square);
-  if (canMove) {
+  const canMoveOrTake = canMoveOrTakePiece(color, square);
+  if (canMoveOrTake) {
     const newMove = { file: newFile, rank: newRank };
     const newPossibleMoves = [...possibleMoves, newMove];
 
@@ -163,6 +166,16 @@ export const getPossibleMovesKnight = (board: Board, rawPosition: string, color:
   return moves;
 };
 
+export const getPossibleMovesPawn = (board: Board, rawPosition: string, color: Color): Position[] => {
+  const position = getPosition(rawPosition);
+
+  if (!position) return [];
+
+  const { file, rank } = position;
+
+  return [position];
+};
+
 export const getPossibleMovesKing = (board: Board, rawPosition: string, color: Color): Position[] => {
   const position = getPosition(rawPosition);
 
@@ -196,9 +209,9 @@ export const getPossibleMovesKing = (board: Board, rawPosition: string, color: C
         const fileLetter = getFileLetter(fileIndex);
         const rawPosition = `${fileLetter}${rankIndex}`;
         const square = getSquare(board, rawPosition);
-        const canMove = canMovePiece(color, square);
+        const canMoveOrTake = canMoveOrTakePiece(color, square);
 
-        if (canMove) {
+        if (canMoveOrTake) {
           moves.push({ file: fileLetter, rank: rankIndex });
         }
       }
@@ -209,14 +222,13 @@ export const getPossibleMovesKing = (board: Board, rawPosition: string, color: C
 };
 
 // TODO: add unit tests
-export const canMovePiece = (color: Color, square: Square | undefined) => {
-  const pieceColor = square?.piece?.color;
-  const pieceType = square?.piece?.type;
-
+export const canMoveOrTakePiece = (color: Color, square: Square | undefined) => {
+  const canMove = canMovePiece(square);
   const canTake = canTakePiece(color, square);
-  const canMove = !pieceColor || !pieceType || canTake;
 
-  return canMove;
+  const canMoveOrTake = canMove || canTake;
+
+  return canMoveOrTake;
 };
 
 // TODO: add unit tests
@@ -227,6 +239,16 @@ export const canTakePiece = (color: Color, square: Square | undefined) => {
   const canTake = pieceColor && pieceColor !== color && pieceType !== PieceType.King;
 
   return canTake;
+};
+
+// TODO: add unit tests
+export const canMovePiece = (square: Square | undefined) => {
+  const pieceColor = square?.piece?.color;
+  const pieceType = square?.piece?.type;
+
+  const canMove = !pieceColor || !pieceType;
+
+  return canMove;
 };
 
 // TODO: add unit tests
@@ -243,9 +265,9 @@ export const addMovesIfValid = (
   const rawPosition = `${fileLetter}${rankIndex}`;
   const square = getSquare(board, rawPosition);
 
-  const canMove = canMovePiece(color, square);
+  const canMoveOrTake = canMoveOrTakePiece(color, square);
 
-  if (!canMove) return;
+  if (!canMoveOrTake) return;
 
   const newMove: Position = { file: fileLetter, rank: rankIndex };
 
