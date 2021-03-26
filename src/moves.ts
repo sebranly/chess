@@ -16,6 +16,41 @@ import {
 
 // TODO: rework allowKingCapture
 
+export const isInCheck = (board: Board, color: Color) => {
+  const { squares } = board;
+
+  let foundCheck = false;
+
+  for (let i = 0; i < squares.length && !foundCheck; i++) {
+    const square = squares[i];
+
+    const { file, piece, rank } = square;
+    const rawPosition = `${file}${rank}`;
+
+    if (piece && piece.color !== color && piece.type !== PieceType.King) {
+      const moves = getMoves(board, rawPosition, true);
+
+      const checkMove = moves.find((move) => {
+        const { file: fileMove, rank: rankMove } = move;
+        const rawPositionMove = `${fileMove}${rankMove}`;
+        const squareMove = getSquare(board, rawPositionMove);
+
+        if (!squareMove) return false;
+
+        const { piece } = squareMove;
+
+        if (!piece) return false;
+
+        return piece.type === PieceType.King && piece.color === color;
+      });
+
+      if (checkMove) foundCheck = true;
+    }
+  }
+
+  return foundCheck;
+};
+
 export const getMoves = (board: Board, rawPosition: string, allowKingCapture = false): Position[] => {
   const square = getSquare(board, rawPosition);
   const { Bishop, King, Knight, Pawn, Queen, Rook } = PieceType;

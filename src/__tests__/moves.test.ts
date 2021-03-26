@@ -6,11 +6,15 @@ import {
   getMovesKnight,
   getMovesPawn,
   getMovesRook,
+  isInCheck,
 } from '../moves';
 import { emptyBoard, emptySquare, initializeBoard, initializePiece, setSquare } from '../index';
 import { Color, PieceSubType, PieceType } from '../types';
 
 const board = initializeBoard(true);
+
+// TODO: code resetBoard
+const boardBis = initializeBoard();
 
 const pieceWhiteBishop = initializePiece(Color.White, PieceType.Bishop, PieceSubType.West);
 const pieceWhiteKing = initializePiece(Color.White, PieceType.King);
@@ -312,4 +316,21 @@ test('getMovesPawn', () => {
 
   expect(getMoves(board, 'd3')).toStrictEqual([]);
   expect(getMovesPawn(board, 'd3', Color.White)).toStrictEqual([]);
+});
+
+test('isInCheck', () => {
+  expect(isInCheck(boardBis, Color.Black)).toBe(false);
+  expect(isInCheck(boardBis, Color.White)).toBe(false);
+
+  emptySquare(boardBis, 'e2');
+  emptySquare(boardBis, 'e7');
+
+  expect(isInCheck(boardBis, Color.Black)).toBe(false);
+  expect(isInCheck(boardBis, Color.White)).toBe(false);
+
+  emptySquare(boardBis, 'd1');
+  setSquare(boardBis, 'e2', pieceWhiteQueen);
+
+  expect(isInCheck(boardBis, Color.Black)).toBe(true);
+  expect(isInCheck(boardBis, Color.White)).toBe(false);
 });
