@@ -85,8 +85,8 @@ export const displayBoard = (board: Board, nodeDisplay = false) => {
 
     for (let file = 1; file <= fileCount; file++) {
       const fileLetter = getFileLetter(file);
-      const rawPosition = `${fileLetter}${rank}`;
-      const square = getSquare(board, rawPosition);
+      const pos = `${fileLetter}${rank}`;
+      const square = getSquare(board, pos);
 
       if (square) {
         const { piece } = square;

@@ -48,8 +48,8 @@ export const isInCheck = (board: Board, color: Color) => {
   return foundCheck;
 };
 
-export const getMoves = (board: Board, rawPosition: string, allowKingCapture = false): string[] => {
-  const square = getSquare(board, rawPosition);
+export const getMoves = (board: Board, pos: string, allowKingCapture = false): string[] => {
+  const square = getSquare(board, pos);
   const { Bishop, King, Knight, Pawn, Queen, Rook } = PieceType;
 
   if (!square) return [];
@@ -62,54 +62,54 @@ export const getMoves = (board: Board, rawPosition: string, allowKingCapture = f
 
   switch (type) {
     case Bishop:
-      return getMovesBishop(board, rawPosition, color, allowKingCapture);
+      return getMovesBishop(board, pos, color, allowKingCapture);
 
     case Pawn:
-      return getMovesPawn(board, rawPosition, color, allowKingCapture);
+      return getMovesPawn(board, pos, color, allowKingCapture);
 
     case Queen:
-      return getMovesQueen(board, rawPosition, color, allowKingCapture);
+      return getMovesQueen(board, pos, color, allowKingCapture);
 
     case King:
-      return getMovesKing(board, rawPosition, color, allowKingCapture);
+      return getMovesKing(board, pos, color, allowKingCapture);
 
     case Knight:
-      return getMovesKnight(board, rawPosition, color, allowKingCapture);
+      return getMovesKnight(board, pos, color, allowKingCapture);
 
     case Rook:
-      return getMovesRook(board, rawPosition, color, allowKingCapture);
+      return getMovesRook(board, pos, color, allowKingCapture);
 
     default:
       return [];
   }
 };
 
-export const getMovesBishop = (board: Board, rawPosition: string, color: Color, allowKingCapture = false): string[] => {
+export const getMovesBishop = (board: Board, pos: string, color: Color, allowKingCapture = false): string[] => {
   const moves = [
-    ...getMovesDeltas(board, color, rawPosition, -1, 1, -1, 1, [], allowKingCapture),
-    ...getMovesDeltas(board, color, rawPosition, 1, 1, 1, 1, [], allowKingCapture),
-    ...getMovesDeltas(board, color, rawPosition, 1, -1, 1, -1, [], allowKingCapture),
-    ...getMovesDeltas(board, color, rawPosition, -1, -1, -1, -1, [], allowKingCapture),
+    ...getMovesDeltas(board, color, pos, -1, 1, -1, 1, [], allowKingCapture),
+    ...getMovesDeltas(board, color, pos, 1, 1, 1, 1, [], allowKingCapture),
+    ...getMovesDeltas(board, color, pos, 1, -1, 1, -1, [], allowKingCapture),
+    ...getMovesDeltas(board, color, pos, -1, -1, -1, -1, [], allowKingCapture),
   ];
 
   return moves;
 };
 
-export const getMovesRook = (board: Board, rawPosition: string, color: Color, allowKingCapture = false): string[] => {
+export const getMovesRook = (board: Board, pos: string, color: Color, allowKingCapture = false): string[] => {
   const moves = [
-    ...getMovesDeltas(board, color, rawPosition, 0, 1, 0, 1, [], allowKingCapture),
-    ...getMovesDeltas(board, color, rawPosition, 1, 0, 1, 0, [], allowKingCapture),
-    ...getMovesDeltas(board, color, rawPosition, 0, -1, 0, -1, [], allowKingCapture),
-    ...getMovesDeltas(board, color, rawPosition, -1, 0, -1, 0, [], allowKingCapture),
+    ...getMovesDeltas(board, color, pos, 0, 1, 0, 1, [], allowKingCapture),
+    ...getMovesDeltas(board, color, pos, 1, 0, 1, 0, [], allowKingCapture),
+    ...getMovesDeltas(board, color, pos, 0, -1, 0, -1, [], allowKingCapture),
+    ...getMovesDeltas(board, color, pos, -1, 0, -1, 0, [], allowKingCapture),
   ];
 
   return moves;
 };
 
-export const getMovesQueen = (board: Board, rawPosition: string, color: Color, allowKingCapture = false): string[] => {
+export const getMovesQueen = (board: Board, pos: string, color: Color, allowKingCapture = false): string[] => {
   const moves = [
-    ...getMovesBishop(board, rawPosition, color, allowKingCapture),
-    ...getMovesRook(board, rawPosition, color, allowKingCapture),
+    ...getMovesBishop(board, pos, color, allowKingCapture),
+    ...getMovesRook(board, pos, color, allowKingCapture),
   ];
 
   return moves;
@@ -119,7 +119,7 @@ export const getMovesQueen = (board: Board, rawPosition: string, color: Color, a
 export const getMovesDeltas = (
   board: Board,
   color: Color,
-  rawPosition: string,
+  pos: string,
   deltaFileStep: number,
   deltaRankStep: number,
   deltaFile = deltaFileStep,
@@ -127,7 +127,7 @@ export const getMovesDeltas = (
   possibleMoves: string[] = [],
   allowKingCapture = false,
 ): string[] => {
-  const position = getPosition(rawPosition);
+  const position = getPosition(pos);
 
   if (!position) return [];
 
@@ -156,7 +156,7 @@ export const getMovesDeltas = (
     return getMovesDeltas(
       board,
       color,
-      rawPosition,
+      pos,
       deltaFileStep,
       deltaRankStep,
       deltaFile + deltaFileStep,
@@ -169,8 +169,8 @@ export const getMovesDeltas = (
   return possibleMoves;
 };
 
-export const getMovesKnight = (board: Board, rawPosition: string, color: Color, allowKingCapture = false): string[] => {
-  const position = getPosition(rawPosition);
+export const getMovesKnight = (board: Board, pos: string, color: Color, allowKingCapture = false): string[] => {
+  const position = getPosition(pos);
 
   if (!position) return [];
 
@@ -204,8 +204,8 @@ export const getMovesKnight = (board: Board, rawPosition: string, color: Color, 
 
 // TODO: code en-passant
 // TODO: code promotion
-export const getMovesPawn = (board: Board, rawPosition: string, color: Color, allowKingCapture = false): string[] => {
-  const position = getPosition(rawPosition);
+export const getMovesPawn = (board: Board, pos: string, color: Color, allowKingCapture = false): string[] => {
+  const position = getPosition(pos);
 
   if (!position) return [];
 
@@ -240,8 +240,8 @@ export const getMovesPawn = (board: Board, rawPosition: string, color: Color, al
 };
 
 // TODO: code castle
-export const getMovesKing = (board: Board, rawPosition: string, color: Color, allowKingCapture = false): string[] => {
-  const position = getPosition(rawPosition);
+export const getMovesKing = (board: Board, pos: string, color: Color, allowKingCapture = false): string[] => {
+  const position = getPosition(pos);
 
   if (!position) return [];
 
@@ -271,8 +271,8 @@ export const getMovesKing = (board: Board, rawPosition: string, color: Color, al
       const isOnKingPosition = fileIndex === fileNumber && rankIndex === rank;
       if (!isOnKingPosition) {
         const fileLetter = getFileLetter(fileIndex);
-        const rawPosition = `${fileLetter}${rankIndex}`;
-        const square = getSquare(board, rawPosition);
+        const pos = `${fileLetter}${rankIndex}`;
+        const square = getSquare(board, pos);
         const canMoveOrTake = canMoveOrTakePiece(color, square, allowKingCapture);
 
         if (canMoveOrTake) {
@@ -329,8 +329,8 @@ export const addMovesIfValid = (
 ) => {
   if (!fileLetter || !rankIndex) return false;
 
-  const rawPosition = `${fileLetter}${rankIndex}`;
-  const square = getSquare(board, rawPosition);
+  const pos = `${fileLetter}${rankIndex}`;
+  const square = getSquare(board, pos);
 
   const args = verificationFunction === canMovePiece ? [square] : [color, square, allowKingCapture];
 

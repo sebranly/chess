@@ -112,15 +112,15 @@ export const emptyBoard = (board: Board) => {
   return board;
 };
 
-export const getSquare = (board: Board, rawPosition: string) => {
+export const getSquare = (board: Board, pos: string) => {
   const { squares } = board;
-  const square = squares.find((s: Square) => s.pos === rawPosition);
+  const square = squares.find((s: Square) => s.pos === pos);
 
   return square;
 };
 
-export const getSquareColor = (rawPosition: string) => {
-  const position = getPosition(rawPosition);
+export const getSquareColor = (pos: string) => {
+  const position = getPosition(pos);
 
   if (!position) return Color.White;
 
@@ -134,14 +134,14 @@ export const getSquareColor = (rawPosition: string) => {
   return color;
 };
 
-export const setSquare = (board: Board, rawPosition: string, piece: Piece) => {
-  const square = getSquare(board, rawPosition);
+export const setSquare = (board: Board, pos: string, piece: Piece) => {
+  const square = getSquare(board, pos);
 
   if (square) square.piece = piece;
 };
 
-export const emptySquare = (board: Board, rawPosition: string) => {
-  const square = getSquare(board, rawPosition);
+export const emptySquare = (board: Board, pos: string) => {
+  const square = getSquare(board, pos);
 
   if (square) {
     const { piece } = square;
@@ -150,9 +150,9 @@ export const emptySquare = (board: Board, rawPosition: string) => {
   }
 };
 
-export const getPosition = (rawPosition: string) => {
+export const getPosition = (pos: string) => {
   const regex = new RegExp(/^([A-Za-z]+)(\d+)$/);
-  const matches = rawPosition.match(regex);
+  const matches = pos.match(regex);
 
   if (!matches) return undefined;
 
