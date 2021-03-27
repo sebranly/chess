@@ -333,4 +333,57 @@ test('isInCheck', () => {
 
   expect(isInCheck(boardBis, Color.Black)).toBe(true);
   expect(isInCheck(boardBis, Color.White)).toBe(false);
+
+  emptyBoard(board);
+
+  setSquare(board, 'e1', pieceWhiteKing);
+  setSquare(board, 'e3', pieceBlackKing);
+
+  expect(isInCheck(board, Color.Black)).toBe(false);
+  expect(isInCheck(board, Color.White)).toBe(false);
+
+  setSquare(board, 'd2', pieceWhiteBishop);
+
+  expect(isInCheck(board, Color.Black)).toBe(true);
+  expect(isInCheck(board, Color.White)).toBe(false);
+
+  setSquare(board, 'c3', pieceBlackBishop);
+
+  expect(isInCheck(board, Color.Black)).toBe(true);
+  expect(isInCheck(board, Color.White)).toBe(false);
+
+  setSquare(board, 'd2', pieceWhiteQueen);
+
+  expect(isInCheck(board, Color.Black)).toBe(true);
+  expect(isInCheck(board, Color.White)).toBe(false);
+
+  setSquare(board, 'd2', pieceWhitePawn);
+
+  expect(isInCheck(board, Color.Black)).toBe(true);
+  expect(isInCheck(board, Color.White)).toBe(false);
+
+  emptySquare(board, 'd2');
+
+  expect(isInCheck(board, Color.Black)).toBe(false);
+  expect(isInCheck(board, Color.White)).toBe(true);
+
+  emptySquare(board, 'c3');
+
+  expect(isInCheck(board, Color.Black)).toBe(false);
+  expect(isInCheck(board, Color.White)).toBe(false);
+
+  setSquare(board, 'c2', pieceWhiteKnight);
+
+  expect(isInCheck(board, Color.Black)).toBe(true);
+  expect(isInCheck(board, Color.White)).toBe(false);
+
+  emptySquare(board, 'c2');
+
+  setSquare(board, 'd3', pieceWhiteRook);
+
+  expect(isInCheck(board, Color.Black)).toBe(true);
+  expect(isInCheck(board, Color.White)).toBe(false);
+
+  // TODO: add unit tests for several pieces doing check
+  // TODO: add unit tests for blocked check
 });
