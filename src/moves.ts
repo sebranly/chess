@@ -24,16 +24,15 @@ export const isInCheck = (board: Board, color: Color) => {
   for (let i = 0; i < squares.length && !foundCheck; i++) {
     const square = squares[i];
 
-    const { file, piece, rank } = square;
-    const rawPosition = `${file}${rank}`;
+    const { piece, pos } = square;
 
     if (piece && piece.color !== color && piece.type !== PieceType.King) {
-      const moves = getMoves(board, rawPosition, true);
+      const moves = getMoves(board, pos, true);
 
       const checkMove = moves.find((move) => {
         const { file: fileMove, rank: rankMove } = move;
-        const rawPositionMove = `${fileMove}${rankMove}`;
-        const squareMove = getSquare(board, rawPositionMove);
+        const rawPosition = `${fileMove}${rankMove}`;
+        const squareMove = getSquare(board, rawPosition);
 
         if (!squareMove) return false;
 

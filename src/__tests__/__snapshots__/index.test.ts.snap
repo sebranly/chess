@@ -6,324 +6,260 @@ Object {
   "rankCount": 8,
   "squares": Array [
     Object {
-      "file": "a",
       "piece": undefined,
-      "rank": 1,
+      "pos": "a1",
     },
     Object {
-      "file": "a",
       "piece": undefined,
-      "rank": 2,
+      "pos": "a2",
     },
     Object {
-      "file": "a",
       "piece": undefined,
-      "rank": 3,
+      "pos": "a3",
     },
     Object {
-      "file": "a",
       "piece": undefined,
-      "rank": 4,
+      "pos": "a4",
     },
     Object {
-      "file": "a",
       "piece": undefined,
-      "rank": 5,
+      "pos": "a5",
     },
     Object {
-      "file": "a",
       "piece": undefined,
-      "rank": 6,
+      "pos": "a6",
     },
     Object {
-      "file": "a",
       "piece": undefined,
-      "rank": 7,
+      "pos": "a7",
     },
     Object {
-      "file": "a",
       "piece": undefined,
-      "rank": 8,
+      "pos": "a8",
     },
     Object {
-      "file": "b",
       "piece": undefined,
-      "rank": 1,
+      "pos": "b1",
     },
     Object {
-      "file": "b",
       "piece": undefined,
-      "rank": 2,
+      "pos": "b2",
     },
     Object {
-      "file": "b",
       "piece": undefined,
-      "rank": 3,
+      "pos": "b3",
     },
     Object {
-      "file": "b",
       "piece": undefined,
-      "rank": 4,
+      "pos": "b4",
     },
     Object {
-      "file": "b",
       "piece": undefined,
-      "rank": 5,
+      "pos": "b5",
     },
     Object {
-      "file": "b",
       "piece": undefined,
-      "rank": 6,
+      "pos": "b6",
     },
     Object {
-      "file": "b",
       "piece": undefined,
-      "rank": 7,
+      "pos": "b7",
     },
     Object {
-      "file": "b",
       "piece": undefined,
-      "rank": 8,
+      "pos": "b8",
     },
     Object {
-      "file": "c",
       "piece": undefined,
-      "rank": 1,
+      "pos": "c1",
     },
     Object {
-      "file": "c",
       "piece": undefined,
-      "rank": 2,
+      "pos": "c2",
     },
     Object {
-      "file": "c",
       "piece": undefined,
-      "rank": 3,
+      "pos": "c3",
     },
     Object {
-      "file": "c",
       "piece": undefined,
-      "rank": 4,
+      "pos": "c4",
     },
     Object {
-      "file": "c",
       "piece": undefined,
-      "rank": 5,
+      "pos": "c5",
     },
     Object {
-      "file": "c",
       "piece": undefined,
-      "rank": 6,
+      "pos": "c6",
     },
     Object {
-      "file": "c",
       "piece": undefined,
-      "rank": 7,
+      "pos": "c7",
     },
     Object {
-      "file": "c",
       "piece": undefined,
-      "rank": 8,
+      "pos": "c8",
     },
     Object {
-      "file": "d",
       "piece": undefined,
-      "rank": 1,
+      "pos": "d1",
     },
     Object {
-      "file": "d",
       "piece": undefined,
-      "rank": 2,
+      "pos": "d2",
     },
     Object {
-      "file": "d",
       "piece": undefined,
-      "rank": 3,
+      "pos": "d3",
     },
     Object {
-      "file": "d",
       "piece": undefined,
-      "rank": 4,
+      "pos": "d4",
     },
     Object {
-      "file": "d",
       "piece": undefined,
-      "rank": 5,
+      "pos": "d5",
     },
     Object {
-      "file": "d",
       "piece": undefined,
-      "rank": 6,
+      "pos": "d6",
     },
     Object {
-      "file": "d",
       "piece": undefined,
-      "rank": 7,
+      "pos": "d7",
     },
     Object {
-      "file": "d",
       "piece": undefined,
-      "rank": 8,
+      "pos": "d8",
     },
     Object {
-      "file": "e",
       "piece": undefined,
-      "rank": 1,
+      "pos": "e1",
     },
     Object {
-      "file": "e",
       "piece": undefined,
-      "rank": 2,
+      "pos": "e2",
     },
     Object {
-      "file": "e",
       "piece": undefined,
-      "rank": 3,
+      "pos": "e3",
     },
     Object {
-      "file": "e",
       "piece": undefined,
-      "rank": 4,
+      "pos": "e4",
     },
     Object {
-      "file": "e",
       "piece": undefined,
-      "rank": 5,
+      "pos": "e5",
     },
     Object {
-      "file": "e",
       "piece": undefined,
-      "rank": 6,
+      "pos": "e6",
     },
     Object {
-      "file": "e",
       "piece": undefined,
-      "rank": 7,
+      "pos": "e7",
     },
     Object {
-      "file": "e",
       "piece": undefined,
-      "rank": 8,
+      "pos": "e8",
     },
     Object {
-      "file": "f",
       "piece": undefined,
-      "rank": 1,
+      "pos": "f1",
     },
     Object {
-      "file": "f",
       "piece": undefined,
-      "rank": 2,
+      "pos": "f2",
     },
     Object {
-      "file": "f",
       "piece": undefined,
-      "rank": 3,
+      "pos": "f3",
     },
     Object {
-      "file": "f",
       "piece": undefined,
-      "rank": 4,
+      "pos": "f4",
     },
     Object {
-      "file": "f",
       "piece": undefined,
-      "rank": 5,
+      "pos": "f5",
     },
     Object {
-      "file": "f",
       "piece": undefined,
-      "rank": 6,
+      "pos": "f6",
     },
     Object {
-      "file": "f",
       "piece": undefined,
-      "rank": 7,
+      "pos": "f7",
     },
     Object {
-      "file": "f",
       "piece": undefined,
-      "rank": 8,
+      "pos": "f8",
     },
     Object {
-      "file": "g",
       "piece": undefined,
-      "rank": 1,
+      "pos": "g1",
     },
     Object {
-      "file": "g",
       "piece": undefined,
-      "rank": 2,
+      "pos": "g2",
     },
     Object {
-      "file": "g",
       "piece": undefined,
-      "rank": 3,
+      "pos": "g3",
     },
     Object {
-      "file": "g",
       "piece": undefined,
-      "rank": 4,
+      "pos": "g4",
     },
     Object {
-      "file": "g",
       "piece": undefined,
-      "rank": 5,
+      "pos": "g5",
     },
     Object {
-      "file": "g",
       "piece": undefined,
-      "rank": 6,
+      "pos": "g6",
     },
     Object {
-      "file": "g",
       "piece": undefined,
-      "rank": 7,
+      "pos": "g7",
     },
     Object {
-      "file": "g",
       "piece": undefined,
-      "rank": 8,
+      "pos": "g8",
     },
     Object {
-      "file": "h",
       "piece": undefined,
-      "rank": 1,
+      "pos": "h1",
     },
     Object {
-      "file": "h",
       "piece": undefined,
-      "rank": 2,
+      "pos": "h2",
     },
     Object {
-      "file": "h",
       "piece": undefined,
-      "rank": 3,
+      "pos": "h3",
     },
     Object {
-      "file": "h",
       "piece": undefined,
-      "rank": 4,
+      "pos": "h4",
     },
     Object {
-      "file": "h",
       "piece": undefined,
-      "rank": 5,
+      "pos": "h5",
     },
     Object {
-      "file": "h",
       "piece": undefined,
-      "rank": 6,
+      "pos": "h6",
     },
     Object {
-      "file": "h",
       "piece": undefined,
-      "rank": 7,
+      "pos": "h7",
     },
     Object {
-      "file": "h",
       "piece": undefined,
-      "rank": 8,
+      "pos": "h8",
     },
   ],
 }
@@ -335,7 +271,6 @@ Object {
   "rankCount": 8,
   "squares": Array [
     Object {
-      "file": "a",
       "piece": Object {
         "color": "white",
         "hasNeverMoved": true,
@@ -344,10 +279,9 @@ Object {
         "subType": "west",
         "type": "rook",
       },
-      "rank": 1,
+      "pos": "a1",
     },
     Object {
-      "file": "a",
       "piece": Object {
         "color": "white",
         "hasNeverMoved": true,
@@ -356,26 +290,21 @@ Object {
         "subType": undefined,
         "type": "pawn",
       },
-      "rank": 2,
+      "pos": "a2",
     },
     Object {
-      "file": "a",
-      "rank": 3,
+      "pos": "a3",
     },
     Object {
-      "file": "a",
-      "rank": 4,
+      "pos": "a4",
     },
     Object {
-      "file": "a",
-      "rank": 5,
+      "pos": "a5",
     },
     Object {
-      "file": "a",
-      "rank": 6,
+      "pos": "a6",
     },
     Object {
-      "file": "a",
       "piece": Object {
         "color": "black",
         "hasNeverMoved": true,
@@ -384,10 +313,9 @@ Object {
         "subType": undefined,
         "type": "pawn",
       },
-      "rank": 7,
+      "pos": "a7",
     },
     Object {
-      "file": "a",
       "piece": Object {
         "color": "black",
         "hasNeverMoved": true,
@@ -396,10 +324,9 @@ Object {
         "subType": "west",
         "type": "rook",
       },
-      "rank": 8,
+      "pos": "a8",
     },
     Object {
-      "file": "b",
       "piece": Object {
         "color": "white",
         "hasNeverMoved": true,
@@ -408,10 +335,9 @@ Object {
         "subType": "west",
         "type": "knight",
       },
-      "rank": 1,
+      "pos": "b1",
     },
     Object {
-      "file": "b",
       "piece": Object {
         "color": "white",
         "hasNeverMoved": true,
@@ -420,26 +346,21 @@ Object {
         "subType": undefined,
         "type": "pawn",
       },
-      "rank": 2,
+      "pos": "b2",
     },
     Object {
-      "file": "b",
-      "rank": 3,
+      "pos": "b3",
     },
     Object {
-      "file": "b",
-      "rank": 4,
+      "pos": "b4",
     },
     Object {
-      "file": "b",
-      "rank": 5,
+      "pos": "b5",
     },
     Object {
-      "file": "b",
-      "rank": 6,
+      "pos": "b6",
     },
     Object {
-      "file": "b",
       "piece": Object {
         "color": "black",
         "hasNeverMoved": true,
@@ -448,10 +369,9 @@ Object {
         "subType": undefined,
         "type": "pawn",
       },
-      "rank": 7,
+      "pos": "b7",
     },
     Object {
-      "file": "b",
       "piece": Object {
         "color": "black",
         "hasNeverMoved": true,
@@ -460,10 +380,9 @@ Object {
         "subType": "west",
         "type": "knight",
       },
-      "rank": 8,
+      "pos": "b8",
     },
     Object {
-      "file": "c",
       "piece": Object {
         "color": "white",
         "hasNeverMoved": true,
@@ -472,10 +391,9 @@ Object {
         "subType": "west",
         "type": "bishop",
       },
-      "rank": 1,
+      "pos": "c1",
     },
     Object {
-      "file": "c",
       "piece": Object {
         "color": "white",
         "hasNeverMoved": true,
@@ -484,26 +402,21 @@ Object {
         "subType": undefined,
         "type": "pawn",
       },
-      "rank": 2,
+      "pos": "c2",
     },
     Object {
-      "file": "c",
-      "rank": 3,
+      "pos": "c3",
     },
     Object {
-      "file": "c",
-      "rank": 4,
+      "pos": "c4",
     },
     Object {
-      "file": "c",
-      "rank": 5,
+      "pos": "c5",
     },
     Object {
-      "file": "c",
-      "rank": 6,
+      "pos": "c6",
     },
     Object {
-      "file": "c",
       "piece": Object {
         "color": "black",
         "hasNeverMoved": true,
@@ -512,10 +425,9 @@ Object {
         "subType": undefined,
         "type": "pawn",
       },
-      "rank": 7,
+      "pos": "c7",
     },
     Object {
-      "file": "c",
       "piece": Object {
         "color": "black",
         "hasNeverMoved": true,
@@ -524,10 +436,9 @@ Object {
         "subType": "west",
         "type": "bishop",
       },
-      "rank": 8,
+      "pos": "c8",
     },
     Object {
-      "file": "d",
       "piece": Object {
         "color": "white",
         "hasNeverMoved": true,
@@ -536,10 +447,9 @@ Object {
         "subType": undefined,
         "type": "queen",
       },
-      "rank": 1,
+      "pos": "d1",
     },
     Object {
-      "file": "d",
       "piece": Object {
         "color": "white",
         "hasNeverMoved": true,
@@ -548,26 +458,21 @@ Object {
         "subType": undefined,
         "type": "pawn",
       },
-      "rank": 2,
+      "pos": "d2",
     },
     Object {
-      "file": "d",
-      "rank": 3,
+      "pos": "d3",
     },
     Object {
-      "file": "d",
-      "rank": 4,
+      "pos": "d4",
     },
     Object {
-      "file": "d",
-      "rank": 5,
+      "pos": "d5",
     },
     Object {
-      "file": "d",
-      "rank": 6,
+      "pos": "d6",
     },
     Object {
-      "file": "d",
       "piece": Object {
         "color": "black",
         "hasNeverMoved": true,
@@ -576,10 +481,9 @@ Object {
         "subType": undefined,
         "type": "pawn",
       },
-      "rank": 7,
+      "pos": "d7",
     },
     Object {
-      "file": "d",
       "piece": Object {
         "color": "black",
         "hasNeverMoved": true,
@@ -588,10 +492,9 @@ Object {
         "subType": undefined,
         "type": "queen",
       },
-      "rank": 8,
+      "pos": "d8",
     },
     Object {
-      "file": "e",
       "piece": Object {
         "color": "white",
         "hasNeverMoved": true,
@@ -600,10 +503,9 @@ Object {
         "subType": undefined,
         "type": "king",
       },
-      "rank": 1,
+      "pos": "e1",
     },
     Object {
-      "file": "e",
       "piece": Object {
         "color": "white",
         "hasNeverMoved": true,
@@ -612,26 +514,21 @@ Object {
         "subType": undefined,
         "type": "pawn",
       },
-      "rank": 2,
+      "pos": "e2",
     },
     Object {
-      "file": "e",
-      "rank": 3,
+      "pos": "e3",
     },
     Object {
-      "file": "e",
-      "rank": 4,
+      "pos": "e4",
     },
     Object {
-      "file": "e",
-      "rank": 5,
+      "pos": "e5",
     },
     Object {
-      "file": "e",
-      "rank": 6,
+      "pos": "e6",
     },
     Object {
-      "file": "e",
       "piece": Object {
         "color": "black",
         "hasNeverMoved": true,
@@ -640,10 +537,9 @@ Object {
         "subType": undefined,
         "type": "pawn",
       },
-      "rank": 7,
+      "pos": "e7",
     },
     Object {
-      "file": "e",
       "piece": Object {
         "color": "black",
         "hasNeverMoved": true,
@@ -652,10 +548,9 @@ Object {
         "subType": undefined,
         "type": "king",
       },
-      "rank": 8,
+      "pos": "e8",
     },
     Object {
-      "file": "f",
       "piece": Object {
         "color": "white",
         "hasNeverMoved": true,
@@ -664,10 +559,9 @@ Object {
         "subType": "east",
         "type": "bishop",
       },
-      "rank": 1,
+      "pos": "f1",
     },
     Object {
-      "file": "f",
       "piece": Object {
         "color": "white",
         "hasNeverMoved": true,
@@ -676,26 +570,21 @@ Object {
         "subType": undefined,
         "type": "pawn",
       },
-      "rank": 2,
+      "pos": "f2",
     },
     Object {
-      "file": "f",
-      "rank": 3,
+      "pos": "f3",
     },
     Object {
-      "file": "f",
-      "rank": 4,
+      "pos": "f4",
     },
     Object {
-      "file": "f",
-      "rank": 5,
+      "pos": "f5",
     },
     Object {
-      "file": "f",
-      "rank": 6,
+      "pos": "f6",
     },
     Object {
-      "file": "f",
       "piece": Object {
         "color": "black",
         "hasNeverMoved": true,
@@ -704,10 +593,9 @@ Object {
         "subType": undefined,
         "type": "pawn",
       },
-      "rank": 7,
+      "pos": "f7",
     },
     Object {
-      "file": "f",
       "piece": Object {
         "color": "black",
         "hasNeverMoved": true,
@@ -716,10 +604,9 @@ Object {
         "subType": "east",
         "type": "bishop",
       },
-      "rank": 8,
+      "pos": "f8",
     },
     Object {
-      "file": "g",
       "piece": Object {
         "color": "white",
         "hasNeverMoved": true,
@@ -728,10 +615,9 @@ Object {
         "subType": "east",
         "type": "knight",
       },
-      "rank": 1,
+      "pos": "g1",
     },
     Object {
-      "file": "g",
       "piece": Object {
         "color": "white",
         "hasNeverMoved": true,
@@ -740,26 +626,21 @@ Object {
         "subType": undefined,
         "type": "pawn",
       },
-      "rank": 2,
+      "pos": "g2",
     },
     Object {
-      "file": "g",
-      "rank": 3,
+      "pos": "g3",
     },
     Object {
-      "file": "g",
-      "rank": 4,
+      "pos": "g4",
     },
     Object {
-      "file": "g",
-      "rank": 5,
+      "pos": "g5",
     },
     Object {
-      "file": "g",
-      "rank": 6,
+      "pos": "g6",
     },
     Object {
-      "file": "g",
       "piece": Object {
         "color": "black",
         "hasNeverMoved": true,
@@ -768,10 +649,9 @@ Object {
         "subType": undefined,
         "type": "pawn",
       },
-      "rank": 7,
+      "pos": "g7",
     },
     Object {
-      "file": "g",
       "piece": Object {
         "color": "black",
         "hasNeverMoved": true,
@@ -780,10 +660,9 @@ Object {
         "subType": "east",
         "type": "knight",
       },
-      "rank": 8,
+      "pos": "g8",
     },
     Object {
-      "file": "h",
       "piece": Object {
         "color": "white",
         "hasNeverMoved": true,
@@ -792,10 +671,9 @@ Object {
         "subType": "east",
         "type": "rook",
       },
-      "rank": 1,
+      "pos": "h1",
     },
     Object {
-      "file": "h",
       "piece": Object {
         "color": "white",
         "hasNeverMoved": true,
@@ -804,26 +682,21 @@ Object {
         "subType": undefined,
         "type": "pawn",
       },
-      "rank": 2,
+      "pos": "h2",
     },
     Object {
-      "file": "h",
-      "rank": 3,
+      "pos": "h3",
     },
     Object {
-      "file": "h",
-      "rank": 4,
+      "pos": "h4",
     },
     Object {
-      "file": "h",
-      "rank": 5,
+      "pos": "h5",
     },
     Object {
-      "file": "h",
-      "rank": 6,
+      "pos": "h6",
     },
     Object {
-      "file": "h",
       "piece": Object {
         "color": "black",
         "hasNeverMoved": true,
@@ -832,10 +705,9 @@ Object {
         "subType": undefined,
         "type": "pawn",
       },
-      "rank": 7,
+      "pos": "h7",
     },
     Object {
-      "file": "h",
       "piece": Object {
         "color": "black",
         "hasNeverMoved": true,
@@ -844,7 +716,7 @@ Object {
         "subType": "east",
         "type": "rook",
       },
-      "rank": 8,
+      "pos": "h8",
     },
   ],
 }
@@ -856,260 +728,196 @@ Object {
   "rankCount": 8,
   "squares": Array [
     Object {
-      "file": "a",
-      "rank": 1,
+      "pos": "a1",
     },
     Object {
-      "file": "a",
-      "rank": 2,
+      "pos": "a2",
     },
     Object {
-      "file": "a",
-      "rank": 3,
+      "pos": "a3",
     },
     Object {
-      "file": "a",
-      "rank": 4,
+      "pos": "a4",
     },
     Object {
-      "file": "a",
-      "rank": 5,
+      "pos": "a5",
     },
     Object {
-      "file": "a",
-      "rank": 6,
+      "pos": "a6",
     },
     Object {
-      "file": "a",
-      "rank": 7,
+      "pos": "a7",
     },
     Object {
-      "file": "a",
-      "rank": 8,
+      "pos": "a8",
     },
     Object {
-      "file": "b",
-      "rank": 1,
+      "pos": "b1",
     },
     Object {
-      "file": "b",
-      "rank": 2,
+      "pos": "b2",
     },
     Object {
-      "file": "b",
-      "rank": 3,
+      "pos": "b3",
     },
     Object {
-      "file": "b",
-      "rank": 4,
+      "pos": "b4",
     },
     Object {
-      "file": "b",
-      "rank": 5,
+      "pos": "b5",
     },
     Object {
-      "file": "b",
-      "rank": 6,
+      "pos": "b6",
     },
     Object {
-      "file": "b",
-      "rank": 7,
+      "pos": "b7",
     },
     Object {
-      "file": "b",
-      "rank": 8,
+      "pos": "b8",
     },
     Object {
-      "file": "c",
-      "rank": 1,
+      "pos": "c1",
     },
     Object {
-      "file": "c",
-      "rank": 2,
+      "pos": "c2",
     },
     Object {
-      "file": "c",
-      "rank": 3,
+      "pos": "c3",
     },
     Object {
-      "file": "c",
-      "rank": 4,
+      "pos": "c4",
     },
     Object {
-      "file": "c",
-      "rank": 5,
+      "pos": "c5",
     },
     Object {
-      "file": "c",
-      "rank": 6,
+      "pos": "c6",
     },
     Object {
-      "file": "c",
-      "rank": 7,
+      "pos": "c7",
     },
     Object {
-      "file": "c",
-      "rank": 8,
+      "pos": "c8",
     },
     Object {
-      "file": "d",
-      "rank": 1,
+      "pos": "d1",
     },
     Object {
-      "file": "d",
-      "rank": 2,
+      "pos": "d2",
     },
     Object {
-      "file": "d",
-      "rank": 3,
+      "pos": "d3",
     },
     Object {
-      "file": "d",
-      "rank": 4,
+      "pos": "d4",
     },
     Object {
-      "file": "d",
-      "rank": 5,
+      "pos": "d5",
     },
     Object {
-      "file": "d",
-      "rank": 6,
+      "pos": "d6",
     },
     Object {
-      "file": "d",
-      "rank": 7,
+      "pos": "d7",
     },
     Object {
-      "file": "d",
-      "rank": 8,
+      "pos": "d8",
     },
     Object {
-      "file": "e",
-      "rank": 1,
+      "pos": "e1",
     },
     Object {
-      "file": "e",
-      "rank": 2,
+      "pos": "e2",
     },
     Object {
-      "file": "e",
-      "rank": 3,
+      "pos": "e3",
     },
     Object {
-      "file": "e",
-      "rank": 4,
+      "pos": "e4",
     },
     Object {
-      "file": "e",
-      "rank": 5,
+      "pos": "e5",
     },
     Object {
-      "file": "e",
-      "rank": 6,
+      "pos": "e6",
     },
     Object {
-      "file": "e",
-      "rank": 7,
+      "pos": "e7",
     },
     Object {
-      "file": "e",
-      "rank": 8,
+      "pos": "e8",
     },
     Object {
-      "file": "f",
-      "rank": 1,
+      "pos": "f1",
     },
     Object {
-      "file": "f",
-      "rank": 2,
+      "pos": "f2",
     },
     Object {
-      "file": "f",
-      "rank": 3,
+      "pos": "f3",
     },
     Object {
-      "file": "f",
-      "rank": 4,
+      "pos": "f4",
     },
     Object {
-      "file": "f",
-      "rank": 5,
+      "pos": "f5",
     },
     Object {
-      "file": "f",
-      "rank": 6,
+      "pos": "f6",
     },
     Object {
-      "file": "f",
-      "rank": 7,
+      "pos": "f7",
     },
     Object {
-      "file": "f",
-      "rank": 8,
+      "pos": "f8",
     },
     Object {
-      "file": "g",
-      "rank": 1,
+      "pos": "g1",
     },
     Object {
-      "file": "g",
-      "rank": 2,
+      "pos": "g2",
     },
     Object {
-      "file": "g",
-      "rank": 3,
+      "pos": "g3",
     },
     Object {
-      "file": "g",
-      "rank": 4,
+      "pos": "g4",
     },
     Object {
-      "file": "g",
-      "rank": 5,
+      "pos": "g5",
     },
     Object {
-      "file": "g",
-      "rank": 6,
+      "pos": "g6",
     },
     Object {
-      "file": "g",
-      "rank": 7,
+      "pos": "g7",
     },
     Object {
-      "file": "g",
-      "rank": 8,
+      "pos": "g8",
     },
     Object {
-      "file": "h",
-      "rank": 1,
+      "pos": "h1",
     },
     Object {
-      "file": "h",
-      "rank": 2,
+      "pos": "h2",
     },
     Object {
-      "file": "h",
-      "rank": 3,
+      "pos": "h3",
     },
     Object {
-      "file": "h",
-      "rank": 4,
+      "pos": "h4",
     },
     Object {
-      "file": "h",
-      "rank": 5,
+      "pos": "h5",
     },
     Object {
-      "file": "h",
-      "rank": 6,
+      "pos": "h6",
     },
     Object {
-      "file": "h",
-      "rank": 7,
+      "pos": "h7",
     },
     Object {
-      "file": "h",
-      "rank": 8,
+      "pos": "h8",
     },
   ],
 }

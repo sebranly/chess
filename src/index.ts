@@ -77,7 +77,8 @@ export const initializeBoard = (empty = false, fileCount = DEFAULT_FILE_COUNT, r
   for (let file = 1; file <= fileCount; file++) {
     for (let rank = 1; rank <= rankCount; rank++) {
       const fileLetter = getFileLetter(file);
-      const square: Square = { file: fileLetter, rank };
+      const position = `${fileLetter}${rank}`;
+      const square: Square = { pos: position };
 
       if (!empty) {
         if ([1, rankCount].includes(rank)) {
@@ -104,9 +105,8 @@ export const emptyBoard = (board: Board) => {
   const { squares } = board;
 
   squares.map((square: Square) => {
-    const { file, rank } = square;
-    const rawPosition = `${file}${rank}`;
-    emptySquare(board, rawPosition);
+    const { pos } = square;
+    emptySquare(board, pos);
   });
 
   return board;
@@ -114,12 +114,7 @@ export const emptyBoard = (board: Board) => {
 
 export const getSquare = (board: Board, rawPosition: string) => {
   const { squares } = board;
-  const position = getPosition(rawPosition);
-
-  if (!position) return undefined;
-
-  const { file, rank } = position;
-  const square = squares.find((s: Square) => s.file === file && s.rank === rank);
+  const square = squares.find((s: Square) => s.pos === rawPosition);
 
   return square;
 };

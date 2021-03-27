@@ -36,8 +36,9 @@ export interface Position {
   rank: number;
 }
 
-export interface Square extends Position {
+export interface Square {
   piece?: Piece;
+  pos: string;
 }
 
 export interface Board {

@@ -115,9 +115,8 @@ test('getSquare', () => {
   };
 
   const expectedSquare: Square = {
-    file: 'a',
-    rank: 1,
     piece: expectedPiece,
+    pos: 'a1',
   };
 
   expect(getSquare(board, 'a1')).toStrictEqual(expectedSquare);
@@ -139,9 +138,8 @@ test('setSquare', () => {
 
   expect(differences).toStrictEqual([
     {
-      file: 'a',
-      rank: 2,
       piece: originalPiece,
+      pos: 'a2',
     },
   ]);
 });
@@ -159,9 +157,8 @@ test('emptySquare', () => {
 
   expect(differences).toStrictEqual([
     {
-      file: 'a',
-      rank: 2,
       piece: undefined,
+      pos: 'a2',
     },
   ]);
 
