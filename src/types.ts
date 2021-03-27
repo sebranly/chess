@@ -26,7 +26,7 @@ export interface Piece {
   color: Color;
   hasNeverMoved: boolean;
   isFromPromotion: boolean;
-  possibleMoves: Position[];
+  possibleMoves: string[];
   type: PieceType;
   subType?: PieceSubType;
 }

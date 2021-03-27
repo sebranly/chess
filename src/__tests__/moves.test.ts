@@ -29,52 +29,13 @@ const pieceBlackKnight = initializePiece(Color.Black, PieceType.Knight, PieceSub
 const pieceBlackPawn = initializePiece(Color.Black);
 const pieceBlackQueen = initializePiece(Color.Black, PieceType.Queen);
 
-const movesBishop1 = [
-  { file: 'c', rank: 5 },
-  { file: 'b', rank: 6 },
-  { file: 'a', rank: 7 },
-  { file: 'e', rank: 5 },
-  { file: 'f', rank: 6 },
-  { file: 'g', rank: 7 },
-  { file: 'h', rank: 8 },
-  { file: 'e', rank: 3 },
-  { file: 'f', rank: 2 },
-  { file: 'g', rank: 1 },
-  { file: 'c', rank: 3 },
-  { file: 'b', rank: 2 },
-  { file: 'a', rank: 1 },
-];
-
-const movesRook = [
-  { file: 'd', rank: 5 },
-  { file: 'd', rank: 6 },
-  { file: 'd', rank: 7 },
-  { file: 'd', rank: 8 },
-  { file: 'e', rank: 4 },
-  { file: 'f', rank: 4 },
-  { file: 'g', rank: 4 },
-  { file: 'h', rank: 4 },
-  { file: 'd', rank: 3 },
-  { file: 'd', rank: 2 },
-  { file: 'd', rank: 1 },
-  { file: 'c', rank: 4 },
-  { file: 'b', rank: 4 },
-  { file: 'a', rank: 4 },
-];
+const movesBishop1 = ['c5', 'b6', 'a7', 'e5', 'f6', 'g7', 'h8', 'e3', 'f2', 'g1', 'c3', 'b2', 'a1'];
+const movesRook = ['d5', 'd6', 'd7', 'd8', 'e4', 'f4', 'g4', 'h4', 'd3', 'd2', 'd1', 'c4', 'b4', 'a4'];
 
 test('getMovesKing', () => {
   setSquare(board, 'e4', pieceWhiteKing);
 
-  const movesKing1 = [
-    { file: 'd', rank: 3 },
-    { file: 'e', rank: 3 },
-    { file: 'f', rank: 3 },
-    { file: 'd', rank: 4 },
-    { file: 'f', rank: 4 },
-    { file: 'd', rank: 5 },
-    { file: 'e', rank: 5 },
-    { file: 'f', rank: 5 },
-  ];
+  const movesKing1 = ['d3', 'e3', 'f3', 'd4', 'f4', 'd5', 'e5', 'f5'];
 
   expect(getMoves(board, 'e4')).toStrictEqual(movesKing1);
   expect(getMovesKing(board, 'e4', Color.White)).toStrictEqual(movesKing1);
@@ -82,11 +43,7 @@ test('getMovesKing', () => {
   emptySquare(board, 'e4');
   setSquare(board, 'h8', pieceWhiteKing);
 
-  const movesKing2 = [
-    { file: 'g', rank: 7 },
-    { file: 'h', rank: 7 },
-    { file: 'g', rank: 8 },
-  ];
+  const movesKing2 = ['g7', 'h7', 'g8'];
 
   expect(getMoves(board, 'h8')).toStrictEqual(movesKing2);
   expect(getMovesKing(board, 'h8', Color.White)).toStrictEqual(movesKing2);
@@ -95,7 +52,7 @@ test('getMovesKing', () => {
   setSquare(board, 'g8', pieceBlackKing);
   setSquare(board, 'h7', pieceWhitePawn);
 
-  const movesKing3 = [{ file: 'g', rank: 7 }];
+  const movesKing3 = ['g7'];
 
   expect(getMoves(board, 'h8')).toStrictEqual(movesKing3);
   expect(getMovesKing(board, 'h8', Color.White)).toStrictEqual(movesKing3);
@@ -112,13 +69,7 @@ test('getMovesBishop', () => {
   setSquare(board, 'e3', pieceBlackQueen);
   setSquare(board, 'b2', pieceBlackKing);
 
-  const movesBishop2 = [
-    { file: 'c', rank: 5 },
-    { file: 'b', rank: 6 },
-    { file: 'a', rank: 7 },
-    { file: 'e', rank: 3 },
-    { file: 'c', rank: 3 },
-  ];
+  const movesBishop2 = ['c5', 'b6', 'a7', 'e3', 'c3'];
 
   expect(getMoves(board, 'd4')).toStrictEqual(movesBishop2);
   expect(getMovesBishop(board, 'd4', Color.White)).toStrictEqual(movesBishop2);
@@ -146,16 +97,7 @@ test('getMovesKnight', () => {
   emptyBoard(board);
   setSquare(board, 'd4', pieceWhiteKnight);
 
-  const movesKnight = [
-    { file: 'b', rank: 5 },
-    { file: 'c', rank: 6 },
-    { file: 'e', rank: 6 },
-    { file: 'f', rank: 5 },
-    { file: 'b', rank: 3 },
-    { file: 'c', rank: 2 },
-    { file: 'e', rank: 2 },
-    { file: 'f', rank: 3 },
-  ];
+  const movesKnight = ['b5', 'c6', 'e6', 'f5', 'b3', 'c2', 'e2', 'f3'];
 
   expect(getMoves(board, 'd4')).toStrictEqual(movesKnight);
   expect(getMovesKnight(board, 'd4', Color.White)).toStrictEqual(movesKnight);
@@ -165,13 +107,7 @@ test('getMovesKnight', () => {
   setSquare(board, 'e6', pieceWhiteBishop);
   setSquare(board, 'f5', pieceWhiteKing);
 
-  const movesKnight1 = [
-    { file: 'b', rank: 5 },
-    { file: 'b', rank: 3 },
-    { file: 'c', rank: 2 },
-    { file: 'e', rank: 2 },
-    { file: 'f', rank: 3 },
-  ];
+  const movesKnight1 = ['b5', 'b3', 'c2', 'e2', 'f3'];
 
   expect(getMoves(board, 'd4')).toStrictEqual(movesKnight1);
   expect(getMovesKnight(board, 'd4', Color.White)).toStrictEqual(movesKnight1);
@@ -181,10 +117,7 @@ test('getMovesKnight', () => {
   setSquare(board, 'd2', pieceWhiteRook);
   setSquare(board, 'b2', pieceWhiteBishop);
 
-  const movesKnight2 = [
-    { file: 'a', rank: 3 },
-    { file: 'c', rank: 3 },
-  ];
+  const movesKnight2 = ['a3', 'c3'];
 
   expect(getMoves(board, 'b1')).toStrictEqual(movesKnight2);
   expect(getMovesKnight(board, 'b1', Color.White)).toStrictEqual(movesKnight2);
@@ -195,10 +128,7 @@ test('getMovesPawn', () => {
   emptyBoard(board);
   setSquare(board, 'd2', pieceWhitePawn);
 
-  const movesPawn1 = [
-    { file: 'd', rank: 3 },
-    { file: 'd', rank: 4 },
-  ];
+  const movesPawn1 = ['d3', 'd4'];
 
   expect(getMoves(board, 'd2')).toStrictEqual(movesPawn1);
   expect(getMovesPawn(board, 'd2', Color.White)).toStrictEqual(movesPawn1);
@@ -206,23 +136,14 @@ test('getMovesPawn', () => {
   setSquare(board, 'c3', pieceBlackBishop);
   setSquare(board, 'e3', pieceBlackKnight);
 
-  const movesPawn2 = [
-    { file: 'd', rank: 3 },
-    { file: 'c', rank: 3 },
-    { file: 'e', rank: 3 },
-    { file: 'd', rank: 4 },
-  ];
+  const movesPawn2 = ['d3', 'c3', 'e3', 'd4'];
 
   expect(getMoves(board, 'd2')).toStrictEqual(movesPawn2);
   expect(getMovesPawn(board, 'd2', Color.White)).toStrictEqual(movesPawn2);
 
   setSquare(board, 'd4', pieceBlackQueen);
 
-  const movesPawn3 = [
-    { file: 'd', rank: 3 },
-    { file: 'c', rank: 3 },
-    { file: 'e', rank: 3 },
-  ];
+  const movesPawn3 = ['d3', 'c3', 'e3'];
 
   expect(getMoves(board, 'd2')).toStrictEqual(movesPawn3);
   expect(getMovesPawn(board, 'd2', Color.White)).toStrictEqual(movesPawn3);
@@ -234,10 +155,7 @@ test('getMovesPawn', () => {
 
   setSquare(board, 'd3', pieceBlackPawn);
 
-  const movesPawn4 = [
-    { file: 'c', rank: 3 },
-    { file: 'e', rank: 3 },
-  ];
+  const movesPawn4 = ['c3', 'e3'];
 
   expect(getMoves(board, 'd2')).toStrictEqual(movesPawn4);
   expect(getMovesPawn(board, 'd2', Color.White)).toStrictEqual(movesPawn4);
@@ -249,7 +167,7 @@ test('getMovesPawn', () => {
 
   setSquare(board, 'c3', pieceWhiteBishop);
 
-  const movesPawn5 = [{ file: 'e', rank: 3 }];
+  const movesPawn5 = ['e3'];
 
   expect(getMoves(board, 'd2')).toStrictEqual(movesPawn5);
   expect(getMovesPawn(board, 'd2', Color.White)).toStrictEqual(movesPawn5);
@@ -263,7 +181,7 @@ test('getMovesPawn', () => {
   emptyBoard(board);
   setSquare(board, 'd3', pieceWhitePawn);
 
-  const movesPawn6 = [{ file: 'd', rank: 4 }];
+  const movesPawn6 = ['d4'];
 
   expect(getMoves(board, 'd3')).toStrictEqual(movesPawn6);
   expect(getMovesPawn(board, 'd3', Color.White)).toStrictEqual(movesPawn6);
@@ -271,11 +189,7 @@ test('getMovesPawn', () => {
   setSquare(board, 'c4', pieceBlackBishop);
   setSquare(board, 'e4', pieceBlackKnight);
 
-  const movesPawn7 = [
-    { file: 'd', rank: 4 },
-    { file: 'c', rank: 4 },
-    { file: 'e', rank: 4 },
-  ];
+  const movesPawn7 = ['d4', 'c4', 'e4'];
 
   expect(getMoves(board, 'd3')).toStrictEqual(movesPawn7);
   expect(getMovesPawn(board, 'd3', Color.White)).toStrictEqual(movesPawn7);
@@ -292,10 +206,7 @@ test('getMovesPawn', () => {
 
   setSquare(board, 'd4', pieceBlackPawn);
 
-  const movesPawn8 = [
-    { file: 'c', rank: 4 },
-    { file: 'e', rank: 4 },
-  ];
+  const movesPawn8 = ['c4', 'e4'];
 
   expect(getMoves(board, 'd3')).toStrictEqual(movesPawn8);
   expect(getMovesPawn(board, 'd3', Color.White)).toStrictEqual(movesPawn8);
@@ -307,7 +218,7 @@ test('getMovesPawn', () => {
 
   setSquare(board, 'c4', pieceWhiteBishop);
 
-  const movesPawn9 = [{ file: 'e', rank: 4 }];
+  const movesPawn9 = ['e4'];
 
   expect(getMoves(board, 'd3')).toStrictEqual(movesPawn9);
   expect(getMovesPawn(board, 'd3', Color.White)).toStrictEqual(movesPawn9);
