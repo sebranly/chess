@@ -19,7 +19,7 @@ test('getTerminalNotation', () => {
     isFromPromotion: false,
     possibleMoves: [],
     subType: undefined,
-    type: PieceType.King,
+    type: PieceType.King
   };
 
   expect(getTerminalNotation(piece)).toBe('K');

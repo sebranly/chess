@@ -44,7 +44,7 @@ export const initializePiece = (color: Color, type = PieceType.Pawn, subType?: P
     isFromPromotion: false,
     possibleMoves: [],
     subType,
-    type,
+    type
   };
 
   return piece;
@@ -158,7 +158,7 @@ export const getPosition = (pos: string) => {
 
   const position: Position = {
     file: matches[1].toLowerCase(),
-    rank: Number(matches[2]),
+    rank: Number(matches[2])
   };
 
   return position;

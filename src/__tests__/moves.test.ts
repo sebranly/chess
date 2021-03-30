@@ -6,7 +6,7 @@ import {
   getMovesKnight,
   getMovesPawn,
   getMovesRook,
-  isInCheck,
+  isInCheck
 } from '../moves';
 import { emptyBoard, emptySquare, initializeBoard, initializePiece, setSquare } from '../index';
 import { Color, PieceSubType, PieceType } from '../types';
