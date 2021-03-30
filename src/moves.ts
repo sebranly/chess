@@ -11,7 +11,7 @@ import {
   getFileNumber,
   getFileLetter,
   isValidFile,
-  isValidRank,
+  isValidRank
 } from './index';
 
 // TODO: rework allowKingCapture
@@ -89,7 +89,7 @@ export const getMovesBishop = (board: Board, pos: string, color: Color, allowKin
     ...getMovesDeltas(board, color, pos, -1, 1, -1, 1, [], allowKingCapture),
     ...getMovesDeltas(board, color, pos, 1, 1, 1, 1, [], allowKingCapture),
     ...getMovesDeltas(board, color, pos, 1, -1, 1, -1, [], allowKingCapture),
-    ...getMovesDeltas(board, color, pos, -1, -1, -1, -1, [], allowKingCapture),
+    ...getMovesDeltas(board, color, pos, -1, -1, -1, -1, [], allowKingCapture)
   ];
 
   return moves;
@@ -100,7 +100,7 @@ export const getMovesRook = (board: Board, pos: string, color: Color, allowKingC
     ...getMovesDeltas(board, color, pos, 0, 1, 0, 1, [], allowKingCapture),
     ...getMovesDeltas(board, color, pos, 1, 0, 1, 0, [], allowKingCapture),
     ...getMovesDeltas(board, color, pos, 0, -1, 0, -1, [], allowKingCapture),
-    ...getMovesDeltas(board, color, pos, -1, 0, -1, 0, [], allowKingCapture),
+    ...getMovesDeltas(board, color, pos, -1, 0, -1, 0, [], allowKingCapture)
   ];
 
   return moves;
@@ -109,7 +109,7 @@ export const getMovesRook = (board: Board, pos: string, color: Color, allowKingC
 export const getMovesQueen = (board: Board, pos: string, color: Color, allowKingCapture = false): string[] => {
   const moves = [
     ...getMovesBishop(board, pos, color, allowKingCapture),
-    ...getMovesRook(board, pos, color, allowKingCapture),
+    ...getMovesRook(board, pos, color, allowKingCapture)
   ];
 
   return moves;
@@ -125,7 +125,7 @@ export const getMovesDeltas = (
   deltaFile = deltaFileStep,
   deltaRank = deltaRankStep,
   possibleMoves: string[] = [],
-  allowKingCapture = false,
+  allowKingCapture = false
 ): string[] => {
   const position = getPosition(pos);
 
@@ -162,7 +162,7 @@ export const getMovesDeltas = (
       deltaFile + deltaFileStep,
       deltaRank + deltaRankStep,
       newPossibleMoves,
-      allowKingCapture,
+      allowKingCapture
     );
   }
 
@@ -325,7 +325,7 @@ export const addMovesIfValid = (
   fileLetter: string | undefined,
   rankIndex: number | undefined,
   verificationFunction: any,
-  allowKingCapture = false,
+  allowKingCapture = false
 ) => {
   if (!fileLetter || !rankIndex) return false;
 

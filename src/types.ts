@@ -4,7 +4,7 @@ export enum PieceType {
   Knight = 'knight',
   Pawn = 'pawn',
   Queen = 'queen',
-  Rook = 'rook',
+  Rook = 'rook'
 }
 
 /**
@@ -14,12 +14,12 @@ export enum PieceType {
  */
 export enum PieceSubType {
   West = 'west',
-  East = 'east',
+  East = 'east'
 }
 
 export enum Color {
   Black = 'black',
-  White = 'white',
+  White = 'white'
 }
 
 export interface Piece {

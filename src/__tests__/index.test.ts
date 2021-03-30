@@ -19,7 +19,7 @@ import {
   getNextRank,
   getPreviousOrNextRank,
   isValidFile,
-  isValidRank,
+  isValidRank
 } from '../index';
 import { cloneDeep, differenceWith, isEqual } from 'lodash';
 import { Square, Color, Piece, PieceSubType, PieceType } from '../types';
@@ -50,7 +50,7 @@ test('initializePiece', () => {
     isFromPromotion: false,
     possibleMoves: [],
     subType: undefined,
-    type: PieceType.Pawn,
+    type: PieceType.Pawn
   };
 
   expect(whitePawn).toStrictEqual(expectedWhitePawn);
@@ -62,7 +62,7 @@ test('initializePiece', () => {
     isFromPromotion: false,
     possibleMoves: [],
     subType: PieceSubType.East,
-    type: PieceType.Rook,
+    type: PieceType.Rook
   };
 
   expect(eastBlackRook).toStrictEqual(expectedEastBlackRook);
@@ -111,12 +111,12 @@ test('getSquare', () => {
     isFromPromotion: false,
     possibleMoves: [],
     subType: PieceSubType.West,
-    type: PieceType.Rook,
+    type: PieceType.Rook
   };
 
   const expectedSquare: Square = {
     piece: expectedPiece,
-    pos: 'a1',
+    pos: 'a1'
   };
 
   expect(getSquare(board, 'a1')).toStrictEqual(expectedSquare);
@@ -139,8 +139,8 @@ test('setSquare', () => {
   expect(differences).toStrictEqual([
     {
       piece: originalPiece,
-      pos: 'a2',
-    },
+      pos: 'a2'
+    }
   ]);
 });
 
@@ -158,8 +158,8 @@ test('emptySquare', () => {
   expect(differences).toStrictEqual([
     {
       piece: undefined,
-      pos: 'a2',
-    },
+      pos: 'a2'
+    }
   ]);
 
   expect(piece).toStrictEqual({
@@ -168,7 +168,7 @@ test('emptySquare', () => {
     isFromPromotion: false,
     possibleMoves: [],
     subType: undefined,
-    type: PieceType.Pawn,
+    type: PieceType.Pawn
   });
 });
 
@@ -179,13 +179,13 @@ test('getPosition', () => {
   const position1 = getPosition('b1');
   expect(position1).toStrictEqual({
     file: 'b',
-    rank: 1,
+    rank: 1
   });
 
   const position2 = getPosition('B1');
   expect(position2).toStrictEqual({
     file: 'b',
-    rank: 1,
+    rank: 1
   });
 });
 
