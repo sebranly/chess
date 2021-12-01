@@ -87,28 +87,47 @@ export const getMoves = (board: Board, pos: string, allowKingCapture = false): s
 };
 
 export const getMovesBishop = (board: Board, pos: string, color: Color, allowKingCapture = false): string[] => {
-  const prefixArgs: [Board, Color, string] = [board, color, pos];
-  const suffixArgs: [string[], boolean] = [[], allowKingCapture];
-
-  const moves = [
-    ...getMovesDeltas(...prefixArgs, -1, 1, -1, 1, ...suffixArgs),
-    ...getMovesDeltas(...prefixArgs, 1, 1, 1, 1, ...suffixArgs),
-    ...getMovesDeltas(...prefixArgs, 1, -1, 1, -1, ...suffixArgs),
-    ...getMovesDeltas(...prefixArgs, -1, -1, -1, -1, ...suffixArgs)
-  ];
+  const moves = getMovesFourDirectional(board, pos, color, allowKingCapture, true);
 
   return moves;
 };
 
 export const getMovesRook = (board: Board, pos: string, color: Color, allowKingCapture = false): string[] => {
+  const moves = getMovesFourDirectional(board, pos, color, allowKingCapture, false);
+
+  return moves;
+};
+
+// TODO: add unit tests
+export const getMovesFourDirectional = (
+  board: Board,
+  pos: string,
+  color: Color,
+  allowKingCapture = false,
+  isDiagonal = false
+): string[] => {
   const prefixArgs: [Board, Color, string] = [board, color, pos];
   const suffixArgs: [string[], boolean] = [[], allowKingCapture];
 
+  const deltas: [number, number, number, number][] = isDiagonal
+    ? [
+        [-1, 1, -1, 1],
+        [1, 1, 1, 1],
+        [1, -1, 1, -1],
+        [-1, -1, -1, -1]
+      ]
+    : [
+        [0, 1, 0, 1],
+        [1, 0, 1, 0],
+        [0, -1, 0, -1],
+        [-1, 0, -1, 0]
+      ];
+
   const moves = [
-    ...getMovesDeltas(...prefixArgs, 0, 1, 0, 1, ...suffixArgs),
-    ...getMovesDeltas(...prefixArgs, 1, 0, 1, 0, ...suffixArgs),
-    ...getMovesDeltas(...prefixArgs, 0, -1, 0, -1, ...suffixArgs),
-    ...getMovesDeltas(...prefixArgs, -1, 0, -1, 0, ...suffixArgs)
+    ...getMovesDeltas(...prefixArgs, ...deltas[0], ...suffixArgs),
+    ...getMovesDeltas(...prefixArgs, ...deltas[1], ...suffixArgs),
+    ...getMovesDeltas(...prefixArgs, ...deltas[2], ...suffixArgs),
+    ...getMovesDeltas(...prefixArgs, ...deltas[3], ...suffixArgs)
   ];
 
   return moves;
