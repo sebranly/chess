@@ -60,24 +60,26 @@ export const getMoves = (board: Board, pos: string, allowKingCapture = false): s
 
   const { color, type } = piece;
 
+  const args: [Board, string, Color, boolean] = [board, pos, color, allowKingCapture];
+
   switch (type) {
     case Bishop:
-      return getMovesBishop(board, pos, color, allowKingCapture);
+      return getMovesBishop(...args);
 
     case Pawn:
-      return getMovesPawn(board, pos, color, allowKingCapture);
+      return getMovesPawn(...args);
 
     case Queen:
-      return getMovesQueen(board, pos, color, allowKingCapture);
+      return getMovesQueen(...args);
 
     case King:
-      return getMovesKing(board, pos, color, allowKingCapture);
+      return getMovesKing(...args);
 
     case Knight:
-      return getMovesKnight(board, pos, color, allowKingCapture);
+      return getMovesKnight(...args);
 
     case Rook:
-      return getMovesRook(board, pos, color, allowKingCapture);
+      return getMovesRook(...args);
 
     default:
       return [];
@@ -85,22 +87,28 @@ export const getMoves = (board: Board, pos: string, allowKingCapture = false): s
 };
 
 export const getMovesBishop = (board: Board, pos: string, color: Color, allowKingCapture = false): string[] => {
+  const prefixArgs: [Board, Color, string] = [board, color, pos];
+  const suffixArgs: [string[], boolean] = [[], allowKingCapture];
+
   const moves = [
-    ...getMovesDeltas(board, color, pos, -1, 1, -1, 1, [], allowKingCapture),
-    ...getMovesDeltas(board, color, pos, 1, 1, 1, 1, [], allowKingCapture),
-    ...getMovesDeltas(board, color, pos, 1, -1, 1, -1, [], allowKingCapture),
-    ...getMovesDeltas(board, color, pos, -1, -1, -1, -1, [], allowKingCapture)
+    ...getMovesDeltas(...prefixArgs, -1, 1, -1, 1, ...suffixArgs),
+    ...getMovesDeltas(...prefixArgs, 1, 1, 1, 1, ...suffixArgs),
+    ...getMovesDeltas(...prefixArgs, 1, -1, 1, -1, ...suffixArgs),
+    ...getMovesDeltas(...prefixArgs, -1, -1, -1, -1, ...suffixArgs)
   ];
 
   return moves;
 };
 
 export const getMovesRook = (board: Board, pos: string, color: Color, allowKingCapture = false): string[] => {
+  const prefixArgs: [Board, Color, string] = [board, color, pos];
+  const suffixArgs: [string[], boolean] = [[], allowKingCapture];
+
   const moves = [
-    ...getMovesDeltas(board, color, pos, 0, 1, 0, 1, [], allowKingCapture),
-    ...getMovesDeltas(board, color, pos, 1, 0, 1, 0, [], allowKingCapture),
-    ...getMovesDeltas(board, color, pos, 0, -1, 0, -1, [], allowKingCapture),
-    ...getMovesDeltas(board, color, pos, -1, 0, -1, 0, [], allowKingCapture)
+    ...getMovesDeltas(...prefixArgs, 0, 1, 0, 1, ...suffixArgs),
+    ...getMovesDeltas(...prefixArgs, 1, 0, 1, 0, ...suffixArgs),
+    ...getMovesDeltas(...prefixArgs, 0, -1, 0, -1, ...suffixArgs),
+    ...getMovesDeltas(...prefixArgs, -1, 0, -1, 0, ...suffixArgs)
   ];
 
   return moves;

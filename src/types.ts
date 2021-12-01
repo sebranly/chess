@@ -7,11 +7,6 @@ export enum PieceType {
   Rook = 'rook'
 }
 
-/**
- * Left and Right does not sound right
- * because it's relative to the team
- * Whereas West and East are global and not misleading
- */
 export enum PieceSubType {
   West = 'west',
   East = 'east'

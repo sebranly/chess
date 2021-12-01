@@ -78,10 +78,10 @@ export const displayBoard = (board: Board, nodeDisplay = false) => {
   displayRankEdge(board, nodeDisplay);
 
   for (let rank = rankCount; rank >= 1; rank--) {
-    const leftEdge = `${rank}|`;
-    const rightEdge = `|${rank}\n`;
+    const westEdge = `${rank}|`;
+    const eastEdge = `|${rank}\n`;
 
-    print(leftEdge, nodeDisplay);
+    print(westEdge, nodeDisplay);
 
     for (let file = 1; file <= fileCount; file++) {
       const fileLetter = getFileLetter(file);
@@ -101,7 +101,7 @@ export const displayBoard = (board: Board, nodeDisplay = false) => {
       }
     }
 
-    print(rightEdge, nodeDisplay);
+    print(eastEdge, nodeDisplay);
   }
 
   displayRankEdge(board, nodeDisplay);
